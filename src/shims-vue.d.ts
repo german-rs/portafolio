@@ -9,3 +9,12 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+/**
+ * Este código le dice explícitamente a TypeScript dónde
+ * encontrar las declaraciones de vuex.
+ */
+
+declare module 'vuex' {
+  export * from 'vuex/types/index.d.ts'
+}

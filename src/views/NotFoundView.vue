@@ -1,4 +1,6 @@
 <script></script>
 <template>
-  <main></main>
+  <main>
+    <h1>Página no encontrada</h1>
+  </main>
 </template>
