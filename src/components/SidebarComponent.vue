@@ -9,6 +9,8 @@ const emit = defineEmits(['toggle'])
 <template>
   <!-- Sidebar siempre existe -->
   <div class="sidebar" :class="{ open: isOpen, closed: !isOpen }">
+    <img src="../../public/sidebar-logo.webp" alt="" />
+
     <!-- Botón para abrir/cerrar -->
     <button @click="emit('toggle')" class="toggle-btn">
       <span class="material-symbols-outlined">
@@ -33,11 +35,12 @@ const emit = defineEmits(['toggle'])
 <style>
 .sidebar {
   position: fixed;
+  border-right: 1px solid black;
   top: 0;
   left: 0;
   height: 100vh; /* ocupa todo el alto */
-  background: #eee;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  background: #f9fbff;
+  /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
   overflow: hidden;
   transition: width 0.3s ease;
   z-index: 1000;
@@ -59,6 +62,7 @@ const emit = defineEmits(['toggle'])
   background: none;
   border: none;
   cursor: pointer;
+  color: blue;
 }
 
 .nav {
