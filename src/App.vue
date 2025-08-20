@@ -10,19 +10,24 @@ const sidebarOpen = ref(false)
   <Sidebar :isOpen="sidebarOpen" @toggle="sidebarOpen = !sidebarOpen" />
 
   <!-- Contenedor principal -->
-  <main :class="{ shifted: sidebarOpen }">
+  <main class="app-main" :class="{ shifted: sidebarOpen }">
     <router-view />
   </main>
 </template>
 
-<style scoped>
-main {
-  margin-left: 60px; /* espacio mínimo cuando el sidebar está cerrado */
-  padding: 20px;
-  transition: margin-left 0.3s ease;
-}
+<style lang="scss" scoped>
+$sidebar-width-closed: 80px;
+$sidebar-width-open: 260px;
+$main-padding: 20px;
+$transition-duration: 0.3s;
 
-main.shifted {
-  margin-left: 250px; /* empuja el contenido cuando el sidebar está abierto */
+.app-main {
+  margin-left: $sidebar-width-closed;
+  padding: $main-padding;
+  transition: margin-left $transition-duration ease;
+
+  &.shifted {
+    margin-left: $sidebar-width-open;
+  }
 }
 </style>

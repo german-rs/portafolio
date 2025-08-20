@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits(['toggle'])
@@ -9,22 +8,27 @@ const emit = defineEmits(['toggle'])
 <template>
   <!-- Sidebar siempre existe -->
   <div class="sidebar" :class="{ open: isOpen, closed: !isOpen }">
-    <img src="../../public/sidebar-logo.webp" alt="" />
+    <div class="sidebar__logo-container">
+      <img @click="emit('toggle')" class="sidebar__logo" src="/sidebar-logo.webp" alt="" />
+    </div>
+    <div v-if="isOpen">
+      <p>Germán Riveros S.</p>
+    </div>
 
     <!-- Botón para abrir/cerrar -->
-    <button @click="emit('toggle')" class="toggle-btn">
-      <span class="material-symbols-outlined">
+    <button @click="emit('toggle')" class="sidebar__toggle">
+      <span class="sidebar__toggle-icon material-symbols-outlined">
         {{ isOpen ? 'left_panel_close' : 'left_panel_open' }}
       </span>
     </button>
 
     <!-- Menú solo visible si está abierto -->
-    <nav v-if="isOpen" class="nav">
-      <ul>
-        <li>
-          <RouterLink class="navbar__link" to="/">Home</RouterLink>
+    <nav v-if="isOpen" class="sidebar__nav">
+      <ul class="sidebar__nav-list">
+        <li class="sidebar__nav-item">
+          <RouterLink class="sidebar__nav-link" to="/">Home</RouterLink>
         </li>
-        <li>
+        <li class="sidebar__nav-item">
           <RouterLink class="navbar__link" to="/about">About</RouterLink>
         </li>
       </ul>
@@ -32,42 +36,50 @@ const emit = defineEmits(['toggle'])
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .sidebar {
   position: fixed;
   border-right: 1px solid black;
   top: 0;
   left: 0;
-  height: 100vh; /* ocupa todo el alto */
+  height: 100vh;
   background: #f9fbff;
-  /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
   overflow: hidden;
   transition: width 0.3s ease;
   z-index: 1000;
+
+  /* cuando está abierta */
+  &.open {
+    width: 250px;
+  }
+
+  /* cuando está cerrada */
+  &.closed {
+    width: 60px; /* ancho mínimo, solo para mostrar el botón */
+  }
 }
 
-/* cuando está abierta */
-.sidebar.open {
-  width: 250px;
-}
-
-/* cuando está cerrada */
-.sidebar.closed {
-  width: 60px; /* ancho mínimo, solo para mostrar el botón */
-}
-
-.toggle-btn {
+.sidebar__toggle {
   display: block;
   margin: 10px;
   background: none;
   border: none;
   cursor: pointer;
-  color: blue;
+  color: #8b8b8b;
+
+  &:hover {
+    background: #f5f5f5;
+    border-radius: 5px;
+  }
 }
 
-.nav {
+.sidebar__nav {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+}
+
+.sidebar__logo {
+  cursor: pointer;
 }
 </style>
