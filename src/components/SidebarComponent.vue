@@ -35,12 +35,18 @@ const emit = defineEmits(['toggle'])
 
 <style lang="scss" scoped>
 .sidebar {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
   position: fixed;
-  border-right: 1px solid black;
+  border-right: 1px solid var(--color-border);
   top: 0;
   left: 0;
   height: 100vh;
-  background: #f5f5f5;
+  background: var(--color-sidebar-background);
   overflow: hidden;
   transition: width 0.3s ease;
   z-index: 1000;
@@ -48,46 +54,76 @@ const emit = defineEmits(['toggle'])
   /* cuando está abierta */
   &.open {
     width: 250px;
+    align-items: start;
+    padding-left: 0.5em;
   }
 
   /* cuando está cerrada */
   &.closed {
-    width: 60px; /* ancho mínimo, solo para mostrar el botón */
-  }
-
-  &__logo-container {
-    padding: 0.5em;
+    width: 60px;
+    background-color: var(--color-background);
   }
 }
 
-.sidebar__toggle {
-  display: block;
-  margin: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #8b8b8b;
+// Logo
+.sidebar__logo-container {
+  padding: 0.5em;
 
   &:hover {
-    background: #f5f5f5;
+    background-color: var(--color-link-background-hover);
     border-radius: 5px;
   }
 }
 
+.sidebar__logo {
+  cursor: pointer;
+}
+
+// botón
+.sidebar__toggle {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-icon-default);
+
+  &:hover {
+    color: var(--color-icon-hover);
+    background-color: var(--color-link-background-hover);
+    border-radius: 5px;
+  }
+}
+
+// Enlaces
 .sidebar__nav {
+  width: 95%;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
-.sidebar__nav-link {
-  text-decoration: none;
-}
 .sidebar__nav-list {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+}
+.sidebar__nav-item {
+  margin: 0;
+  padding: 0.5em;
+
+  &:hover {
+    background-color: var(--color-link-background-hover);
+    border-radius: 5px;
+  }
 }
 
-.sidebar__logo {
-  cursor: pointer;
+.sidebar__nav-link {
+  text-decoration: none;
+  color: var(--color-link-text);
 }
 </style>

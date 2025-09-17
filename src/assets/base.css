@@ -41,19 +41,53 @@
 
   --color-button-disable-background: var(--color-gray200);
   --color-button-disable-text: var(--color-gray400);
+
+  /* Sidebar */
+  --color-sidebar-background: var(--color-gray100);
+  --color-sidebar-text: var(--color-gray900);
+
+  /* Links */
+  --color-link-text: var(--color-gray900);
+  --color-link-background-hover: var(--color-gray300);
+
+  /* icons */
+  --color-icon-default: var(--color-gray600);
+  --color-icon-hover: var(--color-gray800);
+  --color-icon-active: var(--color-gray900);
+  --color-icon-disable: var(--color-gray400);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    /* General */
+    --color-background: var(--color-gray900);
+    --color-background-soft: var(--color-gray800);
+    --color-background-mute: var(--color-gray700);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+    --color-border: var(--color-gray600);
+    --color-divider: var(--color-gray600);
+    --color-border-hover: var(--color-gray500);
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-text: var(--color-gray100);
+    --color-text-heading: var(--color-gray300);
+    --color-text-disable: var(--color-gray600);
+    --color-text-placeholder: var(--color-gray600);
+
+    /* Buttons */
+    --color-button-primary-background: var(--color-gray200);
+    --color-button-primary-background-hover: var(--color-White);
+    --color-button-primary-text: var(--color-gray900);
+
+    --color-button-secondary-border: var(--color-gray600);
+    --color-button-secondary-border-hover: var(--color-gray500);
+    --color-button-secondary-text: var(--color-gray200);
+
+    --color-button-disable-background: var(--color-gray800);
+    --color-button-disable-text: var(--color-gray600);
+
+    /* Sidebar */
+    --color-sidebar-background: var(--color-gray800);
+    --color-sidebar-text: var(--color-gray100);
   }
 }
 
