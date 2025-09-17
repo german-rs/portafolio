@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Sidebar from './components/SidebarComponent.vue'
-
+import HeaderComponent from './components/HeaderComponent.vue'
 const sidebarOpen = ref(false)
 </script>
 
@@ -11,6 +11,7 @@ const sidebarOpen = ref(false)
 
   <!-- Contenedor principal -->
   <main class="app-main" :class="{ shifted: sidebarOpen }">
+    <HeaderComponent />
     <router-view />
   </main>
 </template>

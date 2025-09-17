@@ -11,9 +11,6 @@ const emit = defineEmits(['toggle'])
     <div class="sidebar__logo-container">
       <img @click="emit('toggle')" class="sidebar__logo" src="/sidebar-logo.webp" alt="" />
     </div>
-    <div v-if="isOpen">
-      <p>Germán Riveros S.</p>
-    </div>
 
     <!-- Botón para abrir/cerrar -->
     <button @click="emit('toggle')" class="sidebar__toggle">
@@ -29,7 +26,7 @@ const emit = defineEmits(['toggle'])
           <RouterLink class="sidebar__nav-link" to="/">Home</RouterLink>
         </li>
         <li class="sidebar__nav-item">
-          <RouterLink class="navbar__link" to="/about">About</RouterLink>
+          <RouterLink class="sidebar__nav-link" to="/about">About</RouterLink>
         </li>
       </ul>
     </nav>
@@ -43,7 +40,7 @@ const emit = defineEmits(['toggle'])
   top: 0;
   left: 0;
   height: 100vh;
-  background: #f9fbff;
+  background: #f5f5f5;
   overflow: hidden;
   transition: width 0.3s ease;
   z-index: 1000;
@@ -56,6 +53,10 @@ const emit = defineEmits(['toggle'])
   /* cuando está cerrada */
   &.closed {
     width: 60px; /* ancho mínimo, solo para mostrar el botón */
+  }
+
+  &__logo-container {
+    padding: 0.5em;
   }
 }
 
@@ -77,6 +78,13 @@ const emit = defineEmits(['toggle'])
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+}
+
+.sidebar__nav-link {
+  text-decoration: none;
+}
+.sidebar__nav-list {
+  list-style-type: none;
 }
 
 .sidebar__logo {
