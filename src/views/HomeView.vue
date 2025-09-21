@@ -1,11 +1,11 @@
 <script setup lang="ts">
-// import ChatComponent from '@/components/ChatComponent.vue'
+import ChatComponent from '@/components/ChatComponent.vue'
 </script>
 
 <template>
   <main class="main">
     <h1>Inicio</h1>
-    <!-- <ChatComponent /> -->
+    <ChatComponent />
   </main>
 </template>
 <style lang="scss" scoped>

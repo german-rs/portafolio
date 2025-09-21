@@ -14,10 +14,10 @@
     <!-- Header del chat -->
     <div class="chat-header">
       <div class="chat-title">
-        <h2>💬 Chat con Gemini AI</h2>
-        <span class="status" :class="{ online: !isLoading, loading: isLoading }">
+        <!-- <h2>¿Con qué puedo ayudarte?</h2> -->
+        <!-- <span class="status" :class="{ online: !isLoading, loading: isLoading }">
           {{ isLoading ? 'Escribiendo...' : 'En línea' }}
-        </span>
+        </span> -->
       </div>
 
       <!-- Botón para limpiar chat -->
@@ -27,7 +27,8 @@
         :disabled="messages.length === 0"
         title="Limpiar conversación"
       >
-        🗑️ Limpiar
+        <span class="sidebar__toggle-icon material-symbols-outlined">delete</span>
+        Limpiar
       </button>
     </div>
 
@@ -35,17 +36,23 @@
     <div class="messages-container" ref="messagesContainer">
       <!-- Mensaje de bienvenida cuando no hay mensajes -->
       <div v-if="messages.length === 0" class="welcome-message">
-        <div class="welcome-icon">🤖</div>
-        <h3>¡Hola! Soy Gemini AI</h3>
-        <p>Puedes preguntarme cualquier cosa. Estoy aquí para ayudarte.</p>
+        <div class="welcome-icon">
+          <div class="sidebar__logo-container">
+            <img class="sidebar__logo" src="/sidebar-logo.webp" alt="" />
+          </div>
+        </div>
+        <h3 class="welcome-message__title">¡Hola! Soy Germán Riveros</h3>
+        <p class="welcome-message__text">¿Con qué puedo ayudarte?</p>
       </div>
 
       <!-- Lista de mensajes -->
       <div v-for="(message, index) in messages" :key="index" class="message" :class="message.role">
         <!-- Avatar del mensaje -->
         <div class="message-avatar">
-          <span v-if="message.role === 'user'">👤</span>
-          <span v-else>🤖</span>
+          <span v-if="message.role === 'user'" class="material-symbols-outlined"> person </span>
+          <span v-else>
+            <img class="chat__logo" src="/chat-logo.webp" alt="" />
+          </span>
         </div>
 
         <!-- Contenido del mensaje -->
@@ -58,7 +65,9 @@
       <!-- Indicador de escritura -->
       <div v-if="isLoading" class="message model typing-indicator">
         <div class="message-avatar">
-          <span>🤖</span>
+          <span>
+            <img class="chat__logo" src="/chat-logo.webp" alt="" />
+          </span>
         </div>
         <div class="message-content">
           <div class="typing-dots">
@@ -96,8 +105,8 @@
           class="send-btn"
           title="Enviar mensaje (Ctrl+Enter)"
         >
-          <span v-if="isLoading">⏳</span>
-          <span v-else>📤</span>
+          <span v-if="isLoading" class="material-symbols-outlined"> hourglass_empty </span>
+          <span v-else class="material-symbols-outlined"> send </span>
         </button>
       </div>
 
@@ -279,14 +288,13 @@ onMounted(() => {
 /* ==================== ESTILOS PRINCIPALES ==================== */
 
 .chat-container {
+  border: 1px solid black; /* ----- bandera ---- */
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 500px;
   max-width: 800px;
   margin: 0 auto;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-background);
   overflow: hidden;
 }
 
@@ -297,12 +305,13 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 .chat-title h2 {
+  border: 1px solid red; /* ----- bandera ---- */
   margin: 0;
+  color: var(--color-text-heading);
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -321,18 +330,22 @@ onMounted(() => {
 }
 
 .clear-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  border: 1px solid var(--color-button-secondary-border);
+  color: var(--color-button-secondary-text);
   padding: 8px 12px;
-  border-radius: 6px;
+  background-color: transparent;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background 0.2s;
+  transition: all ease-in 0.2s;
 }
 
 .clear-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--color-button-secondary-border-hover);
+  color: var(--color-button-secondary-text-hover);
+  background-color: transparent;
 }
 
 .clear-btn:disabled {
@@ -346,13 +359,12 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background: #f8fafc;
 }
 
 .welcome-message {
+  border: 1px solid red; /* ----- bandera ---- */
   text-align: center;
   padding: 40px 20px;
-  color: #64748b;
 }
 
 .welcome-icon {
@@ -360,14 +372,15 @@ onMounted(() => {
   margin-bottom: 16px;
 }
 
-.welcome-message h3 {
+.welcome-message__title {
   margin: 0 0 8px 0;
-  color: #374151;
+  color: var(--color-text-heading);
 }
 
-.welcome-message p {
+.welcome-message__text {
   margin: 0;
   font-size: 0.95rem;
+  color: var(--color-text);
 }
 
 /* ==================== MENSAJES ==================== */
@@ -394,27 +407,27 @@ onMounted(() => {
 }
 
 .message.user .message-avatar {
-  background: #3b82f6;
+  background-color: var(--color-background-user-chat);
   order: 2;
   margin-left: 12px;
 }
 
 .message.model .message-avatar {
-  background: #8b5cf6;
+  background-color: var(--color-background-model-chat);
   margin-right: 12px;
 }
 
 .message-content {
   max-width: 70%;
-  background: white;
+  background: var(--color-White);
   border-radius: 12px;
   padding: 12px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .message.user .message-content {
-  background: #3b82f6;
-  color: white;
+  background-color: var(--color-background-message-user);
+  color: var(--color-text-message-user);
 }
 
 .message-text {
@@ -460,8 +473,7 @@ onMounted(() => {
 
 .input-container {
   padding: 16px 20px;
-  background: white;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-divider);
 }
 
 .error-message {
@@ -495,7 +507,7 @@ onMounted(() => {
 .message-input {
   flex: 1;
   border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 12px;
   font-family: inherit;
   font-size: 1rem;
@@ -507,7 +519,7 @@ onMounted(() => {
 
 .message-input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--color-gray900);
 }
 
 .message-input:disabled {
@@ -516,26 +528,26 @@ onMounted(() => {
 }
 
 .send-btn {
-  background: #3b82f6;
-  border: none;
-  color: white;
+  background-color: var(--color-button-primary-background);
+  color: var(--color-button-primary-text);
   width: 44px;
   height: 44px;
-  border-radius: 8px;
   cursor: pointer;
   font-size: 1.1rem;
   transition: background 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 
 .send-btn:hover:not(:disabled) {
-  background: #2563eb;
+  background-color: var(--color-button-primary-background-hover);
 }
 
 .send-btn:disabled {
-  background: #9ca3af;
+  background-color: var(--color-button-disable-background);
+  color: var(--color-button-disable-text);
   cursor: not-allowed;
 }
 
