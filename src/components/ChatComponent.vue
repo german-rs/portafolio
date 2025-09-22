@@ -11,18 +11,7 @@
 
 <template>
   <div class="chat-container">
-    <!-- Header del chat -->
-    <div class="chat-header">
-      <div class="chat-title">
-        <!-- <h2>¿Con qué puedo ayudarte?</h2> -->
-        <!-- <span class="status" :class="{ online: !isLoading, loading: isLoading }">
-          {{ isLoading ? 'Escribiendo...' : 'En línea' }}
-        </span> -->
-      </div>
-
-      <!-- Botón para limpiar chat -->
-      <ClearButton :disabled="messages.length === 0" @click="clearChat"> Limpiar </ClearButton>
-    </div>
+    <ChatHeader :messagesCount="messages.length" :isLoading="isLoading" @clear-chat="clearChat" />
 
     <!-- Área de mensajes -->
     <div class="messages-container" ref="messagesContainer">
@@ -78,16 +67,12 @@
 
       <!-- Input y botón de envío -->
       <div class="input-group">
-        <textarea
-          v-model="currentMessage"
-          @keydown="handleKeydown"
-          placeholder="Escribe tu mensaje aquí..."
-          class="message-input"
-          rows="1"
+        <MessageInput
           ref="messageInput"
+          v-model="currentMessage"
           :disabled="isLoading"
-        ></textarea>
-
+          @send="sendMessage"
+        />
         <SendButton
           :disabled="!currentMessage.trim() || isLoading"
           :loading="isLoading"
@@ -106,8 +91,9 @@ import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
 import CharCounter from './chat/ui/CharCounter.vue'
 import ErrorMessage from './chat/ui/ErrorMessage.vue'
-import ClearButton from './chat/ui/ClearButton.vue'
 import SendButton from './chat/ui/SendButton.vue'
+import MessageInput from './chat/ui/MessageInput.vue'
+import ChatHeader from './chat/ChatHeader.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -136,7 +122,8 @@ const error = ref('')
 const messagesContainer = ref<HTMLElement>()
 
 /** Referencia al input de mensaje */
-const messageInput = ref<HTMLTextAreaElement>()
+// const messageInput = ref<HTMLTextAreaElement>()
+const messageInput = ref<{ focus?: () => void } | null>(null)
 
 // ==================== MÉTODOS PRINCIPALES ====================
 
@@ -214,25 +201,6 @@ const clearChat = (): void => {
 // ==================== MÉTODOS DE UTILIDAD ====================
 
 /**
- * Maneja las teclas especiales en el textarea
- */
-const handleKeydown = (event: KeyboardEvent): void => {
-  // Ctrl+Enter o Cmd+Enter para enviar
-  if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
-    event.preventDefault()
-    sendMessage()
-    return
-  }
-
-  // Auto-resize del textarea
-  nextTick(() => {
-    const textarea = event.target as HTMLTextAreaElement
-    textarea.style.height = 'auto'
-    textarea.style.height = `${Math.min(textarea.scrollHeight, 120)}px`
-  })
-}
-
-/**
  * Hace scroll automático hacia el último mensaje
  */
 const scrollToBottom = async (): Promise<void> => {
@@ -247,7 +215,7 @@ const scrollToBottom = async (): Promise<void> => {
  */
 const focusInput = (): void => {
   nextTick(() => {
-    messageInput.value?.focus()
+    ;(messageInput.value?.focus ?? messageInput.value?.focus)?.()
   })
 }
 
@@ -290,35 +258,6 @@ onMounted(() => {
   margin: 0 auto;
   background-color: var(--color-background);
   overflow: hidden;
-}
-
-/* ==================== HEADER ==================== */
-
-.chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-}
-
-.chat-title h2 {
-  margin: 0;
-  color: var(--color-text-heading);
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.status {
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-.status.online {
-  color: #4ade80;
-}
-
-.status.loading {
-  color: #fbbf24;
 }
 
 /* ==================== ÁREA DE MENSAJES ==================== */
@@ -447,29 +386,6 @@ onMounted(() => {
   display: flex;
   gap: 12px;
   align-items: flex-end;
-}
-
-.message-input {
-  flex: 1;
-  border: 2px solid #e5e7eb;
-  /* border-radius: 8px; */
-  padding: 12px;
-  font-family: inherit;
-  font-size: 1rem;
-  resize: none;
-  transition: border-color 0.2s;
-  min-height: 20px;
-  max-height: 120px;
-}
-
-.message-input:focus {
-  outline: none;
-  border-color: var(--color-gray900);
-}
-
-.message-input:disabled {
-  background: #f3f4f6;
-  cursor: not-allowed;
 }
 
 /* ==================== ANIMACIONES ==================== */

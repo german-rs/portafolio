@@ -83,8 +83,8 @@ function onClick() {
   }
 
   &:focus-visible {
-    outline: 3px solid rgba(59, 130, 246, 0.25);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-gray900);
+    outline-offset: 1px;
   }
 
   &__icon {
