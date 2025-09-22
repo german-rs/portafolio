@@ -21,7 +21,7 @@
       </div>
 
       <!-- Botón para limpiar chat -->
-      <button
+      <!-- <button
         @click="clearChat"
         class="clear-btn"
         :disabled="messages.length === 0"
@@ -29,7 +29,8 @@
       >
         <span class="sidebar__toggle-icon material-symbols-outlined">delete</span>
         Limpiar
-      </button>
+      </button> -->
+      <ClearButton :disabled="messages.length === 0" @click="clearChat"> Limpiar </ClearButton>
     </div>
 
     <!-- Área de mensajes -->
@@ -118,6 +119,7 @@ import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
 import CharCounter from './chat/ui/CharCounter.vue'
 import ErrorMessage from './chat/ui/ErrorMessage.vue'
+import ClearButton from './chat/ui/ClearButton.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -331,7 +333,7 @@ onMounted(() => {
   color: #fbbf24;
 }
 
-.clear-btn {
+/* .clear-btn {
   display: flex;
   align-items: center;
   gap: 0.2em;
@@ -353,7 +355,7 @@ onMounted(() => {
 .clear-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
+} */
 
 /* ==================== ÁREA DE MENSAJES ==================== */
 
