@@ -2,7 +2,7 @@
   ChatComponent.vue
   
   Componente de chat interactivo que permite mantener conversaciones
-  continuas con Gemini AI. Incluye historial de mensajes, interfaz
+  continuas con Gemini AI. Incluye interfaz
   de usuario moderna y manejo de estados.
   
   @Germán Riveros Sepúlveda
@@ -21,15 +21,6 @@
       </div>
 
       <!-- Botón para limpiar chat -->
-      <!-- <button
-        @click="clearChat"
-        class="clear-btn"
-        :disabled="messages.length === 0"
-        title="Limpiar conversación"
-      >
-        <span class="sidebar__toggle-icon material-symbols-outlined">delete</span>
-        Limpiar
-      </button> -->
       <ClearButton :disabled="messages.length === 0" @click="clearChat"> Limpiar </ClearButton>
     </div>
 
@@ -97,15 +88,11 @@
           :disabled="isLoading"
         ></textarea>
 
-        <button
-          @click="sendMessage"
+        <SendButton
           :disabled="!currentMessage.trim() || isLoading"
-          class="send-btn"
-          title="Enviar mensaje (Ctrl+Enter)"
-        >
-          <span v-if="isLoading" class="material-symbols-outlined"> hourglass_empty </span>
-          <span v-else class="material-symbols-outlined"> send </span>
-        </button>
+          :loading="isLoading"
+          @click="sendMessage"
+        />
       </div>
 
       <!-- Contador de caracteres -->
@@ -120,6 +107,7 @@ import { geminiService } from '@/services/gemini'
 import CharCounter from './chat/ui/CharCounter.vue'
 import ErrorMessage from './chat/ui/ErrorMessage.vue'
 import ClearButton from './chat/ui/ClearButton.vue'
+import SendButton from './chat/ui/SendButton.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -333,30 +321,6 @@ onMounted(() => {
   color: #fbbf24;
 }
 
-/* .clear-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.2em;
-  border: 1px solid var(--color-button-secondary-border);
-  color: var(--color-button-secondary-text);
-  padding: 8px 12px;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all ease-in 0.2s;
-}
-
-.clear-btn:hover:not(:disabled) {
-  border: 1px solid var(--color-button-secondary-border-hover);
-  color: var(--color-button-secondary-text-hover);
-  background-color: transparent;
-}
-
-.clear-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-} */
-
 /* ==================== ÁREA DE MENSAJES ==================== */
 
 .messages-container {
@@ -505,30 +469,6 @@ onMounted(() => {
 
 .message-input:disabled {
   background: #f3f4f6;
-  cursor: not-allowed;
-}
-
-.send-btn {
-  background-color: var(--color-button-primary-background);
-  color: var(--color-button-primary-text);
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-}
-
-.send-btn:hover:not(:disabled) {
-  background-color: var(--color-button-primary-background-hover);
-}
-
-.send-btn:disabled {
-  background-color: var(--color-button-disable-background);
-  color: var(--color-button-disable-text);
   cursor: not-allowed;
 }
 
