@@ -83,7 +83,7 @@
     <div class="input-container">
       <!-- Mostrar error si existe -->
       <div v-if="error" class="error-message">
-        ⚠️ {{ error }}
+        <span class="material-symbols-outlined"> chat_error </span> {{ error }}
         <button @click="error = ''" class="error-close">×</button>
       </div>
 
@@ -111,9 +111,7 @@
       </div>
 
       <!-- Contador de caracteres -->
-      <div class="char-counter" :class="{ warning: currentMessage.length > 1000 }">
-        {{ currentMessage.length }}/2000
-      </div>
+      <CharCounter :current="currentMessage.length" :max="2000" :warning-threshold="0.7" />
     </div>
   </div>
 </template>
@@ -121,6 +119,7 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
+import CharCounter from './chat/ui/CharCounter.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -291,8 +290,8 @@ onMounted(() => {
   border: 1px solid black; /* ----- bandera ---- */
   display: flex;
   flex-direction: column;
-  height: 500px;
-  max-width: 800px;
+  height: 550px;
+  max-width: 100%;
   margin: 0 auto;
   background-color: var(--color-background);
   overflow: hidden;
@@ -305,11 +304,9 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  color: white;
 }
 
 .chat-title h2 {
-  border: 1px solid red; /* ----- bandera ---- */
   margin: 0;
   color: var(--color-text-heading);
   font-size: 1.4rem;
@@ -362,7 +359,6 @@ onMounted(() => {
 }
 
 .welcome-message {
-  border: 1px solid red; /* ----- bandera ---- */
   text-align: center;
   padding: 40px 20px;
 }
@@ -551,17 +547,6 @@ onMounted(() => {
   cursor: not-allowed;
 }
 
-.char-counter {
-  font-size: 0.75rem;
-  color: #6b7280;
-  text-align: right;
-  margin-top: 4px;
-}
-
-.char-counter.warning {
-  color: #dc2626;
-}
-
 /* ==================== ANIMACIONES ==================== */
 
 @keyframes fadeIn {
@@ -590,7 +575,6 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .chat-container {
-    height: 100vh;
     border-radius: 0;
   }
 

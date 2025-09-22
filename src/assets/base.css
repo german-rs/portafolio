@@ -6,12 +6,15 @@
   --color-gray400: #bdbdbd;
   --color-gray500: #9e9e9e;
   --color-gray600: #757575;
+
   --color-gray700: #616161;
+
   --color-gray800: #424242;
   --color-gray900: #212121;
 
   --color-black: #000000;
   --color-White: #ffffff;
+  --color-alert: #d32f2f;
 }
 
 /* semantic color variables for this project */
@@ -36,6 +39,8 @@
   --color-text-placeholder: var(--color-gray400);
 
   --color-text-message-user: var(--color-gray50);
+
+  --color-text-alert: var(--color-alert);
 
   /* Buttons */
   --color-button-primary-background: var(--color-gray800);
