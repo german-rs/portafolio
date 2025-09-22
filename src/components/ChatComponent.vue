@@ -82,10 +82,7 @@
     <!-- Área de entrada de mensaje -->
     <div class="input-container">
       <!-- Mostrar error si existe -->
-      <div v-if="error" class="error-message">
-        <span class="material-symbols-outlined"> chat_error </span> {{ error }}
-        <button @click="error = ''" class="error-close">×</button>
-      </div>
+      <ErrorMessage v-if="error" :error="error" @dismiss="clearError" />
 
       <!-- Input y botón de envío -->
       <div class="input-group">
@@ -120,6 +117,7 @@
 import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
 import CharCounter from './chat/ui/CharCounter.vue'
+import ErrorMessage from './chat/ui/ErrorMessage.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -271,6 +269,13 @@ const formatTime = (date: Date): string => {
     hour: '2-digit',
     minute: '2-digit',
   })
+}
+
+/**
+ * Limpia el mensaje de error
+ */
+const clearError = (): void => {
+  error.value = ''
 }
 
 // ==================== CICLO DE VIDA ====================
@@ -470,28 +475,6 @@ onMounted(() => {
 .input-container {
   padding: 16px 20px;
   border-top: 1px solid var(--color-divider);
-}
-
-.error-message {
-  background: #fee2e2;
-  color: #dc2626;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.error-close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #dc2626;
-  padding: 0;
-  margin-left: 8px;
 }
 
 .input-group {

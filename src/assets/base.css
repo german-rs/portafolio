@@ -14,7 +14,11 @@
 
   --color-black: #000000;
   --color-White: #ffffff;
-  --color-alert: #d32f2f;
+
+  --color-red50: #ffebee;
+  --color-red100: #ffcdd2;
+  --color-red400: #ef5350;
+  --color-red700: #d32f2f;
 }
 
 /* semantic color variables for this project */
@@ -39,8 +43,6 @@
   --color-text-placeholder: var(--color-gray400);
 
   --color-text-message-user: var(--color-gray50);
-
-  --color-text-alert: var(--color-alert);
 
   /* Buttons */
   --color-button-primary-background: var(--color-gray800);
@@ -68,6 +70,11 @@
   --color-icon-hover: var(--color-gray800);
   --color-icon-active: var(--color-gray900);
   --color-icon-disable: var(--color-gray400);
+
+  /* Error message */
+  --color-background-alert-message: var(--color-red50);
+  --color-background-alert-message-hover: var(--color-red100);
+  --color-text-alert-message: var(--color-red700);
 }
 
 @media (prefers-color-scheme: dark) {
