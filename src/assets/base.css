@@ -19,6 +19,10 @@
   --color-red100: #ffcdd2;
   --color-red400: #ef5350;
   --color-red700: #d32f2f;
+
+  --color-green400: #66bb6a;
+  --color-greenA400: #00e676;
+  --color-orange400: #ffa726;
 }
 
 /* semantic color variables for this project */

@@ -60,29 +60,7 @@
       </div>
     </div>
 
-    <!-- Área de entrada de mensaje -->
-    <div class="input-container">
-      <!-- Mostrar error si existe -->
-      <ErrorMessage v-if="error" :error="error" @dismiss="clearError" />
-
-      <!-- Input y botón de envío -->
-      <div class="input-group">
-        <MessageInput
-          ref="messageInput"
-          v-model="currentMessage"
-          :disabled="isLoading"
-          @send="sendMessage"
-        />
-        <SendButton
-          :disabled="!currentMessage.trim() || isLoading"
-          :loading="isLoading"
-          @click="sendMessage"
-        />
-      </div>
-
-      <!-- Contador de caracteres -->
-      <CharCounter :current="currentMessage.length" :max="2000" :warning-threshold="0.7" />
-    </div>
+    <ChatInput :isLoading="isLoading" @send-message="handleSendMessage" />
   </div>
 </template>
 
@@ -94,6 +72,7 @@ import ErrorMessage from './chat/ui/ErrorMessage.vue'
 import SendButton from './chat/ui/SendButton.vue'
 import MessageInput from './chat/ui/MessageInput.vue'
 import ChatHeader from './chat/ChatHeader.vue'
+import ChatInput from './chat/ChatInput.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -130,6 +109,13 @@ const messageInput = ref<{ focus?: () => void } | null>(null)
 /**
  * Envía un mensaje al chat y obtiene respuesta de Gemini
  */
+
+const handleSendMessage = (message: string) => {
+  // asignar message a currentMessage y luego llamar a sendMessage()
+  currentMessage.value = message
+  sendMessage()
+}
+
 const sendMessage = async (): Promise<void> => {
   // Validar que hay contenido
   if (!currentMessage.value.trim()) return
@@ -373,19 +359,6 @@ onMounted(() => {
 
 .typing-dots span:nth-child(3) {
   animation-delay: 0.4s;
-}
-
-/* ==================== ÁREA DE INPUT ==================== */
-
-.input-container {
-  padding: 16px 20px;
-  border-top: 1px solid var(--color-divider);
-}
-
-.input-group {
-  display: flex;
-  gap: 12px;
-  align-items: flex-end;
 }
 
 /* ==================== ANIMACIONES ==================== */

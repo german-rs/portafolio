@@ -82,11 +82,11 @@ function onClear() {
   }
 
   &__status--online {
-    color: #4ade80;
+    color: var(--color-green400);
   }
 
   &__status--loading {
-    color: #f59e0b;
+    color: var(--color-orange400);
   }
 
   &__actions {
