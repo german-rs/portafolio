@@ -16,15 +16,7 @@
     <!-- Área de mensajes -->
     <div class="messages-container" ref="messagesContainer">
       <!-- Mensaje de bienvenida cuando no hay mensajes -->
-      <div v-if="messages.length === 0" class="welcome-message">
-        <div class="welcome-icon">
-          <div class="sidebar__logo-container">
-            <img class="sidebar__logo" src="/sidebar-logo.webp" alt="" />
-          </div>
-        </div>
-        <h3 class="welcome-message__title">¡Hola! Soy Germán Riveros</h3>
-        <p class="welcome-message__text">¿Con qué puedo ayudarte?</p>
-      </div>
+      <WelcomeMessage v-if="messages.length === 0" />
 
       <!-- Lista de mensajes -->
       <div v-for="(message, index) in messages" :key="index" class="message" :class="message.role">
@@ -67,12 +59,9 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
-import CharCounter from './chat/ui/CharCounter.vue'
-import ErrorMessage from './chat/ui/ErrorMessage.vue'
-import SendButton from './chat/ui/SendButton.vue'
-import MessageInput from './chat/ui/MessageInput.vue'
 import ChatHeader from './chat/ChatHeader.vue'
 import ChatInput from './chat/ChatInput.vue'
+import WelcomeMessage from './chat/messages/WelcomeMessage.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -253,29 +242,6 @@ onMounted(() => {
   overflow-y: auto;
   padding: 20px;
 }
-
-.welcome-message {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.welcome-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
-.welcome-message__title {
-  margin: 0 0 8px 0;
-  color: var(--color-text-heading);
-}
-
-.welcome-message__text {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--color-text);
-}
-
-/* ==================== MENSAJES ==================== */
 
 .message {
   display: flex;
