@@ -13,22 +13,24 @@
 
 <template>
   <div class="welcome-message" role="region" aria-label="Mensaje de bienvenida del chat">
-    <div class="welcome-icon" aria-hidden="true">
-      <div class="sidebar__logo-container">
-        <img class="sidebar__logo" src="/sidebar-logo.webp" alt="Logo" />
-      </div>
+    <div class="welcome-message__logo-container" aria-hidden="true">
+      <img class="welcome-message__logo" src="/sidebar-logo.webp" alt="Logo" />
     </div>
 
-    <h3 class="welcome-message__title">¡Hola! Soy Germán Riveros</h3>
+    <h2 class="welcome-message__title">¡Hola! Soy Germán Riveros</h2>
+    <h3 class="welcome-message__subtitle">¿Con qué puedo ayudarte?</h3>
     <p class="welcome-message__text">
-      ¿Con qué puedo ayudarte? Escribe tu pregunta y presiona <kbd>Ctrl</kbd>+<kbd>Enter</kbd> para
-      enviarla.
+      Escribe tu pregunta y presiona <kbd class="welcome-message__key">Ctrl</kbd>+<kbd
+        class="welcome-message__key"
+        >Enter</kbd
+      >
+      para enviarla.
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
-// Componente estático — no props ni emits
+// Componente estático — sin props ni emits
 </script>
 
 <style lang="scss" scoped>
@@ -36,39 +38,45 @@
   text-align: center;
   padding: 40px 20px;
   color: var(--color-text);
-}
 
-.welcome-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: center;
-}
+  &__title {
+    margin: 0 0 8px 0;
+    color: var(--color-text-heading);
+    font-size: 1.25rem;
+  }
 
-.sidebar__logo {
-  width: 25px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-}
+  &__subtitle {
+    margin: 0 0 8px 0;
+    color: var(--color-text);
+    font-size: 1.1rem;
+  }
 
-.welcome-message__title {
-  margin: 0 0 8px 0;
-  color: var(--color-text-heading);
-  font-size: 1.25rem;
-}
+  &__text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
 
-.welcome-message__text {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--color-text-muted);
-}
+  &__key {
+    background-color: var(--color-background-soft);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85rem;
+  }
 
-kbd {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 0.85rem;
+  &__logo-container {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo {
+    width: 25px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
 }
 </style>

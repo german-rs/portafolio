@@ -36,7 +36,7 @@
       </div>
 
       <!-- Indicador de escritura -->
-      <div v-if="isLoading" class="message model typing-indicator">
+      <!-- <div v-if="isLoading" class="message model typing-indicator">
         <div class="message-avatar">
           <span>
             <img class="chat__logo" src="/chat-logo.webp" alt="" />
@@ -49,7 +49,8 @@
             <span></span>
           </div>
         </div>
-      </div>
+      </div> -->
+      <TypingIndicator v-if="isLoading" />
     </div>
 
     <ChatInput :isLoading="isLoading" @send-message="handleSendMessage" />
@@ -62,6 +63,7 @@ import { geminiService } from '@/services/gemini'
 import ChatHeader from './chat/ChatHeader.vue'
 import ChatInput from './chat/ChatInput.vue'
 import WelcomeMessage from './chat/messages/WelcomeMessage.vue'
+import TypingIndicator from './chat/messages/TypingIndicator.vue'
 
 /**
  * Interfaz para los mensajes del chat

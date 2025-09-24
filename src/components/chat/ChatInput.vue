@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, withDefaults, nextTick } from 'vue'
+import { ref, toRefs, nextTick } from 'vue'
 import ErrorMessage from './ui/ErrorMessage.vue'
 import MessageInput from './ui/MessageInput.vue'
 import SendButton from './ui/SendButton.vue'
