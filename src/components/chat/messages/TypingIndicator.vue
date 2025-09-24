@@ -51,8 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults } from 'vue'
-
 const props = withDefaults(
   defineProps<{
     show?: boolean
@@ -61,7 +59,7 @@ const props = withDefaults(
 )
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .typing-indicator {
   display: flex;
   margin-bottom: 16px;

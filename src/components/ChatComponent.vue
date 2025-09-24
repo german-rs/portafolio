@@ -19,37 +19,9 @@
       <WelcomeMessage v-if="messages.length === 0" />
 
       <!-- Lista de mensajes -->
-      <div v-for="(message, index) in messages" :key="index" class="message" :class="message.role">
-        <!-- Avatar del mensaje -->
-        <div class="message-avatar">
-          <span v-if="message.role === 'user'" class="material-symbols-outlined"> person </span>
-          <span v-else>
-            <img class="chat__logo" src="/chat-logo.webp" alt="" />
-          </span>
-        </div>
-
-        <!-- Contenido del mensaje -->
-        <div class="message-content">
-          <div class="message-text">{{ message.parts }}</div>
-          <div class="message-time">{{ formatTime(message.timestamp) }}</div>
-        </div>
-      </div>
+      <MessageItem v-for="(message, index) in messages" :key="index" :message="message" />
 
       <!-- Indicador de escritura -->
-      <!-- <div v-if="isLoading" class="message model typing-indicator">
-        <div class="message-avatar">
-          <span>
-            <img class="chat__logo" src="/chat-logo.webp" alt="" />
-          </span>
-        </div>
-        <div class="message-content">
-          <div class="typing-dots">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div> -->
       <TypingIndicator v-if="isLoading" />
     </div>
 
@@ -64,6 +36,7 @@ import ChatHeader from './chat/ChatHeader.vue'
 import ChatInput from './chat/ChatInput.vue'
 import WelcomeMessage from './chat/messages/WelcomeMessage.vue'
 import TypingIndicator from './chat/messages/TypingIndicator.vue'
+import MessageItem from './chat/messages/MessageItem.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -223,7 +196,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* ==================== ESTILOS PRINCIPALES ==================== */
 
 .chat-container {
@@ -245,90 +218,6 @@ onMounted(() => {
   padding: 20px;
 }
 
-.message {
-  display: flex;
-  margin-bottom: 16px;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.message.user {
-  justify-content: flex-end;
-}
-
-.message-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-.message.user .message-avatar {
-  background-color: var(--color-background-user-chat);
-  order: 2;
-  margin-left: 12px;
-}
-
-.message.model .message-avatar {
-  background-color: var(--color-background-model-chat);
-  margin-right: 12px;
-}
-
-.message-content {
-  max-width: 70%;
-  background: var(--color-White);
-  border-radius: 12px;
-  padding: 12px 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.message.user .message-content {
-  background-color: var(--color-background-message-user);
-  color: var(--color-text-message-user);
-}
-
-.message-text {
-  margin-bottom: 4px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-.message-time {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
-/* ==================== INDICADOR DE ESCRITURA ==================== */
-
-.typing-indicator .message-content {
-  background: #e5e7eb;
-}
-
-.typing-dots {
-  display: flex;
-  gap: 4px;
-  padding: 8px 0;
-}
-
-.typing-dots span {
-  width: 8px;
-  height: 8px;
-  background: #9ca3af;
-  border-radius: 50%;
-  animation: typing 1.4s infinite ease-in-out;
-}
-
-.typing-dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.typing-dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
 /* ==================== ANIMACIONES ==================== */
 
 @keyframes fadeIn {
@@ -339,17 +228,6 @@ onMounted(() => {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes typing {
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(-10px);
   }
 }
 
