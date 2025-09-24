@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <h1>About</h1>
-    <img
+    <!-- <img
       class="main__img"
       loading="lazy"
       src="/esta_si.webp"
@@ -17,9 +17,13 @@
       Actualmente estoy orientando mi carrera hacia el desarrollo frontend y el diseño de
       experiencias de usuario (UX), con especial interés en la creación de interfaces dinámicas y
       modernas que integren el uso de inteligencia artificial.
-    </p>
+    </p> -->
+    <AboutPage />
   </main>
 </template>
+<script setup lang="ts">
+import AboutPage from '@/components/about/AboutPage.vue'
+</script>
 <style lang="scss" scoped>
 .main {
   border: 1px solid black;
