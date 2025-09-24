@@ -13,17 +13,7 @@
   <div class="chat-container">
     <ChatHeader :messagesCount="messages.length" :isLoading="isLoading" @clear-chat="clearChat" />
 
-    <!-- Área de mensajes -->
-    <div class="messages-container" ref="messagesContainer">
-      <!-- Mensaje de bienvenida cuando no hay mensajes -->
-      <WelcomeMessage v-if="messages.length === 0" />
-
-      <!-- Lista de mensajes -->
-      <MessageItem v-for="(message, index) in messages" :key="index" :message="message" />
-
-      <!-- Indicador de escritura -->
-      <TypingIndicator v-if="isLoading" />
-    </div>
+    <MessagesContainer :messages="messages" :isLoading="isLoading" ref="messagesContainer" />
 
     <ChatInput :isLoading="isLoading" @send-message="handleSendMessage" />
   </div>
@@ -34,9 +24,7 @@ import { ref, nextTick, onMounted } from 'vue'
 import { geminiService } from '@/services/gemini'
 import ChatHeader from './chat/ChatHeader.vue'
 import ChatInput from './chat/ChatInput.vue'
-import WelcomeMessage from './chat/messages/WelcomeMessage.vue'
-import TypingIndicator from './chat/messages/TypingIndicator.vue'
-import MessageItem from './chat/messages/MessageItem.vue'
+import MessagesContainer from './chat/MessagesContainer.vue'
 
 /**
  * Interfaz para los mensajes del chat
@@ -197,10 +185,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-/* ==================== ESTILOS PRINCIPALES ==================== */
-
 .chat-container {
-  border: 1px solid black; /* ----- bandera ---- */
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   height: 550px;
@@ -209,29 +195,6 @@ onMounted(() => {
   background-color: var(--color-background);
   overflow: hidden;
 }
-
-/* ==================== ÁREA DE MENSAJES ==================== */
-
-.messages-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-/* ==================== ANIMACIONES ==================== */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==================== RESPONSIVE ==================== */
 
 @media (max-width: 768px) {
   .chat-container {
