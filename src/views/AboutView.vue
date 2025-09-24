@@ -1,37 +1,149 @@
 <template>
   <main class="main">
-    <h1>About</h1>
-    <!-- <img
-      class="main__img"
-      loading="lazy"
-      src="/esta_si.webp"
-      alt="Foto de perfil estilo springfield/los simpson"
-    />
-    <p>
-      Profesional en informática con más de 15 años de experiencia en distintas áreas, incluyendo
-      soporte, programación y docencia. A lo largo de mi trayectoria he combinado conocimientos
-      técnicos con la capacidad de enseñar, acompañar a las personas y mejorar procesos para
-      hacerlos más simples y eficientes.
-    </p>
-    <p>
-      Actualmente estoy orientando mi carrera hacia el desarrollo frontend y el diseño de
-      experiencias de usuario (UX), con especial interés en la creación de interfaces dinámicas y
-      modernas que integren el uso de inteligencia artificial.
-    </p> -->
-    <AboutPage />
+    <!-- Header Section -->
+    <header class="main__header">
+      <h1 class="main__title">Sobre Mí</h1>
+      <div class="main__divider"></div>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="main__profile">
+      <div class="main__img-container">
+        <img
+          class="main__img"
+          loading="lazy"
+          src="/esta_si.webp"
+          alt="Foto de perfil estilo springfield/los simpson"
+        />
+        <div class="main__img-border"></div>
+      </div>
+
+      <div class="main__content">
+        <div class="main__card">
+          <h2 class="main__subtitle">Experiencia Profesional</h2>
+          <p class="main__text">
+            Profesional en informática con más de <strong>15 años de experiencia</strong>
+            en distintas áreas, incluyendo soporte, programación y docencia. A lo largo de mi
+            trayectoria he combinado conocimientos técnicos con la capacidad de enseñar, acompañar a
+            las personas y mejorar procesos para hacerlos más simples y eficientes.
+          </p>
+        </div>
+
+        <div class="main__card">
+          <h2 class="main__subtitle">Enfoque Actual</h2>
+          <p class="main__text">
+            Actualmente estoy orientando mi carrera hacia el <strong>desarrollo frontend</strong> y
+            el diseño de experiencias de usuario (UX), con especial interés en la creación de
+            interfaces que integren el uso de <strong>inteligencia artificial</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
-<script setup lang="ts">
-import AboutPage from '@/components/about/AboutPage.vue'
-</script>
+<script setup lang="ts"></script>
 <style lang="scss" scoped>
 .main {
   border: 1px solid black;
-  padding: 1em;
+  padding: 2rem 1rem;
+
+  &__container {
+    border: 1px solid green;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  &__header {
+    border: 1px solid green;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    border: 1px solid green;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gray700);
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-gray800);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* Profile Section */
+  &__profile {
+    border: 1px solid green;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  &__img-container {
+    border: 1px solid green;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    border: 3px solid var(--color-gray800);
+    border-radius: 12px;
+    width: 200px;
+  }
+
+  &__content {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__card {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 3px solid var(--color-gray800);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  &__subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-gray900);
+    margin: 0 0 1rem 0;
+    border-bottom: 2px solid var(--color-gray300);
+    padding-bottom: 0.5rem;
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray800);
+    margin: 0;
+  }
+
+  &__text strong {
+    color: var(--color-gray900);
+    font-weight: 600;
+  }
 }
 
-.main__img {
-  border: 1px solid black;
-  width: 200px;
+/* Responsive */
+@media (max-width: 768px) {
+  .main__profile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 </style>
