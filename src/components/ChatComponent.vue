@@ -186,7 +186,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .chat-container {
-  border: 1px solid black;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 3px solid var(--color-gray800);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   height: 550px;
@@ -198,7 +201,7 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .chat-container {
-    border-radius: 0;
+    border-radius: 12px;
   }
 
   .message-content {

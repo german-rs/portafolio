@@ -2,54 +2,41 @@
   <main class="main">
     <!-- Header Section -->
     <header class="main__header">
-      <h1 class="main__title">Acerca de</h1>
+      <h1 class="main__title">Contacto</h1>
       <div class="main__divider"></div>
     </header>
 
-    <!-- Profile Section -->
-    <section class="main__profile">
-      <div class="main__img-container">
-        <img
-          class="main__img"
-          loading="lazy"
-          src="/logo-portafolio.webp"
-          alt="Foto de perfil estilo springfield/los simpson"
-        />
-        <div class="main__img-border"></div>
-      </div>
-
+    <!-- Contact Section -->
+    <section class="main__contact">
       <div class="main__content">
         <div class="main__card">
-          <h2 class="main__subtitle">Experiencia Profesional</h2>
+          <h2 class="main__subtitle">Hablemos</h2>
           <p class="main__text">
-            Profesional en informática con más de <strong>15 años de experiencia</strong>
-            en distintas áreas, incluyendo soporte, programación y docencia. A lo largo de mi
-            trayectoria he combinado conocimientos técnicos con la capacidad de enseñar, acompañar a
-            las personas y mejorar procesos para hacerlos más simples y eficientes.
+            Para cualquier consulta o propuesta, siéntete libre de enviarme un correo electrónico
+            utilizando el botón a continuación. Estoy disponible para discutir oportunidades de
+            colaboración o responder tus preguntas.
           </p>
-        </div>
-
-        <div class="main__card">
-          <h2 class="main__subtitle">Enfoque Actual</h2>
-          <p class="main__text">
-            Orienté mi carrera hacia el <strong>desarrollo frontend</strong> y el diseño de
-            experiencias de usuario (UX), con especial interés en la creación de interfaces que
-            integren el uso de <strong>inteligencia artificial</strong>.
-          </p>
+          <ContactButton />
         </div>
       </div>
     </section>
   </main>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ContactButton from '@/components/ContactButton.vue'
+</script>
 <style lang="scss" scoped>
 .main {
-  // border: 1px solid black;
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 2rem 1rem;
+  text-align: center;
 
   &__container {
-    // border: 1px solid green;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -70,24 +57,17 @@
     color: var(--color-gray700);
     margin: 0 0 1rem 0;
     letter-spacing: -0.02em;
-    margin-bottom: 1em;
   }
 
-  // &__divider {
-  //   width: 60px;
-  //   height: 4px;
-  //   background-color: var(--color-gray800);
-  //   margin: 0 auto;
-  //   border-radius: 2px;
-  // }
-
-  /* Profile Section */
-  &__profile {
+  &__contact {
     // border: 1px solid green;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: start;
+    // display: grid;
+    // grid-template-columns: 1fr 2fr;
+    // gap: 3rem;
+    // align-items: start;
+    display: flex;
+    max-width: 500px;
+    align-self: center;
   }
 
   &__img-container {
@@ -107,7 +87,7 @@
     // border: 1px solid green;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   &__card {

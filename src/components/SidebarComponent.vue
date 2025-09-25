@@ -23,10 +23,13 @@ const emit = defineEmits(['toggle'])
     <nav v-if="isOpen" class="sidebar__nav">
       <ul class="sidebar__nav-list">
         <li class="sidebar__nav-item">
-          <RouterLink class="sidebar__nav-link" to="/">Home</RouterLink>
+          <RouterLink class="sidebar__nav-link" to="/">Inicio</RouterLink>
         </li>
         <li class="sidebar__nav-item">
-          <RouterLink class="sidebar__nav-link" to="/about">About</RouterLink>
+          <RouterLink class="sidebar__nav-link" to="/about">Acerca de</RouterLink>
+        </li>
+        <li class="sidebar__nav-item">
+          <RouterLink class="sidebar__nav-link" to="/contact">Contacto</RouterLink>
         </li>
       </ul>
     </nav>
@@ -35,14 +38,16 @@ const emit = defineEmits(['toggle'])
 
 <style lang="scss" scoped>
 .sidebar {
-  padding-top: 1em;
+  padding-top: 1.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 
   position: fixed;
-  border-right: 1px solid var(--color-border);
+  border-radius: 12px;
+  border-right: 3px solid var(--color-gray800);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   top: 0;
   left: 0;
   height: 100vh;

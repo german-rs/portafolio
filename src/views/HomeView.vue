@@ -4,13 +4,26 @@ import ChatComponent from '@/components/ChatComponent.vue'
 
 <template>
   <main class="main">
-    <h1>Inicio</h1>
+    <h1 class="main__title">Inicio</h1>
     <ChatComponent />
   </main>
 </template>
 <style lang="scss" scoped>
 .main {
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 1em;
+  text-align: center;
+
+  &__title {
+    // border: 1px solid red;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--color-gray700);
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+  }
 }
 </style>

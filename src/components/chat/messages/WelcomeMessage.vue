@@ -19,13 +19,14 @@
 
     <h2 class="welcome-message__title">¡Hola! Soy Germán Riveros</h2>
     <h3 class="welcome-message__subtitle">¿Con qué puedo ayudarte?</h3>
-    <p class="welcome-message__text">
+    <!-- <p class="welcome-message__text">
       Escribe tu pregunta y presiona <kbd class="welcome-message__key">Ctrl</kbd>+<kbd
         class="welcome-message__key"
         >Enter</kbd
       >
       para enviarla.
-    </p>
+    </p> -->
+    <!-- Encontrar una forma mas limpia de indicar Ctrl+Enter pero solo en desktop -->
   </div>
 </template>
 
@@ -42,13 +43,14 @@
   &__title {
     margin: 0 0 8px 0;
     color: var(--color-text-heading);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   &__subtitle {
     margin: 0 0 8px 0;
-    color: var(--color-text);
-    font-size: 1.1rem;
+    color: var(--color-gray800);
+    font-size: 1.3rem;
+    font-weight: 600;
   }
 
   &__text {

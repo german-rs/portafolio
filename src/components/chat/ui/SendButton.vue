@@ -57,6 +57,7 @@ function onClick() {
 </script>
 
 <style lang="scss" scoped>
+// Revisar compatibilidad en .send-btn y send-button
 .send-btn {
   width: 44px;
   height: 44px;

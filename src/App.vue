@@ -6,6 +6,15 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
+  <!-- En la parte 
+  Superior de la aplicación poner el icono de accesibilidad
+  - Deslizable hacia abajo.
+  - Opcion de cambio de fuente open dislexic
+  - agrandar/reducir el texto
+  - Modo claro y oscuro
+
+-->
+
   <!-- Sidebar -->
   <Sidebar :isOpen="sidebarOpen" @toggle="sidebarOpen = !sidebarOpen" />
 

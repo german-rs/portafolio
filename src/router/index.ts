@@ -18,7 +18,15 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
       meta: {
-        title: 'Germán Riveros | About',
+        title: 'Germán Riveros | Acerca de',
+      },
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue'),
+      meta: {
+        title: 'Germán Riveros | Contacto',
       },
     },
     {

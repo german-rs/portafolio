@@ -7,10 +7,13 @@ import { RouterLink } from 'vue-router'
     <nav class="header__nav">
       <ul class="header__nav-list">
         <li class="header__nav-item">
-          <RouterLink class="header__nav-link" to="/">Home</RouterLink>
+          <RouterLink class="header__nav-link" to="/">Inicio</RouterLink>
         </li>
         <li class="header__nav-item">
-          <RouterLink class="header__nav-link" to="/about">About</RouterLink>
+          <RouterLink class="header__nav-link" to="/about">Acerca de</RouterLink>
+        </li>
+        <li class="header__nav-item">
+          <RouterLink class="header__nav-link" to="/contact">Contacto</RouterLink>
         </li>
       </ul>
     </nav>
@@ -22,7 +25,7 @@ import { RouterLink } from 'vue-router'
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 1em;
 
   &__title {
