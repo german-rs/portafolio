@@ -78,14 +78,6 @@
     margin-bottom: 1em;
   }
 
-  // &__divider {
-  //   width: 60px;
-  //   height: 4px;
-  //   background-color: var(--color-gray800);
-  //   margin: 0 auto;
-  //   border-radius: 2px;
-  // }
-
   /* Profile Section */
   &__profile {
     // border: 1px solid green;

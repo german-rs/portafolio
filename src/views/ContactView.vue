@@ -12,9 +12,8 @@
         <div class="main__card">
           <h2 class="main__subtitle">Hablemos</h2>
           <p class="main__text">
-            Para cualquier consulta o propuesta, siéntete libre de enviarme un correo electrónico
-            utilizando el botón a continuación. Estoy disponible para discutir oportunidades de
-            colaboración o responder tus preguntas.
+            Para cualquier consulta o propuesta, siéntete libre de enviarme un correo electrónico.
+            Estoy disponible para discutir oportunidades de colaboración o responder tus preguntas.
           </p>
           <ContactButton />
         </div>
@@ -60,11 +59,6 @@ import ContactButton from '@/components/ContactButton.vue'
   }
 
   &__contact {
-    // border: 1px solid green;
-    // display: grid;
-    // grid-template-columns: 1fr 2fr;
-    // gap: 3rem;
-    // align-items: start;
     display: flex;
     max-width: 500px;
     align-self: center;

@@ -186,7 +186,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .chat-container {
-  padding: 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 12px;
   border: 3px solid var(--color-gray800);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);

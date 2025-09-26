@@ -10,12 +10,9 @@ import ChatComponent from '@/components/ChatComponent.vue'
 </template>
 <style lang="scss" scoped>
 .main {
-  // border: 1px solid black;
   padding: 1em;
-  text-align: center;
 
   &__title {
-    // border: 1px solid red;
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
