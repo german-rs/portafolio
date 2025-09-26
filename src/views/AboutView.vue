@@ -2,7 +2,7 @@
   <main class="main">
     <!-- Header Section -->
     <header class="main__header">
-      <h1 class="main__title">Acerca de</h1>
+      <!-- <h1 class="main__title">Acerca de</h1> -->
       <div class="main__divider"></div>
     </header>
 
@@ -20,7 +20,7 @@
 
       <div class="main__content">
         <div class="main__card">
-          <h2 class="main__subtitle">Experiencia Profesional</h2>
+          <h2 class="main__subtitle">Experiencia</h2>
           <p class="main__text">
             Profesional en informática con más de <strong>15 años de experiencia</strong>
             en distintas áreas, incluyendo soporte, programación y docencia. A lo largo de mi
@@ -30,11 +30,16 @@
         </div>
 
         <div class="main__card">
-          <h2 class="main__subtitle">Enfoque Actual</h2>
+          <h2 class="main__subtitle">Actualmente</h2>
           <p class="main__text">
-            Orienté mi carrera hacia el <strong>desarrollo frontend</strong> y el diseño de
-            experiencias de usuario (UX), con especial interés en la creación de interfaces que
-            integren el uso de <strong>inteligencia artificial</strong>.
+            Orienté mi carrera hacia el
+            <a
+              href="https://www.acreditta.com/credential/80bc62aa-3684-4a44-8117-d9a9ce7cbdd5?utm_source=linkedin_profile&resource_type=badge&resource=80bc62aa-3684-4a44-8117-d9a9ce7cbdd5"
+              target="_blank"
+              ><strong>desarrollo frontend</strong></a
+            >
+            con especial interés en la creación de interfaces que integren el uso de
+            <strong>inteligencia artificial</strong>.
           </p>
         </div>
       </div>
@@ -138,6 +143,10 @@
   &__text strong {
     color: var(--color-gray900);
     font-weight: 600;
+  }
+
+  &__text a {
+    text-decoration: none;
   }
 }
 

@@ -4,7 +4,7 @@ import ChatComponent from '@/components/ChatComponent.vue'
 
 <template>
   <main class="main">
-    <h1 class="main__title">Inicio</h1>
+    <!-- <h1 class="main__title">Inicio</h1> -->
     <ChatComponent />
   </main>
 </template>

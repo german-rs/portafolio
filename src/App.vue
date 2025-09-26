@@ -6,9 +6,8 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <!-- En la parte 
-  Superior de la aplicación poner el icono de accesibilidad
-  - Deslizable hacia abajo.
+  <!-- 
+   - En la parte Superior de la aplicación poner el icono de accesibilidad deslizable hacia abajo.
   - Opcion de cambio de fuente open dislexic
   - agrandar/reducir el texto
   - Modo claro y oscuro
@@ -26,8 +25,8 @@ const sidebarOpen = ref(false)
 </template>
 
 <style lang="scss" scoped>
-$sidebar-width-closed: 80px;
-$sidebar-width-open: 260px;
+$sidebar-width-closed: 50px;
+$sidebar-width-open: 200px;
 $main-padding: 20px;
 $transition-duration: 0.3s;
 

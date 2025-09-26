@@ -58,14 +58,14 @@ const emit = defineEmits(['toggle'])
 
   /* cuando está abierta */
   &.open {
-    width: 250px;
+    width: 200px;
     align-items: start;
     padding-left: 0.5em;
   }
 
   /* cuando está cerrada */
   &.closed {
-    width: 60px;
+    width: 50px;
     background-color: var(--color-background);
   }
 }

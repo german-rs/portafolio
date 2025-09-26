@@ -192,7 +192,7 @@ onMounted(() => {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 80vh;
   max-width: 100%;
   margin: 0 auto;
   background-color: var(--color-background);

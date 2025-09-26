@@ -2,7 +2,7 @@
   <main class="main">
     <!-- Header Section -->
     <header class="main__header">
-      <h1 class="main__title">Contacto</h1>
+      <!-- <h1 class="main__title">Contacto</h1> -->
       <div class="main__divider"></div>
     </header>
 
