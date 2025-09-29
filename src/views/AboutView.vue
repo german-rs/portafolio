@@ -67,10 +67,11 @@
   /* Profile Section */
   &__profile {
     // border: 1px solid green;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
-    align-items: start;
   }
 
   &__img-container {
@@ -89,6 +90,7 @@
   &__content {
     // border: 1px solid green;
     display: flex;
+    max-width: 800px;
     flex-direction: column;
     gap: 1.5rem;
   }
@@ -131,7 +133,6 @@
 /* Responsive */
 @media (max-width: 768px) {
   .main__profile {
-    grid-template-columns: 1fr;
     gap: 2rem;
   }
 }

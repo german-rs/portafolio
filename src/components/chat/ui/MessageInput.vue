@@ -137,7 +137,7 @@ watch(
   }
 
   &:disabled {
-    background: #f3f4f6;
+    background: var(--color-background-soft);
     cursor: not-allowed;
   }
 }

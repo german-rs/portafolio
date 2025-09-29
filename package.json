@@ -20,6 +20,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "dompurify": "^3.2.7",
+    "marked": "^16.3.0",
     "modern-normalize": "^3.0.1",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1",
