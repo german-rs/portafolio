@@ -28,20 +28,6 @@
             las personas y mejorar procesos para hacerlos más simples y eficientes.
           </p>
         </div>
-
-        <div class="main__card">
-          <h2 class="main__subtitle">Actualmente</h2>
-          <p class="main__text">
-            Orienté mi carrera hacia el
-            <a
-              href="https://www.acreditta.com/credential/80bc62aa-3684-4a44-8117-d9a9ce7cbdd5?utm_source=linkedin_profile&resource_type=badge&resource=80bc62aa-3684-4a44-8117-d9a9ce7cbdd5"
-              target="_blank"
-              ><strong>desarrollo frontend</strong></a
-            >
-            con especial interés en la creación de interfaces que integren el uso de
-            <strong>inteligencia artificial</strong>.
-          </p>
-        </div>
       </div>
     </section>
   </main>
