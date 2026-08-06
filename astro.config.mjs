@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://german-rs.github.io",
-  base: "/portafolio",
+  site: "https://germanriveros.cl",
 });
