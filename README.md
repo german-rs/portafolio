@@ -1,46 +1,108 @@
-# Astro Starter Kit: Basics
+# Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+My personal portfolio built with **Astro**, designed to showcase my professional experience, projects, and technical skills.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The project focuses on performance, accessibility, SEO, and maintainability while following modern frontend development practices.
 
-## 🚀 Project Structure
+## Website
 
-Inside of your Astro project, you'll see the following folders and files:
+**https://germanriveros.cl**
+
+## Tech Stack
+
+* Astro 7
+* TypeScript
+* HTML5
+* CSS3
+* GitHub Actions
+* GitHub Pages
+* Cloudflare
+* Git
+
+## Project Goals
+
+* Build a fast and accessible portfolio.
+* Showcase frontend and web development projects.
+* Document my learning journey.
+* Experiment with modern web technologies.
+* Maintain a scalable architecture for future growth.
+
+## Features
+
+* Responsive design
+* SEO-friendly pages
+* Optimized performance
+* Reusable component architecture
+* Automatic deployment with GitHub Actions
+* Custom domain with HTTPS
+
+## Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── assets/
+├── components/
+├── layouts/
+├── pages/
+├── styles/
+├── content/
+
+public/
+
+.github/
+└── workflows/
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Development
 
-## 🧞 Commands
+Clone the repository:
 
-All commands are run from the root of the project, from a terminal:
+```bash
+git clone https://github.com/german-rs/portafolio.git
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Install dependencies:
 
-## 👀 Want to learn more?
+```bash
+npm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Deployment
+
+The project is automatically deployed using **GitHub Actions** to **GitHub Pages** and served through **Cloudflare** using a custom domain.
+
+Every push to the `main` branch triggers a new deployment.
+
+## Roadmap
+
+* [ ] Design system
+* [ ] Homepage
+* [ ] About page
+* [ ] Projects section
+* [ ] Experience timeline
+* [ ] Contact page
+* [ ] Blog
+* [ ] Dark mode
+* [ ] Performance optimization
+
+## License
+
+MIT
