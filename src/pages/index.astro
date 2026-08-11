@@ -1,11 +1,121 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Germán Riveros — Desarrollo Web</title>
+
+        <meta
+            name="description"
+            content="Construyo, administro y hago evolucionar sitios web."
+        />
+    </head>
+
+    <body>
+        <div class="site-shell">
+            <!-- ========================================
+           HEADER
+      ========================================= -->
+
+            <header class="site-header">
+                <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
+                    Germán Riveros
+                </a>
+
+                <nav class="main-nav" aria-label="Navegación principal">
+                    <a href="#work">Work</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+
+                <a href="#contact" class="header-cta"> Get in Touch </a>
+            </header>
+
+            <!-- ========================================
+           HERO
+      ========================================= -->
+
+            <main>
+                <section class="hero" aria-labelledby="hero-title">
+                    <div class="hero-grid"></div>
+
+                    <div class="hero-glow"></div>
+
+                    <div class="hero-system">SYS.INIT // V1.1</div>
+
+                    <div class="hero-content">
+                        <p class="hero-eyebrow">
+                            DESARROLLO WEB · GESTIÓN · ACCESIBILIDAD
+                        </p>
+
+                        <h1 id="hero-title">
+                            Construyo, administro y
+                            <span>optimizo sitios web.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                           Desarrollo y administro sitios modernos, accesibles y de alto rendimiento para profesionales, emprendimientos y organizaciones.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#work" class="button button-primary">
+                                Explorar Proyectos
+                            </a>
+
+                            <a href="#services" class="button button-secondary">
+                                Ver Servicios
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-bottom-line"></div>
+                </section>
+
+                <!-- ========================================
+             PLACEHOLDERS
+             Se construirán en los siguientes pasos
+        ========================================= -->
+
+                <section id="work" class="placeholder-section">
+                    <span>WORK</span>
+                </section>
+
+                <section id="services" class="placeholder-section">
+                    <span>SERVICES</span>
+                </section>
+
+                <section id="about" class="placeholder-section">
+                    <span>ABOUT</span>
+                </section>
+
+                <section id="contact" class="placeholder-section">
+                    <span>CONTACT</span>
+                </section>
+            </main>
+
+            <!-- ========================================
+           FOOTER
+      ========================================= -->
+
+            <footer class="site-footer">
+                <p>
+                    © 2024 Germán Riveros — Technical Humanist. Build with
+                    precision.
+                </p>
+
+                <div class="footer-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Read.cv</a>
+                    <a href="#">Email</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

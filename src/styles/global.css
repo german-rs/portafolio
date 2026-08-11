@@ -1,0 +1,568 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: #050b18;
+  color: #e7ecff;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   SITE SHELL
+   ========================================================= */
+
+.site-shell {
+  min-height: 100vh;
+  overflow: hidden;
+
+  border: 4px solid rgba(210, 219, 241, 0.75);
+  border-radius: 24px;
+
+  background: #071022;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: relative;
+  z-index: 20;
+
+  height: 48px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 28px;
+
+  background: rgba(6, 15, 34, 0.96);
+  border-bottom: 1px solid rgba(142, 162, 203, 0.16);
+}
+
+.brand {
+  justify-self: start;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+
+  color: #dce5ff;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.main-nav a {
+  position: relative;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  color: #d3d9e9;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+}
+
+.header-cta {
+  justify-self: end;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 22px;
+  padding: 0 18px;
+
+  background: #2868ed;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #ffffff;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.header-cta:hover {
+  background: #3b78f5;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 518px;
+
+  display: flex;
+  align-items: center;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      105deg,
+      #0b1839 0%,
+      #0a1630 48%,
+      #102734 100%
+    );
+}
+
+
+/* =========================================================
+   GRID BACKGROUND
+   ========================================================= */
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+
+  z-index: -3;
+
+  background-image:
+    linear-gradient(
+      rgba(112, 143, 204, 0.075) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(112, 143, 204, 0.075) 1px,
+      transparent 1px
+    );
+
+  background-size: 26px 26px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+   ========================================================= */
+
+.hero-glow {
+  position: absolute;
+
+  width: 620px;
+  height: 620px;
+
+  right: -170px;
+  top: -130px;
+
+  z-index: -2;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(36, 126, 147, 0.22) 0%,
+      rgba(20, 91, 119, 0.08) 42%,
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SYSTEM LABEL
+   ========================================================= */
+
+.hero-system {
+  position: absolute;
+
+  top: 52px;
+  right: 28px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 8px;
+  letter-spacing: 0.14em;
+
+  color: rgba(175, 190, 220, 0.35);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+  width: min(100%, 780px);
+
+  margin-left: 28px;
+  margin-right: 28px;
+
+  padding: 84px 0 90px;
+}
+
+.hero-eyebrow {
+  margin: 0 0 18px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #7d9ce1;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+  max-width: 700px;
+
+  margin: 0;
+
+  font-size: clamp(42px, 5.2vw, 72px);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+
+  color: #e5eaff;
+}
+
+.hero h1 span {
+  display: block;
+
+  color: #9bb5ff;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+  max-width: 590px;
+
+  margin: 24px 0 0;
+
+  font-size: 12px;
+  line-height: 1.65;
+
+  color: #c8d0e2;
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+   ========================================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 33px;
+  padding: 0 20px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: #2868ed;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: #3978f3;
+}
+
+.button-secondary {
+  background: rgba(21, 35, 66, 0.8);
+
+  border: 1px solid rgba(88, 112, 160, 0.16);
+
+  color: #c7d0e6;
+}
+
+.button-secondary:hover {
+  background: rgba(29, 47, 84, 0.95);
+}
+
+
+/* =========================================================
+   HERO BOTTOM DETAIL
+   ========================================================= */
+
+.hero-bottom-line {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(126, 153, 207, 0.22),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   PLACEHOLDER SECTIONS
+   ========================================================= */
+
+.placeholder-section {
+  min-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #071022;
+
+  border-bottom: 1px solid rgba(126, 153, 207, 0.08);
+}
+
+.placeholder-section span {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 10px;
+  letter-spacing: 0.2em;
+
+  color: rgba(160, 177, 214, 0.25);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 0 28px;
+
+  background: #050c1b;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 8px;
+
+  color: #8993aa;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-links a {
+  transition: color 180ms ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .site-shell {
+    border-width: 2px;
+    border-radius: 16px;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr auto;
+
+    padding: 0 18px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero-content {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+
+    width: fit-content;
+  }
+
+  .button {
+    min-height: 38px;
+  }
+
+  .hero-system {
+    right: 20px;
+  }
+
+  .hero-bottom-line {
+    left: 20px;
+    right: 20px;
+  }
+
+  .site-footer {
+    padding: 18px 20px;
+
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
