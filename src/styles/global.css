@@ -260,7 +260,10 @@ a {
   font-size: 8px;
   letter-spacing: 0.14em;
 
-  color: rgba(175, 190, 220, 0.35);
+  /* FIX contraste: rgba(175,190,220,0.35) daba 2.22:1 (falla AA).
+     Color solido equivalente pasa a 6.14:1 sobre el punto mas claro
+     del degradado del hero, manteniendo el mismo tono "tenue". */
+  color: #8fa3d4;
 }
 
 
@@ -444,6 +447,9 @@ a {
   font-size: 10px;
   letter-spacing: 0.2em;
 
+  /* Mismo problema que .hero-system: 0.25 de opacidad falla contraste.
+     Se deja como placeholder temporal (no es contenido final),
+     pero si se usa como texto real hay que subir a ~0.7 igual que arriba. */
   color: rgba(160, 177, 214, 0.25);
 }
 
