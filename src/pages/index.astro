@@ -8,11 +8,11 @@ import "../styles/global.css";
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Germán Riveros — Desarrollo Web</title>
+        <title>Germán Riveros — Administración y Mantención Web</title>
 
         <meta
             name="description"
-            content="Construyo, administro y hago evolucionar sitios web."
+            content="Administración y mantención de sitios WordPress y otras plataformas en Chile. Incluye atención en Lengua de Señas Chilena."
         />
     </head>
 
@@ -47,29 +47,37 @@ import "../styles/global.css";
 
                     <div class="hero-glow"></div>
 
+                    <!-- Icosaedro decorativo. Solo desktop, respeta
+                         prefers-reduced-motion (ver hero-icosaedro.js).
+                         aria-hidden porque es puramente ambiental, no aporta
+                         información. -->
+                    <div class="hero-icosaedro-wrap" aria-hidden="true">
+                        <canvas id="hero-icosaedro"></canvas>
+                    </div>
+
                     <div class="hero-system">SYS.INIT // V1.1</div>
 
                     <div class="hero-content">
                         <p class="hero-eyebrow">
-                            GESTIÓN WEB · OPTIMIZACIÓN · ACCESIBILIDAD
+                            ADMINISTRACIÓN WEB · OPTIMIZACIÓN · ACCESIBILIDAD
                         </p>
 
                         <h1 id="hero-title">
-                            Administro y
-                            <span>optimizo sitios web.</span>
+                            Tu sitio ya existe.
+                            <span>Que siga funcionando y mejorando es mi trabajo.</span>
                         </h1>
 
                         <p class="hero-description">
-                           Desarrollo y administro sitios modernos, accesibles y de alto rendimiento para profesionales, emprendimientos y organizaciones.
+                            Administración y mantención de sitios WordPress y otras plataformas en Chile. Incluye atención en Lengua de Señas Chilena.
                         </p>
 
                         <div class="hero-actions">
                             <a href="#work" class="button button-primary">
-                                Explorar Proyectos
+                                Solicita un diagnóstico
                             </a>
 
                             <a href="#services" class="button button-secondary">
-                                Ver Servicios
+                                Ver resultados
                             </a>
                         </div>
                     </div>
@@ -105,17 +113,20 @@ import "../styles/global.css";
 
             <footer class="site-footer">
                 <p>
-                    © 2024 Germán Riveros — Technical Humanist. Build with
+                    © 2026 Germán Riveros — Technical Humanist. Manage with
                     precision.
                 </p>
 
                 <div class="footer-links">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">Read.cv</a>
+                    <a href="#">Instagram</a>
+                    <a href="https://github.com/german-rs">GitHub</a>
                     <a href="#">Email</a>
                 </div>
             </footer>
         </div>
+
+        <script>
+            import "../scripts/hero-icosaedro.js";
+        </script>
     </body>
 </html>

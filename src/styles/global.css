@@ -572,3 +572,45 @@ a {
     flex-wrap: wrap;
   }
 }
+
+
+/* =========================================================
+   HERO ICOSAEDRO (decorativo)
+   ========================================================= */
+
+.hero-icosaedro-wrap {
+  position: absolute;
+
+  top: 50%;
+  right: 48px;
+
+  width: 340px;
+  height: 340px;
+
+  transform: translateY(-50%);
+
+  z-index: -1; /* detras del contenido, delante del grid/glow */
+
+  pointer-events: none; /* nunca bloquea clics en CTAs o nav */
+}
+
+.hero-icosaedro-wrap canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero-icosaedro-wrap {
+    width: 260px;
+    height: 260px;
+    right: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-icosaedro-wrap {
+    display: none; /* el layout colapsa a una columna, no hay espacio real */
+  }
+}
