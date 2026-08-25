@@ -231,6 +231,15 @@
 
 .work-card-info {
   max-width: 700px;
+
+  /*
+     Sin esto, un item de grid no se encoge más allá del
+     ancho mínimo de su contenido (min-width: auto por
+     defecto). Un título sin espacios (ej. "GERMANRIVEROS.CL")
+     puede forzar a toda la fila del grid a desbordarse del
+     viewport en mobile, arrastrando con ella al preview.
+  */
+  min-width: 0;
 }
 
 .work-category {
@@ -258,6 +267,14 @@
   font-weight: 700;
 
   color: #e7ecff;
+
+  /*
+     Permite partir palabras largas sin espacios (dominios,
+     nombres de proyecto tipo "GERMANRIVEROS.CL") cuando no
+     entran en el ancho disponible, en vez de desbordar la
+     card hacia la derecha.
+  */
+  overflow-wrap: break-word;
 
   transition:
     transform 400ms ease,
