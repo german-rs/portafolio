@@ -1,4 +1,4 @@
-@import "./work.css";
+@import "./Work.css";
 
 /* =========================================================
    RESET
@@ -162,7 +162,7 @@ a {
 .hero {
   position: relative;
 
-  min-height: 518px;
+  min-height: min(88dvh, 760px);
 
   display: flex;
   align-items: center;
