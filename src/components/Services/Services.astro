@@ -1,0 +1,76 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import "../../styles/Services.css";
+
+const services = [
+  {
+    number: "01",
+    title: "Administración web",
+    description:
+      "Mantener tu sitio actualizado, operativo y bajo control.",
+    tags: ["Actualizaciones", "Contenido", "Soporte"],
+  },
+  {
+    number: "02",
+    title: "Optimización",
+    description:
+      "Mejorar el rendimiento y la experiencia de uso de forma medible.",
+    tags: ["Performance", "Core Web Vitals", "Velocidad"],
+  },
+  {
+    number: "03",
+    title: "Seguridad y mantenimiento",
+    description:
+      "Reducir riesgos y evitar que los problemas se conviertan en interrupciones.",
+    tags: ["Actualizaciones", "Revisiones", "Respaldos"],
+  },
+  {
+    number: "04",
+    title: "Accesibilidad",
+    description:
+      "Reducir barreras para que más personas puedan utilizar tu sitio.",
+    tags: ["WCAG", "Teclado", "Contraste", "Inclusión"],
+  },
+];
+---
+
+<section id="services" class="services" aria-labelledby="services-title">
+  <div class="services__container">
+
+    <header class="services__header">
+      <span class="services__eyebrow">
+        03 SERVICES
+      </span>
+
+      <div class="services__intro">
+        <h2 id="services-title">
+          Mantener un sitio también
+          <span> es parte de desarrollarlo.</span>
+        </h2>
+
+        <p>
+          Tu sitio ya está funcionando. Mi trabajo es ayudar
+          a que siga haciéndolo.
+        </p>
+      </div>
+    </header>
+
+    <div class="services__grid">
+      {
+        services.map((service) => (
+          <ServiceCard {...service} />
+        ))
+      }
+    </div>
+
+    <footer class="services__footer">
+      <p>¿Tu sitio necesita atención?</p>
+
+      <a href="#contact">
+        Solicita un diagnóstico
+        <span aria-hidden="true">↗</span>
+      </a>
+    </footer>
+
+  </div>
+</section>
