@@ -16,57 +16,65 @@ Compartir conocimiento.
 
 Este principio guía cada decisión del proyecto.
 
-Cada sitio web, componente, bloque, plugin, plantilla o artículo debe tener un propósito claro, ser el resultado del aprendizaje continuo y aportar valor tanto a los clientes como a la comunidad.
+Cada diagnóstico, corrección, migración, artículo o recurso debe tener un propósito claro, ser el resultado del aprendizaje continuo, y dejar al cliente —o a la comunidad de desarrolladores— mejor de lo que estaba.
 
 ---
 
 # ¿Qué es germanriveros.cl?
 
-germanriveros.cl es una plataforma profesional dedicada al desarrollo de sitios web modernos, accesibles y de alto rendimiento.
+germanriveros.cl es el servicio profesional de Germán Riveros para **administrar, mantener, optimizar y hacer accesibles sitios web que ya existen** — WordPress, Magento o cualquier otra plataforma.
 
-Integra servicios profesionales, un portafolio técnico, recursos reutilizables y un blog especializado. El propio sitio constituye una demostración práctica de la metodología, la calidad y los principios técnicos aplicados en cada proyecto.
+Deliberadamente **no** es un portafolio de desarrollo web desde cero. La premisa detrás de cada texto del sitio es que quien lo lee ya tiene un sitio web. Lo que necesita es alguien que lo mantenga funcionando: actualizado, seguro, rápido y utilizable por todas las personas —incluyendo quienes se comunican en Lengua de Señas Chilena (LSCh), un compromiso de accesibilidad que va más allá del código.
+
+El sitio mismo es el primer caso de estudio. Cada decisión técnica documentada en este repositorio —contraste validado bajo WCAG, paridad entre `:focus-visible` y `:hover`, respeto a `prefers-reduced-motion`, tamaño de objetivos táctiles en mobile— es el mismo estándar que se aplica en los sitios de los clientes.
 
 ---
 
 # Misión
 
-Ayudar a personas y organizaciones a construir y mantener sitios web modernos, accesibles y de alto rendimiento, aplicando buenas prácticas que generen una presencia digital sostenible.
+Ayudar a personas y organizaciones que ya tienen un sitio web a mantenerlo funcionando: actualizado, seguro, rápido y accesible, para que siga sirviendo a quienes dependen de él, en vez de deteriorarse en silencio.
 
 ---
 
 # Visión
 
-Evolucionar constantemente mediante el aprendizaje y la innovación en tecnologías web, transformando ese conocimiento en soluciones útiles para clientes y para la comunidad.
+Convertirse en una referencia de confianza en administración y mantenimiento web, con rigor técnico y accesibilidad humana genuina —evolucionando, a medida que el trabajo real con clientes lo justifique, hacia componentes reutilizables, plantillas y productos digitales, sin perder la identidad de mantenimiento que sostiene la confianza en el servicio.
 
 ---
 
 # Valores
 
+## 🔧 Continuidad
+
+El lanzamiento de un sitio web es el comienzo, no el final. La continuidad —actualizaciones, respaldos, monitoreo, respuesta oportuna— es el producto real.
+
+---
+
 ## 🚀 Rendimiento
 
 El rendimiento forma parte de la calidad del producto desde el inicio.
 
-Cada proyecto debe ofrecer una experiencia rápida y eficiente.
+Cada intervención debe mejorar de forma medible la velocidad y la eficiencia, no solo agregar funcionalidades.
 
 ---
 
 ## ♿ Accesibilidad
 
-La web debe ser utilizable por la mayor cantidad de personas posible.
+La accesibilidad se valida en el código —contraste WCAG AA, navegación por teclado, `prefers-reduced-motion`— y se extiende a la comunicación humana, incluyendo atención en Lengua de Señas Chilena (LSCh) para clientes y usuarios que lo necesiten.
 
-La accesibilidad está presente durante todo el proceso de diseño y desarrollo.
+La web debe ser utilizable por la mayor cantidad de personas posible, de la mayor cantidad de formas posible.
 
 ---
 
 ## 💎 Calidad técnica
 
-Los proyectos se desarrollan utilizando código mantenible, arquitecturas claras y buenas prácticas de desarrollo.
+Los proyectos se desarrollan utilizando código mantenible, arquitecturas claras y buenas prácticas de desarrollo, documentadas lo suficientemente bien como para que el razonamiento sobreviva a quien lo escribió.
 
 ---
 
 ## 📚 Aprendizaje continuo
 
-Las tecnologías web evolucionan constantemente.
+Las tecnologías web y las necesidades de los clientes evolucionan constantemente.
 
 Aprender de forma continua permite transformar el conocimiento en mejores soluciones.
 
@@ -78,25 +86,27 @@ Comunicar con claridad.
 
 Explicar las decisiones técnicas.
 
-Construir relaciones de confianza a largo plazo.
+Construir relaciones de confianza a largo plazo —incluyendo un roadmap honesto sobre lo que todavía es un placeholder.
 
 ---
 
 # Filosofía
 
-La tecnología es un medio, no el objetivo.
+> **Technical Humanist.**
 
-El objetivo siempre será construir la mejor solución para cada proyecto.
+La tecnología es un medio, no el objetivo. El objetivo es un sitio web que siga funcionando para las personas que realmente lo usan —incluyendo a quienes la industria suele diseñar alrededor, en vez de para ellas.
 
 ---
 
-# Evolución del emprendimiento
+# Evolución
 
-Conocimiento
+Hoy, germanriveros.cl es un servicio de mantenimiento y administración web, sin más. La cadena siguiente es hacia dónde puede crecer **una vez que el trabajo real con clientes lo justifique en cada paso** —describe una dirección, no un estado actual:
+
+Trabajo con clientes (administración y mantenimiento)
 
 ↓
 
-Desarrollo de sitios web
+Patrones documentados
 
 ↓
 
@@ -118,12 +128,10 @@ Plugins
 
 Productos digitales
 
-↓
-
-Plataforma profesional
+Cada paso se gana por el anterior; no se lanzan en paralelo.
 
 ---
 
 # Posicionamiento
 
-Desarrollar soluciones web modernas enfocadas en el rendimiento, la accesibilidad, el SEO y la mantenibilidad, compartiendo ese conocimiento mediante documentación, artículos técnicos y proyectos reales.
+Administrar, mantener, optimizar y hacer accesibles sitios web que ya están en producción —para personas y negocios en Chile que necesitan continuidad, no una reconstrucción— documentando en el camino las decisiones técnicas y humanas detrás de ese trabajo.
