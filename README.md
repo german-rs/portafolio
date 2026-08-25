@@ -1,56 +1,97 @@
-# Portfolio
+# germanriveros.cl
 
-My personal portfolio built with **Astro**, designed to showcase my professional experience, projects, and technical skills.
+Business website for a web **administration, maintenance, optimization, and
+accessibility** service — built with Astro.
 
-The project focuses on performance, accessibility, SEO, and maintainability while following modern frontend development practices.
+This is not a from-scratch web development portfolio. The positioning is
+deliberate: the target audience already has a website (WordPress, Magento, or
+another platform) and needs someone to keep it running, updated, secure, fast,
+and accessible. Every piece of copy on the site is written against that
+premise.
 
-## Website
+## Live site
 
 **https://germanriveros.cl**
 
-## Tech Stack
+## Tech stack
 
-* Astro 7
-* TypeScript
-* HTML5
-* CSS3
-* GitHub Actions
-* GitHub Pages
-* Cloudflare
-* Git
+* **Astro 7** — static output, zero client-side JS by default
+* **Vanilla CSS** — no framework; design tokens are literal hex values
+  documented inline (see `src/styles/global.css`)
+* **TypeScript** — via Astro's `strict` tsconfig, type-checking component
+  frontmatter (no dedicated `.ts` application code yet)
+* **Vanilla Three.js** — used directly, without React or
+  `@react-three/fiber`/`drei`, specifically to avoid adding a second UI
+  framework for one decorative element on a site that also promotes
+  performance as a service. See "The hero's 3D element" below.
+* **GitHub Actions → GitHub Pages**, custom domain via Cloudflare
 
-## Project Goals
+## Design principles
 
-* Build a fast and accessible portfolio.
-* Showcase frontend and web development projects.
-* Document my learning journey.
-* Experiment with modern web technologies.
-* Maintain a scalable architecture for future growth.
+Accessibility and performance aren't described as generic bullet points —
+they're enforced in the code, with the reasoning documented inline:
 
-## Features
+* Every interactive component has `:focus-visible` styles that mirror
+  `:hover`, so keyboard users get the same information mouse users do.
+* `prefers-reduced-motion` is respected across animated elements, including
+  the hero's 3D icosahedron (falls back to a static frame).
+* Color pairs are validated against WCAG AA (4.5:1 for body text) rather than
+  chosen by eye — this caught a real bug during development (a decorative
+  label at 35% opacity that read fine on the site's dark background but
+  failed contrast, and separately became invisible when reused on a light
+  background for the logo).
+* Mobile tap targets meet the 44px minimum on primary CTAs.
 
-* Responsive design
-* SEO-friendly pages
-* Optimized performance
-* Reusable component architecture
-* Automatic deployment with GitHub Actions
-* Custom domain with HTTPS
+Brand voice, tone, and visual language are documented in `docs/BRAND.md` /
+`docs/BRAND_ES.md` and `docs/WEB_STYLE_GUIDE_germanriveros_v1.0.md`.
 
-## Project Structure
+## The hero's 3D element
+
+The wireframe icosahedron in the hero is rendered with **vanilla Three.js**
+(`src/scripts/hero-icosaedro.js`), not the React/`@react-three/fiber` version
+used for prototyping in the
+[`experimentos-threejs`](https://github.com/german-rs/experimentos-threejs)
+repo. That was a deliberate trade-off, not an oversight: this project has no
+other React dependency, and pulling in React + fiber + drei for one
+decorative shape would work against the site's own performance positioning.
+
+It's desktop-only (hidden below 761px, where there's no layout space for it
+anyway), transparent-background so it composites into the existing ambient
+glow, and respects `prefers-reduced-motion`.
+
+**Known trade-off:** even as vanilla Three.js, the bundle currently trips
+Vite's 500kB chunk-size warning on build. Not yet addressed — a reasonable
+next step is code-splitting so it's only loaded when the hero is in view.
+
+## Project structure
 
 ```text
 src/
-├── assets/
 ├── components/
-├── layouts/
+│   └── Work/
+│       ├── Work.astro
+│       └── WorkCard.astro
 ├── pages/
-├── styles/
-├── content/
+│   └── index.astro
+├── scripts/
+│   └── hero-icosaedro.js
+└── styles/
+    ├── global.css
+    └── Work.css
 
 public/
+├── favicon.svg
+└── favicon.ico
+
+docs/
+├── BRAND.md
+├── BRAND_ES.md
+├── ARCHITECTURE.md                        # currently empty
+└── WEB_STYLE_GUIDE_germanriveros_v1.0.md
 
 .github/
 └── workflows/
+    └── deploy.yml
 ```
 
 ## Development
@@ -73,7 +114,11 @@ Start the development server:
 npm run dev
 ```
 
-Build for production:
+Build for production — **run this before pushing**, not just `dev`. The dev
+server doesn't catch case-sensitive import errors that only surface on
+Linux-based CI (this has happened before: a `@import` referenced `work.css`
+while the real file was `Work.css`, which builds fine on macOS/Windows but
+fails on GitHub Actions):
 
 ```bash
 npm run build
@@ -87,21 +132,21 @@ npm run preview
 
 ## Deployment
 
-The project is automatically deployed using **GitHub Actions** to **GitHub Pages** and served through **Cloudflare** using a custom domain.
+Deployed automatically via **GitHub Actions** (`.github/workflows/deploy.yml`)
+to **GitHub Pages**, served through **Cloudflare** on a custom domain. Every
+push to `main` triggers a new build and deploy.
 
-Every push to the `main` branch triggers a new deployment.
+## Status / honest roadmap
 
-## Roadmap
-
-* [ ] Design system
-* [ ] Homepage
-* [ ] About page
-* [ ] Projects section
-* [ ] Experience timeline
-* [ ] Contact page
+* [x] Hero section — copy, contrast-checked palette, 3D icosahedron
+* [x] Work section — project list, accessible card pattern
+* [x] Favicon / logo (vector icosahedron, light + dark background safe)
+* [ ] Services section — currently a placeholder
+* [ ] About section — currently a placeholder
+* [ ] Contact section — currently a placeholder
+* [ ] `docs/ARCHITECTURE.md` — file exists, still empty
+* [ ] Code-splitting for the Three.js bundle (500kB build warning)
 * [ ] Blog
-* [ ] Dark mode
-* [ ] Performance optimization
 
 ## License
 
