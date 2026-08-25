@@ -1,0 +1,142 @@
+---
+const projects = [
+    {
+        number: "01",
+        title: "GERMANRIVEROS.CL",
+        category: "DIGITAL PLATFORM",
+        description:
+            "Plataforma digital desarrollada para presentar servicios, proyectos y experiencia profesional, con foco en rendimiento, accesibilidad y experimentación frontend.",
+        tags: ["ASTRO", "THREE.JS", "UX/UI", "ACCESSIBILITY"],
+        status: "ACTIVE",
+        image: "https://placehold.co/1200x800/111111/FFFFFF?text=GERMANRIVEROS.CL",
+        href: "https://germanriveros.cl",
+    },
+    {
+        number: "02",
+        title: "THARPA CHILE",
+        category: "E-COMMERCE / MAGENTO",
+        description:
+            "Evolución y mantenimiento de una plataforma e-commerce existente, trabajando sobre Magento para mejorar progresivamente su experiencia y funcionamiento.",
+        tags: ["MAGENTO", "E-COMMERCE", "OPTIMIZATION"],
+        status: "ACTIVE",
+        image: "https://placehold.co/1200x800/111111/FFFFFF?text=THARPA+CHILE",
+        href: "https://tharpa.com/cl/",
+    },
+    {
+        number: "03",
+        title: "EXPERIMENTOS THREE.JS",
+        category: "WEBGL / 3D LABORATORY",
+        description:
+            "Laboratorio de experimentación con gráficos 3D para la web, explorando Three.js, WebGL y React Three Fiber.",
+        tags: ["THREE.JS", "WEBGL", "REACT THREE FIBER"],
+        status: "EXPERIMENTAL",
+        image: "https://placehold.co/1200x800/111111/FFFFFF?text=THREE.JS+LAB",
+        href: "https://german-rs.github.io/experimentos-threejs/",
+    },
+];
+---
+
+<section id="work" class="work-section" aria-labelledby="work-title">
+    <div class="work-container">
+
+        <header class="work-header">
+            <div class="work-header-meta">
+                <span class="work-index">02</span>
+                <span class="work-system">WORK // SELECTED PROJECTS</span>
+            </div>
+
+            <div class="work-heading">
+                <p class="work-eyebrow">PROYECTOS SELECCIONADOS</p>
+
+                <h2 id="work-title">
+                    Proyectos que administro,
+                    <span>optimizo y hago evolucionar.</span>
+                </h2>
+            </div>
+
+            <p class="work-intro">
+                Una selección de proyectos donde convergen administración,
+                optimización, accesibilidad y experimentación tecnológica.
+            </p>
+        </header>
+
+        <div class="work-list">
+            {
+                projects.map((project) => (
+                    <article class="work-card">
+                        <a
+                            href={project.href}
+                            class="work-card-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Ver proyecto ${project.title} (abre en pestaña nueva)`}
+                        >
+                            <div class="work-card-top">
+                                <span class="work-number">
+                                    {project.number}
+                                </span>
+
+                                <span class="work-status">
+                                    STATUS: {project.status}
+                                </span>
+                            </div>
+
+                            <div class="work-card-content">
+                                <div class="work-card-info">
+                                    <p class="work-category">
+                                        {project.category}
+                                    </p>
+
+                                    <h3>{project.title}</h3>
+
+                                    <p class="work-description">
+                                        {project.description}
+                                    </p>
+
+                                    <div class="work-tags" aria-label="Tecnologías y capacidades">
+                                        {
+                                            project.tags.map((tag) => (
+                                                <span class="work-tag">
+                                                    {tag}
+                                                </span>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="work-preview">
+                                    <div class="work-preview-overlay">
+                                        <span>VIEW PROJECT</span>
+                                        <span class="work-arrow">↗</span>
+                                    </div>
+
+                                    <img
+                                        src={project.image}
+                                        alt=""
+                                        loading="lazy"
+                                        width="1200"
+                                        height="800"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="work-card-bottom">
+                                <span>PROJECT / {project.number}</span>
+
+                                <span class="work-view">
+                                    VIEW PROJECT <span>→</span>
+                                </span>
+                            </div>
+                        </a>
+                    </article>
+                ))
+            }
+        </div>
+
+        <div class="work-footer">
+            <span>03 PROJECTS</span>
+            <span>MORE IN PROGRESS</span>
+        </div>
+
+    </div>
+</section>
