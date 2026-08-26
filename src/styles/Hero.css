@@ -14,6 +14,7 @@
 
   overflow: hidden;
 
+
   background:
     linear-gradient(
       105deg,
@@ -132,9 +133,6 @@
     "Liberation Mono",
     monospace;
 
-  /* Antes 9px con letter-spacing 0.14em. .services__eyebrow usa
-     0.7rem / 0.12em para el mismo tipo de elemento (etiqueta
-     uppercase sobre un heading) — se unifica a ese valor. */
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
