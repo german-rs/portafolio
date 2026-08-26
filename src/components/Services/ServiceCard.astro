@@ -12,16 +12,10 @@ const { number, title, description, tags } = Astro.props;
 <article class="service-card">
   <div class="service-card__header">
     <span class="service-card__number">{number}</span>
-
-    <span class="service-card__status">
-      <span class="service-card__status-dot" aria-hidden="true"></span>
-      SERVICE / ACTIVE
-    </span>
   </div>
 
   <div class="service-card__body">
     <h3>{title}</h3>
-
     <p>{description}</p>
   </div>
 

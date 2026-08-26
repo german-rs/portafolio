@@ -1,3 +1,4 @@
+@import "./Hero.css";
 @import "./Work.css";
 @import "./Services.css";
 
@@ -42,7 +43,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-
 /* =========================================================
    SITE SHELL
    ========================================================= */
@@ -60,7 +60,6 @@ a {
     0 0 0 1px rgba(255, 255, 255, 0.04),
     0 24px 80px rgba(0, 0, 0, 0.45);
 }
-
 
 /* =========================================================
    HEADER
@@ -155,202 +154,9 @@ a {
   transform: translateY(-1px);
 }
 
-
 /* =========================================================
-   HERO
+   BUTTON (compartido — usado en Hero, y a futuro en Contact)
    ========================================================= */
-
-.hero {
-  position: relative;
-
-  min-height: min(88dvh, 760px);
-
-  display: flex;
-  align-items: center;
-
-  isolation: isolate;
-
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      105deg,
-      #0b1839 0%,
-      #0a1630 48%,
-      #102734 100%
-    );
-}
-
-
-/* =========================================================
-   GRID BACKGROUND
-   ========================================================= */
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-
-  z-index: -3;
-
-  background-image:
-    linear-gradient(
-      rgba(112, 143, 204, 0.075) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(112, 143, 204, 0.075) 1px,
-      transparent 1px
-    );
-
-  background-size: 26px 26px;
-
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, 0.65)
-  );
-}
-
-
-/* =========================================================
-   AMBIENT GLOW
-   ========================================================= */
-
-.hero-glow {
-  position: absolute;
-
-  width: 620px;
-  height: 620px;
-
-  right: -170px;
-  top: -130px;
-
-  z-index: -2;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(36, 126, 147, 0.22) 0%,
-      rgba(20, 91, 119, 0.08) 42%,
-      transparent 70%
-    );
-
-  filter: blur(20px);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   SYSTEM LABEL
-   ========================================================= */
-
-.hero-system {
-  position: absolute;
-
-  top: 52px;
-  right: 28px;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 8px;
-  letter-spacing: 0.14em;
-
-  /* FIX contraste: rgba(175,190,220,0.35) daba 2.22:1 (falla AA).
-     Color solido equivalente pasa a 6.14:1 sobre el punto mas claro
-     del degradado del hero, manteniendo el mismo tono "tenue". */
-  color: #8fa3d4;
-}
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.hero-content {
-  width: min(100%, 780px);
-
-  margin-left: 28px;
-  margin-right: 28px;
-
-  padding: 84px 0 90px;
-}
-
-.hero-eyebrow {
-  margin: 0 0 18px;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-
-  color: #7d9ce1;
-}
-
-
-/* =========================================================
-   HERO TITLE
-   ========================================================= */
-
-.hero h1 {
-  max-width: 700px;
-
-  margin: 0;
-
-  font-size: clamp(42px, 5.2vw, 72px);
-  line-height: 0.96;
-  letter-spacing: -0.055em;
-  font-weight: 800;
-
-  color: #e5eaff;
-}
-
-.hero h1 span {
-  display: block;
-
-  color: #9bb5ff;
-}
-
-
-/* =========================================================
-   HERO DESCRIPTION
-   ========================================================= */
-
-.hero-description {
-  max-width: 590px;
-
-  margin: 24px 0 0;
-
-  font-size: 12px;
-  line-height: 1.65;
-
-  color: #c8d0e2;
-}
-
-
-/* =========================================================
-   HERO ACTIONS
-   ========================================================= */
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-top: 28px;
-}
 
 .button {
   display: inline-flex;
@@ -401,29 +207,6 @@ a {
   background: rgba(29, 47, 84, 0.95);
 }
 
-
-/* =========================================================
-   HERO BOTTOM DETAIL
-   ========================================================= */
-
-.hero-bottom-line {
-  position: absolute;
-
-  left: 28px;
-  right: 28px;
-  bottom: 0;
-
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(126, 153, 207, 0.22),
-    transparent
-  );
-}
-
-
 /* =========================================================
    PLACEHOLDER SECTIONS
    ========================================================= */
@@ -455,7 +238,6 @@ a {
      pero si se usa como texto real hay que subir a ~0.7 igual que arriba. */
   color: rgba(160, 177, 214, 0.25);
 }
-
 
 /* =========================================================
    FOOTER
@@ -502,9 +284,8 @@ a {
   color: #ffffff;
 }
 
-
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE (chrome compartido: shell, header, footer, button)
    ========================================================= */
 
 @media (max-width: 760px) {
@@ -524,44 +305,8 @@ a {
     display: none;
   }
 
-  .hero {
-    min-height: 600px;
-  }
-
-  .hero-content {
-    margin-left: 20px;
-    margin-right: 20px;
-
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-
-  .hero h1 {
-    font-size: clamp(40px, 12vw, 58px);
-  }
-
-  .hero-description {
-    font-size: 12px;
-  }
-
-  .hero-actions {
-    align-items: stretch;
-    flex-direction: column;
-
-    width: fit-content;
-  }
-
   .button {
     min-height: 38px;
-  }
-
-  .hero-system {
-    right: 20px;
-  }
-
-  .hero-bottom-line {
-    left: 20px;
-    right: 20px;
   }
 
   .site-footer {
@@ -573,47 +318,5 @@ a {
 
   .footer-links {
     flex-wrap: wrap;
-  }
-}
-
-
-/* =========================================================
-   HERO ICOSAEDRO (decorativo)
-   ========================================================= */
-
-.hero-icosaedro-wrap {
-  position: absolute;
-
-  top: 50%;
-  right: 48px;
-
-  width: 340px;
-  height: 340px;
-
-  transform: translateY(-50%);
-
-  z-index: -1; /* detras del contenido, delante del grid/glow */
-
-  pointer-events: none; /* nunca bloquea clics en CTAs o nav */
-}
-
-.hero-icosaedro-wrap canvas {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-}
-
-@media (max-width: 1024px) {
-  .hero-icosaedro-wrap {
-    width: 260px;
-    height: 260px;
-    right: 24px;
-  }
-}
-
-@media (max-width: 760px) {
-  .hero-icosaedro-wrap {
-    display: none; /* el layout colapsa a una columna, no hay espacio real */
   }
 }

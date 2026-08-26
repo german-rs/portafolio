@@ -1,0 +1,51 @@
+---
+import "../../styles/Hero.css";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid"></div>
+
+    <div class="hero-glow"></div>
+
+    <!-- Icosaedro decorativo. Solo desktop, respeta
+         prefers-reduced-motion (ver hero-icosaedro.js).
+         aria-hidden porque es puramente ambiental, no aporta
+         información. -->
+    <div class="hero-icosaedro-wrap" aria-hidden="true">
+        <canvas id="hero-icosaedro"></canvas>
+    </div>
+
+    <div class="hero-system">SYS.INIT // V1.1</div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">
+            ADMINISTRACIÓN WEB · OPTIMIZACIÓN · ACCESIBILIDAD
+        </p>
+
+        <h1 id="hero-title">
+            Si tienes un sitio.
+            <span>Que siga funcionando es mi trabajo.</span>
+        </h1>
+
+        <p class="hero-description">
+            Administración y optimización de sitios WordPress y
+            otras plataformas en Chile.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#contact" class="button button-primary">
+                Solicita un diagnóstico
+            </a>
+
+            <a href="#services" class="button button-secondary">
+                Ver resultados
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-bottom-line"></div>
+</section>
+
+<script>
+    import "../../scripts/hero-icosaedro.js";
+</script>
