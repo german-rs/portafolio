@@ -59,6 +59,9 @@
 
 .services__intro h2 span {
   display: inline;
+   /* color: rgb(98, 191, 212); */
+   color: #9bb5ff; 
+  /* color: #67C6C0; */
 }
 
 .services__intro p {
@@ -128,6 +131,7 @@
     border-color 180ms ease;
 }
 
+
 .service-card:hover,
 .service-card:focus-within {
   background: rgb(255 255 255 / 0.025);
@@ -196,6 +200,29 @@
   padding: 0;
 
   list-style: none;
+}
+
+.service-card__tags li {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 28px;
+  padding: 0.35rem 0.7rem;
+
+  border: 1px solid rgb(103 198 192 / 0.30);
+  border-radius: 4px;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+
+  color: #8fd8d2;
+  background: rgb(103 198 192 / 0.045);
+
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    color 200ms ease;
 }
 
 /* =========================================================
