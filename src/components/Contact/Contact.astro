@@ -1,0 +1,139 @@
+---
+import "../../styles/Contact.css";
+
+const steps = [
+  {
+    title: "Escríbeme",
+    description:
+      "Con el link de tu sitio y la plataforma que usa: WordPress, Magento u otra.",
+  },
+  {
+    title: "Reviso",
+    description:
+      "El estado actual: rendimiento, seguridad y accesibilidad del sitio.",
+  },
+  {
+    title: "Te respondo",
+    description:
+      "Con un diagnóstico claro y los próximos pasos, sin tecnicismos innecesarios.",
+  },
+];
+
+const facts = [
+  { value: "24–48h", label: "Tiempo de respuesta" },
+  { value: "Chile", label: "Remoto, cualquier ciudad" },
+];
+
+const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
+---
+
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="contact__grid" aria-hidden="true"></div>
+
+  <div class="contact__container">
+    <header class="contact__header">
+      <div class="contact__meta">
+        <span class="contact__eyebrow">05 CONTACT</span>
+
+        <span class="contact__sidebar-label" aria-hidden="true">
+          CONTACT // GET IN TOUCH
+        </span>
+      </div>
+
+      <div class="contact__intro">
+        <h2 id="contact-title">
+          Hablemos de tu sitio.
+          <span> Empecemos con un diagnóstico.</span>
+        </h2>
+
+        <p>
+          Cuéntame en qué plataforma está tu sitio y qué necesita. Te
+          respondo directamente — sin formularios eternos ni intermediarios.
+        </p>
+      </div>
+    </header>
+
+    <div class="contact__body">
+      <div class="contact__direct">
+        <span class="contact__label">ESCRÍBEME DIRECTAMENTE</span>
+
+        <a href="mailto:german.riveross@gmail.com" class="contact__email">
+          german.riveross@gmail.com
+        </a>
+
+        <p class="contact__direct-note">
+          Te responderé personalmente
+        </p>
+
+        <a
+          href="mailto:german.riveross@gmail.com"
+          class="button button-primary"
+        >
+          Escríbeme ahora
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <ol class="contact__steps" aria-label="Qué pasa después de escribir">
+          {
+            steps.map((step, i) => (
+              <li>
+                <span class="contact__step-number">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div class="contact__step-body">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <aside class="contact__panel" aria-label="Información de contacto">
+        <div class="contact__status">
+          <span class="contact__status-dot" aria-hidden="true"></span>
+          DISPONIBLE PARA PROYECTOS
+        </div>
+
+        <div class="contact__facts">
+          {
+            facts.map((fact) => (
+              <div class="contact__fact">
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="contact__panel-block">
+          <span class="contact__panel-label">TRABAJO CON</span>
+
+          <ul class="contact__tags" aria-label="Plataformas con las que trabajo">
+            {platforms.map((platform) => (
+              <li>{platform}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="contact__panel-block contact__social">
+          <a
+            href="https://www.instagram.com/germanriveros_cl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+
+          <a href="https://github.com/german-rs" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="contact__bottom-line" aria-hidden="true"></div>
+</section>
