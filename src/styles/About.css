@@ -443,8 +443,9 @@
   }
 
   .about__portrait-wrap {
-    justify-content: flex-start;
+    justify-content: center;
 
+    margin-top: 3rem;
     margin-bottom: 3rem;
   }
 
