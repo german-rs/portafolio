@@ -356,7 +356,13 @@
 
     padding-top: 2.5rem;
   }
+
+  .services__sidebar-label {
+    writing-mode: initial;
+    transform: none;
+  }
 }
+
 
 /* =========================================================
    REDUCED MOTION

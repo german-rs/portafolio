@@ -1,0 +1,476 @@
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about {
+  position: relative;
+  width: 100%;
+  padding: clamp(5rem, 8vw, 7rem) 0;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.about__container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+/* =========================================================
+   AMBIENT GRID (mismo recurso que .hero-grid)
+   ========================================================= */
+
+.about__grid {
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(112, 143, 204, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112, 143, 204, 0.06) 1px, transparent 1px);
+
+  background-size: 26px 26px;
+
+  mask-image: radial-gradient(
+    ellipse 900px 500px at 78% 45%,
+    rgba(0, 0, 0, 1),
+    transparent 70%
+  );
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.about__header {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+.about__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.about__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+.about__sidebar-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  width: fit-content;
+
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+.about__intro {
+  max-width: 820px;
+}
+
+.about__intro h2 {
+  max-width: 760px;
+
+  margin: 0;
+
+  font-size: clamp(3rem, 5.4vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+
+  text-wrap: balance;
+}
+
+.about__intro h2 span {
+  display: inline;
+  color: #9bb5ff;
+}
+
+.about__intro p {
+  max-width: 540px;
+
+  margin: 1.75rem 0 0;
+
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.6;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+/* =========================================================
+   BODY: narrativa + retrato
+   ========================================================= */
+
+.about__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: clamp(3rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.about__narrative p {
+  max-width: 560px;
+
+  margin: 0 0 1.25rem;
+
+  font-size: 1rem;
+  line-height: 1.7;
+
+  color: #c8d0e2;
+}
+
+/* =========================================================
+   PRINCIPIO (mantra, no un proceso: sin numeración)
+   ========================================================= */
+
+.about__principle {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 2rem 0 2.5rem;
+  padding: 1.25rem 0;
+
+  list-style: none;
+
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.about__principle li {
+  padding: 0 1.25rem;
+
+  border-left: 1px solid rgb(255 255 255 / 0.14);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  color: #9bb5ff;
+}
+
+.about__principle li:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+/* =========================================================
+   FACTS
+   ========================================================= */
+
+.about__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 2.5rem;
+
+  margin-bottom: 2.5rem;
+}
+
+.about__fact strong {
+  display: block;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.about__fact span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+/* =========================================================
+   PLATAFORMAS (tags)
+   ========================================================= */
+
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.about__tags li {
+  padding: 0.35rem 0.75rem;
+
+  border: 1px solid rgb(155 181 255 / 0.3);
+  border-radius: 4px;
+
+  background: rgb(155 181 255 / 0.05);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  color: #9bb5ff;
+}
+
+/* =========================================================
+   RETRATO
+   ========================================================= */
+
+.about__portrait-wrap {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+
+.about__glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(40, 104, 237, 0.28) 0%,
+    rgba(103, 198, 192, 0.12) 45%,
+    transparent 72%
+  );
+
+  filter: blur(24px);
+
+  pointer-events: none;
+}
+
+.about__portrait {
+  position: relative;
+
+  width: 300px;
+  height: 340px;
+
+  overflow: hidden;
+
+  border: 1px solid rgb(155 181 255 / 0.25);
+  border-radius: 16px;
+
+  background: #0b1430;
+}
+
+.about__portrait img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.about__badge {
+  position: absolute;
+
+  left: -18px;
+  bottom: -22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 0.75rem 1rem;
+
+  background: rgba(7, 16, 34, 0.92);
+  border: 1px solid rgb(155 181 255 / 0.3);
+  border-radius: 10px;
+
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.about__badge-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.about__badge-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #67c6c0;
+  box-shadow: 0 0 6px #67c6c0;
+}
+
+.about__badge-sub {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+/* =========================================================
+   FOOTER / CTA
+   ========================================================= */
+
+.about__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.about__footer p {
+  margin: 0;
+
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  line-height: 1.3;
+}
+
+.about__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-height: 44px;
+
+  padding: 0 0 0.35rem;
+
+  border-bottom: 1px solid currentColor;
+
+  color: #9bb5ff;
+  text-decoration: none;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  transition: gap 180ms ease;
+}
+
+.about__footer a:hover {
+  gap: 0.8rem;
+}
+
+.about__footer a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .about {
+    padding: 4.5rem 0;
+  }
+
+  .about__container {
+    width: min(100% - 2rem, 680px);
+  }
+
+  .about__header {
+    display: block;
+
+    margin-bottom: 3rem;
+  }
+
+  .about__eyebrow {
+    display: block;
+    margin-bottom: 1.75rem;
+  }
+
+  .about__sidebar-label {
+    display: none;
+  }
+
+  .about__intro h2 {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+    line-height: 0.96;
+  }
+
+  .about__intro h2 span {
+    display: block;
+  }
+
+  .about__body {
+    display: block;
+  }
+
+  .about__portrait-wrap {
+    justify-content: flex-start;
+
+    margin-bottom: 3rem;
+  }
+
+  .about__portrait {
+    width: min(100%, 300px);
+  }
+
+  .about__badge {
+    left: 12px;
+    bottom: -20px;
+  }
+
+  .about__footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 1.25rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about__footer a {
+    transition: none;
+  }
+}

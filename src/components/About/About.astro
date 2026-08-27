@@ -1,0 +1,115 @@
+---
+import "../../styles/About.css";
+
+const principles = [
+  "Construir con propósito",
+  "Aprender continuamente",
+  "Compartir conocimiento",
+];
+
+const facts = [
+  { value: "LSCh", label: "Atención accesible" },
+  { value: "WCAG AA", label: "Estándar de accesibilidad" },
+  { value: "Chile", label: "Remoto" },
+];
+
+const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
+---
+
+<section id="about" class="about" aria-labelledby="about-title">
+  <div class="about__grid" aria-hidden="true"></div>
+
+  <div class="about__container">
+    <header class="about__header">
+      <div class="about__meta">
+        <span class="about__eyebrow">04 ABOUT</span>
+
+        <span class="about__sidebar-label" aria-hidden="true">
+          ABOUT // CONTINUIDAD
+        </span>
+      </div>
+
+      <div class="about__intro">
+        <h2 id="about-title">
+          El lanzamiento es el comienzo.
+          <span> La continuidad es mi trabajo.</span>
+        </h2>
+
+        <p>
+          Germán Riveros — administración, optimización y accesibilidad
+          para sitios que ya están en producción.
+        </p>
+      </div>
+    </header>
+
+    <div class="about__body">
+      <div class="about__narrative">
+        <p>
+          Trabajo con personas y pymes en Chile que ya tienen un sitio en
+          producción y necesitan que siga funcionando: actualizado,
+          seguro, rápido y accesible mientras el negocio sigue creciendo.
+        </p>
+
+        <p>
+          Cada intervención suma rendimiento medible y accesibilidad
+          real — incluyendo atención en Lengua de Señas Chilena (LSCh)
+          para quienes la necesitan.
+        </p>
+
+        <ul class="about__principle" aria-label="Principio de trabajo">
+          {principles.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+
+        <div class="about__facts">
+          {facts.map((fact) => (
+            <div class="about__fact">
+              <strong>{fact.value}</strong>
+              <span>{fact.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <ul class="about__tags" aria-label="Plataformas con las que trabajo">
+          {platforms.map((platform) => (
+            <li>{platform}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="about__portrait-wrap">
+        <div class="about__glow" aria-hidden="true"></div>
+
+        <div class="about__portrait">
+          <img
+            src="https://placehold.co/600x680/0b1430/9bb5ff?text=FOTO"
+            alt="Germán Riveros"
+            width="600"
+            height="680"
+            loading="lazy"
+          />
+          <!-- Reemplazar por la foto real, ej: src="/images/german-riveros.jpg" -->
+        </div>
+
+        <div class="about__badge">
+          <div class="about__badge-row">
+            <span class="about__badge-dot" aria-hidden="true"></span>
+            DISPONIBLE PARA PROYECTOS
+          </div>
+
+          <div class="about__badge-sub">LSCh · ATENCIÓN ACCESIBLE</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="about__footer">
+      <p>¿Quieres que tu sitio tenga esta misma continuidad?</p>
+
+      <a href="#contact">
+        Conversemos
+        <span aria-hidden="true">↗</span>
+      </a>
+    </footer>
+  </div>
+</section>
