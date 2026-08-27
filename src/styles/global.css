@@ -2,6 +2,7 @@
 @import "./Work.css";
 @import "./Services.css";
 @import "./About.css";
+@import "./Contact.css";
 
 /* =========================================================
    RESET
@@ -245,15 +246,15 @@ a {
    ========================================================= */
 
 .site-footer {
-  min-height: 50px;
+  min-height: 3.125rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: 20px;
+  gap: 1.25rem;
 
-  padding: 0 28px;
+  padding: 0 1.75rem;
 
   background: #050c1b;
 
@@ -263,8 +264,7 @@ a {
     "Liberation Mono",
     monospace;
 
-  font-size: 8px;
-
+  font-size: 0.75rem;
   color: #8993aa;
 }
 
@@ -274,7 +274,7 @@ a {
 
 .footer-links {
   display: flex;
-  gap: 18px;
+  gap: 1.125rem;
 }
 
 .footer-links a {
