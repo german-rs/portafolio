@@ -1,5 +1,4 @@
 ---
-
 const projects = [
     {
         number: "01",
@@ -40,7 +39,6 @@ const projects = [
 
 <section id="work" class="work-section" aria-labelledby="work-title">
     <div class="work-container">
-
         <header class="work-header">
             <div class="work-header-meta">
                 <span class="work-index">02</span>
@@ -79,6 +77,10 @@ const projects = [
                                 </span>
 
                                 <span class="work-status">
+                                    <span
+                                        class={`work-status-dot work-status-dot--${project.status.toLowerCase()}`}
+                                        aria-hidden="true"
+                                    />
                                     STATUS: {project.status}
                                 </span>
                             </div>
@@ -95,14 +97,13 @@ const projects = [
                                         {project.description}
                                     </p>
 
-                                    <div class="work-tags" aria-label="Tecnologías y capacidades">
-                                        {
-                                            project.tags.map((tag) => (
-                                                <span class="work-tag">
-                                                    {tag}
-                                                </span>
-                                            ))
-                                        }
+                                    <div
+                                        class="work-tags"
+                                        aria-label="Tecnologías y capacidades"
+                                    >
+                                        {project.tags.map((tag) => (
+                                            <span class="work-tag">{tag}</span>
+                                        ))}
                                     </div>
                                 </div>
 
@@ -139,6 +140,5 @@ const projects = [
             <span>03 PROJECTS</span>
             <span>MORE IN PROGRESS</span>
         </div>
-
     </div>
 </section>

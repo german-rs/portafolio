@@ -442,6 +442,18 @@
     display: block;
   }
 
+  .about__principle {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.about__principle li {
+  padding: 0;
+  border-left: none;
+}
+
   .about__portrait-wrap {
     justify-content: center;
 

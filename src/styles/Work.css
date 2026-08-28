@@ -207,9 +207,30 @@
 }
 
 .work-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
   text-transform: uppercase;
 
   color: #aeb9d2;
+}
+
+.work-status-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.work-status-dot--active {
+  background: #67c6c0;
+  box-shadow: 0 0 6px #67c6c0;
+}
+
+.work-status-dot--experimental {
+  background: var(--color-text-muted, #8b93a7);
 }
 
 

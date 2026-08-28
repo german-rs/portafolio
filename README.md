@@ -13,6 +13,10 @@ premise.
 
 **https://germanriveros.cl**
 
+## Screenshot
+
+![Hero section of germanriveros.cl](docs/screenshots/hero-german-riveros.jpg)
+
 ## Tech stack
 
 * **Astro 7** — static output, zero client-side JS by default
@@ -68,26 +72,43 @@ next step is code-splitting so it's only loaded when the hero is in view.
 ```text
 src/
 ├── components/
-│   └── Work/
-│       ├── Work.astro
-│       └── WorkCard.astro
+│   ├── Hero/
+│   │   └── Hero.astro
+│   ├── Work/
+│   │   ├── Work.astro
+│   │   └── WorkCard.astro                 # currently unused
+│   ├── Services/
+│   │   ├── Services.astro
+│   │   └── ServiceCard.astro
+│   ├── About/
+│   │   └── About.astro
+│   └── Contact/
+│       └── Contact.astro
 ├── pages/
 │   └── index.astro
 ├── scripts/
 │   └── hero-icosaedro.js
 └── styles/
     ├── global.css
-    └── Work.css
+    ├── Hero.css
+    ├── Work.css
+    ├── Services.css
+    ├── About.css
+    └── Contact.css
 
 public/
 ├── favicon.svg
-└── favicon.ico
+├── favicon.ico
+└── images/
+    └── germanriveros.cl.jpg
 
 docs/
 ├── BRAND.md
 ├── BRAND_ES.md
 ├── ARCHITECTURE.md                        # currently empty
-└── WEB_STYLE_GUIDE_germanriveros_v1.0.md
+├── WEB_STYLE_GUIDE_germanriveros_v1.0.md
+└── screenshots/
+    └── hero-german-riveros.jpg
 
 .github/
 └── workflows/
@@ -139,11 +160,14 @@ push to `main` triggers a new build and deploy.
 ## Status / honest roadmap
 
 * [x] Hero section — copy, contrast-checked palette, 3D icosahedron
-* [x] Work section — project list, accessible card pattern
+* [x] Work section — project list, accessible card pattern, live-status indicator
 * [x] Favicon / logo (vector icosahedron, light + dark background safe)
-* [ ] Services section — currently a placeholder
-* [ ] About section — currently a placeholder
-* [ ] Contact section — currently a placeholder
+* [x] Services section — administration, optimization, technical SEO, and
+      accessibility offerings
+* [ ] About section — built, but still using a placeholder image
+      (`src/components/About/About.astro`); pending the final portrait photo
+* [x] Contact section — availability status, response-time facts, contact
+      links
 * [ ] `docs/ARCHITECTURE.md` — file exists, still empty
 * [ ] Code-splitting for the Three.js bundle (500kB build warning)
 * [ ] Blog
