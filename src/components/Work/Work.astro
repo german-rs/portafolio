@@ -1,5 +1,7 @@
 ---
-const projects = [
+import WorkCard, { type Props as Project } from "./WorkCard.astro";
+
+const projects: Project[] = [
     {
         number: "01",
         title: "GERMANRIVEROS.CL",
@@ -62,75 +64,7 @@ const projects = [
         <div class="work-list">
             {
                 projects.map((project) => (
-                    <article class="work-card">
-                        <a
-                            href={project.href}
-                            class="work-card-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Ver proyecto ${project.title} (abre en pestaña nueva)`}
-                        >
-                            <div class="work-card-top">
-                                <span class="work-number">
-                                    {project.number}
-                                </span>
-
-                                <span class="work-status">
-                                    <span
-                                        class={`work-status-dot work-status-dot--${project.status.toLowerCase()}`}
-                                        aria-hidden="true"
-                                    />
-                                    STATUS: {project.status}
-                                </span>
-                            </div>
-
-                            <div class="work-card-content">
-                                <div class="work-card-info">
-                                    <p class="work-category">
-                                        {project.category}
-                                    </p>
-
-                                    <h3>{project.title}</h3>
-
-                                    <p class="work-description">
-                                        {project.description}
-                                    </p>
-
-                                    <div
-                                        class="work-tags"
-                                        aria-label="Tecnologías y capacidades"
-                                    >
-                                        {project.tags.map((tag) => (
-                                            <span class="work-tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div class="work-preview">
-                                    <div class="work-preview-overlay">
-                                        <span>VIEW PROJECT</span>
-                                        <span class="work-arrow">↗</span>
-                                    </div>
-
-                                    <img
-                                        src={project.image}
-                                        alt=""
-                                        loading="lazy"
-                                        width="1200"
-                                        height="800"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="work-card-bottom">
-                                <span>PROJECT / {project.number}</span>
-
-                                <span class="work-view">
-                                    VIEW PROJECT <span>→</span>
-                                </span>
-                            </div>
-                        </a>
-                    </article>
+                    <WorkCard {...project} />
                 ))
             }
         </div>

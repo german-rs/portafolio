@@ -76,7 +76,7 @@ src/
 │   │   └── Hero.astro
 │   ├── Work/
 │   │   ├── Work.astro
-│   │   └── WorkCard.astro                 # currently unused
+│   │   └── WorkCard.astro   
 │   ├── Services/
 │   │   ├── Services.astro
 │   │   └── ServiceCard.astro
@@ -161,11 +161,10 @@ push to `main` triggers a new build and deploy.
 
 * [x] Hero section — copy, contrast-checked palette, 3D icosahedron
 * [x] Work section — project list, accessible card pattern, live-status indicator
-* [x] Favicon / logo (vector icosahedron, light + dark background safe)
+* [x] Favicon / logo 
 * [x] Services section — administration, optimization, technical SEO, and
       accessibility offerings
-* [ ] About section — built, but still using a placeholder image
-      (`src/components/About/About.astro`); pending the final portrait photo
+* [X] About section — built
 * [x] Contact section — availability status, response-time facts, contact
       links
 * [ ] `docs/ARCHITECTURE.md` — file exists, still empty

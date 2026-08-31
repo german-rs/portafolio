@@ -1,0 +1,80 @@
+---
+export interface Props {
+    number: string;
+    title: string;
+    category: string;
+    description: string;
+    tags: string[];
+    status: "ACTIVE" | "EXPERIMENTAL";
+    image: string;
+    href: string;
+}
+
+const { number, title, category, description, tags, status, image, href } =
+    Astro.props;
+---
+
+<article class="work-card">
+    <a
+        href={href}
+        class="work-card-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Ver proyecto ${title} (abre en pestaña nueva)`}
+    >
+        <div class="work-card-top">
+            <span class="work-number">
+                {number}
+            </span>
+
+            <span class="work-status">
+                <span
+                    class={`work-status-dot work-status-dot--${status.toLowerCase()}`}
+                    aria-hidden="true"
+                />
+                STATUS: {status}
+            </span>
+        </div>
+
+        <div class="work-card-content">
+            <div class="work-card-info">
+                <p class="work-category">
+                    {category}
+                </p>
+
+                <h3>{title}</h3>
+
+                <p class="work-description">
+                    {description}
+                </p>
+
+                <div class="work-tags" aria-label="Tecnologías y capacidades">
+                    {tags.map((tag) => <span class="work-tag">{tag}</span>)}
+                </div>
+            </div>
+
+            <div class="work-preview">
+                <div class="work-preview-overlay">
+                    <span>VIEW PROJECT</span>
+                    <span class="work-arrow">↗</span>
+                </div>
+
+                <img
+                    src={image}
+                    alt=""
+                    loading="lazy"
+                    width="1200"
+                    height="800"
+                />
+            </div>
+        </div>
+
+        <div class="work-card-bottom">
+            <span>PROJECT / {number}</span>
+
+            <span class="work-view">
+                VIEW PROJECT <span>→</span>
+            </span>
+        </div>
+    </a>
+</article>
