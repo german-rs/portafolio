@@ -1,0 +1,26 @@
+# Germán Riveros — Administración y Mantención Web
+
+> Servicio profesional de administración, mantención, optimización y accesibilidad para sitios web que ya existen (WordPress, Magento, Joomla, PrestaShop, Moodle), con foco en Chile e inclusión mediante Lengua de Señas Chilena (LSCh).
+
+germanriveros.cl no es un servicio de desarrollo web desde cero: la premisa es que quien visita ya tiene un sitio en producción y necesita que siga funcionando — actualizado, seguro, rápido y utilizable por la mayor cantidad de personas posible. La filosofía del proyecto es "Technical Humanist": la tecnología es un medio, el objetivo es un sitio que siga sirviendo a las personas que realmente lo usan.
+
+## Servicios
+
+- [Administración web](https://germanriveros.cl/#services): actualizaciones, seguridad y soporte continuo para mantener el sitio operativo y bajo control.
+- [Optimización](https://germanriveros.cl/#services): mejoras medibles de rendimiento y Core Web Vitals.
+- [SEO técnico](https://germanriveros.cl/#services): meta tags, sitemap y datos estructurados para que los buscadores entiendan mejor el sitio.
+- [Accesibilidad](https://germanriveros.cl/#services): cumplimiento WCAG, navegación por teclado, contraste y atención en Lengua de Señas Chilena (LSCh).
+
+## Plataformas soportadas
+
+WordPress, Magento, Joomla, PrestaShop, Moodle.
+
+## Páginas
+
+- [Trabajo realizado](https://germanriveros.cl/#work): casos y proyectos.
+- [Sobre Germán](https://germanriveros.cl/#about): trayectoria y enfoque.
+- [Contacto](https://germanriveros.cl/#contact): correo directo y proceso de tres pasos para iniciar un proyecto.
+
+## Optional
+
+- [Código fuente de este sitio](https://github.com/german-rs/portafolio): repositorio del portafolio, construido con Astro.
