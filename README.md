@@ -29,6 +29,8 @@ premise.
   framework for one decorative element on a site that also promotes
   performance as a service. See "The hero's 3D element" below.
 * **GitHub Actions → GitHub Pages**, custom domain via Cloudflare
+* **`@astrojs/partytown`** and **`@astrojs/sitemap`** — see "Analytics,
+  tracking & SEO" below
 
 ## Design principles
 
@@ -48,6 +50,46 @@ they're enforced in the code, with the reasoning documented inline:
 
 Brand voice, tone, and visual language are documented in `docs/BRAND.md` /
 `docs/BRAND_ES.md` and `docs/WEB_STYLE_GUIDE_germanriveros_v1.0.md`.
+
+## Analytics, tracking & SEO
+
+Installed with the same performance discipline as the rest of the project —
+nothing here should cost main-thread time it doesn't have to:
+
+* **Google Tag Manager** — loaded via `@astrojs/partytown`, so the GTM loader
+  and any tag it fires run in a web worker instead of blocking the main
+  thread. The container snippet lives in `src/pages/index.astro`
+  (`<script type="text/partytown">` in `<head>`, plus the `<noscript>`
+  fallback right after `<body>`, which stays outside Partytown on purpose
+  since it has to work without JS).
+* **Google Analytics 4** — not a separate hardcoded `gtag.js` script. It's
+  configured as a GA4 Configuration tag *inside* the GTM container (trigger:
+  All Pages), so future tags (Google Ads, LinkedIn Insight Tag, etc.) can be
+  added from the GTM UI without another deploy.
+* **Google Search Console** — verified at the domain level via a DNS TXT
+  record on Cloudflare, which covers http/https and www/non-www in a single
+  property instead of verifying each variant separately.
+* **Sitemap** — generated at build time by `@astrojs/sitemap` as
+  `sitemap-index.xml` → `sitemap-0.xml`, referenced from `public/robots.txt`.
+* **`llms.txt`** — a plain-Markdown summary of the site's services and
+  sections for AI agents, following Jeremy Howard's proposed convention.
+  Honest caveat: as of mid-2026, Google Search Central explicitly excludes it
+  from Search ranking and AI Overviews. It's here because some AI products
+  (Claude, coding assistants) do use it during retrieval — a forward-looking
+  addition, not an SEO tactic.
+
+Relevant `astro.config.mjs` excerpt:
+
+```js
+integrations: [
+  partytown({
+    config: {
+      forward: ["dataLayer.push", "gtag"],
+    },
+  }),
+  sitemap(),
+],
+```
 
 ## The hero's 3D element
 
@@ -99,13 +141,15 @@ src/
 public/
 ├── favicon.svg
 ├── favicon.ico
+├── robots.txt
+├── llms.txt
 └── images/
     └── germanriveros.cl.jpg
 
 docs/
 ├── BRAND.md
 ├── BRAND_ES.md
-├── ARCHITECTURE.md                        # currently empty
+├── ARCHITECTURE.md                        
 ├── WEB_STYLE_GUIDE_germanriveros_v1.0.md
 └── screenshots/
     └── hero-german-riveros.jpg
@@ -167,7 +211,13 @@ push to `main` triggers a new build and deploy.
 * [X] About section — built
 * [x] Contact section — availability status, response-time facts, contact
       links
-* [ ] `docs/ARCHITECTURE.md` — file exists, still empty
+* [x] Google Tag Manager — installed via Partytown, zero main-thread cost
+* [x] Google Analytics 4 — configured as a tag inside GTM
+* [x] Google Search Console — verified via DNS (Cloudflare), sitemap submitted
+* [x] Sitemap (`@astrojs/sitemap`) and `robots.txt`
+* [x] `llms.txt`
+* [x] `docs/ARCHITECTURE.md`
+* [ ] Custom GA4 conversion events (contact CTA click, per-platform tag clicks)
 * [ ] Code-splitting for the Three.js bundle (500kB build warning)
 * [ ] Blog
 
