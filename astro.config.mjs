@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import partytown from "@astrojs/partytown";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://germanriveros.cl",
@@ -9,5 +10,6 @@ export default defineConfig({
         forward: ["dataLayer.push", "gtag"],
       },
     }),
+    sitemap(),
   ],
 });

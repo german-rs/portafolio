@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://germanriveros.cl/sitemap-index.xml
