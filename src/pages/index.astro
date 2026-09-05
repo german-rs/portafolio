@@ -9,33 +9,99 @@ import Contact from "../components/Contact/Contact.astro";
 
 <!doctype html>
 <html lang="es">
-    <head>
-        
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Germán Riveros — Administración y Mantención Web</title>
+    <title>Germán Riveros — Administración y Mantención Web</title>
 
-        <meta
-            name="description"
-            content="Administración y mantención de sitios WordPress y otras plataformas en Chile. Incluye atención en Lengua de Señas Chilena."
-        />
+    <meta
+        name="description"
+        content="Administración y mantención de sitios WordPress y otras plataformas en Chile. Incluye atención en Lengua de Señas Chilena."
+    />
 
-        <!-- Google Tag Manager (vía Partytown, corre en un web worker) -->
-        <script type="text/partytown">
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-M3PZ4MKW");
-        </script>
-        <!-- End Google Tag Manager -->
-    </head>
+    <!-- Open Graph: cómo se ve el link al compartirlo -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://germanriveros.cl/" />
+    <meta
+        property="og:title"
+        content="Germán Riveros — Administración y Mantención Web"
+    />
+    <meta
+        property="og:description"
+        content="Si tienes un sitio, que siga funcionando es mi trabajo. WordPress y otras plataformas en Chile, con atención en LSCh."
+    />
+    <meta
+        property="og:image"
+        content="https://germanriveros.cl/images/og-card.jpg"
+    />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="germanriveros.cl" />
+
+    <!-- Twitter/X (usa og:* como fallback, solo defines el formato) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+        name="twitter:title"
+        content="Germán Riveros — Administración y Mantención Web"
+    />
+    <meta
+        name="twitter:description"
+        content="Si tienes un sitio, que siga funcionando es mi trabajo. WordPress y otras plataformas en Chile."
+    />
+    <meta
+        name="twitter:image"
+        content="https://germanriveros.cl/images/og-card.jpg"
+    />
+
+    <!-- JSON-LD: quién eres, para buscadores y bots -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Germán Riveros — Administración y Mantención Web",
+            "url": "https://germanriveros.cl/",
+            "image": "https://germanriveros.cl/images/og-card.jpg",
+            "description": "Administración, mantención, optimización, SEO técnico y accesibilidad para sitios web existentes (WordPress, Magento, Joomla, PrestaShop, Moodle), con atención en Lengua de Señas Chilena.",
+            "areaServed": {
+                "@type": "Country",
+                "name": "Chile"
+            },
+            "knowsLanguage": ["es-CL", "LSCh"],
+            "email": "mailto:german.riveross@gmail.com",
+            "sameAs": [
+                "https://github.com/german-rs",
+                "https://www.instagram.com/germanriveros_cl"
+            ],
+            "makesOffer": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Administración web" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Optimización y Core Web Vitals" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO técnico" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accesibilidad WCAG" } }
+            ],
+            "founder": {
+                "@type": "Person",
+                "name": "Germán Riveros",
+                "jobTitle": "Web Administrator & Accessibility Consultant",
+                "url": "https://germanriveros.cl/#about"
+            }
+        }
+    </script>
+
+    <!-- Google Tag Manager (vía Partytown, corre en un web worker) -->
+    <script type="text/partytown">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-M3PZ4MKW");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
 
     <body>
         <!-- Google Tag Manager (noscript) -->
