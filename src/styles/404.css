@@ -1,0 +1,410 @@
+/* =========================================================
+   404 ERROR PAGE
+   ========================================================= */
+
+.error-page {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  padding: 4rem 1.5rem;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(36, 126, 147, 0.08),
+      transparent 42%
+    ),
+    #050b18;
+
+  color: #e7ecff;
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.error-page__grid {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+
+  background-image:
+    linear-gradient(
+      rgba(155, 181, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(155, 181, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 3rem 3rem;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.error-page__glow {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: min(36rem, 80vw);
+  aspect-ratio: 1;
+
+  transform: translate(-50%, -50%);
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background: rgba(40, 104, 237, 0.08);
+
+  filter: blur(5rem);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.error-page__content {
+  width: min(100%, 64rem);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3rem;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.error-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding-bottom: 1.25rem;
+
+  border-bottom: 1px solid rgba(155, 181, 255, 0.14);
+}
+
+.error-page__label {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.08em;
+
+  color: #9bb5ff;
+}
+
+.error-page__code {
+  margin-top: -0.75rem;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: clamp(4rem, 14vw, 10rem);
+  font-weight: 700;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+
+  color: rgba(155, 181, 255, 0.1);
+
+  user-select: none;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.error-page__message {
+  width: min(100%, 42rem);
+}
+
+.error-page__message h1 {
+  margin: 0;
+
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+
+  color: #e7ecff;
+}
+
+.error-page__message p {
+  max-width: 34rem;
+
+  margin: 1.25rem 0 0;
+
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+
+  color: #c7d0e6;
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.error-page__button {
+  min-height: 2.75rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-top: 2rem;
+  padding: 0.75rem 1.125rem;
+
+  border: 1px solid rgba(155, 181, 255, 0.28);
+  border-radius: 0.5rem;
+
+  background: rgba(40, 104, 237, 0.12);
+
+  color: #e7ecff;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.8125rem;
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.02em;
+
+  text-decoration: none;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.error-page__button:hover {
+  background: rgba(40, 104, 237, 0.22);
+
+  border-color: rgba(155, 181, 255, 0.5);
+
+  transform: translateY(-0.125rem);
+}
+
+.error-page__button:focus-visible {
+  outline: 0.125rem solid #9bb5ff;
+  outline-offset: 0.25rem;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.error-page__status {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+
+  padding-top: 1.5rem;
+
+  border-top: 1px solid rgba(155, 181, 255, 0.14);
+}
+
+.error-page__status-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  min-width: 0;
+}
+
+.error-page__status-label {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.6875rem;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.1em;
+
+  color: rgba(199, 208, 230, 0.55);
+}
+
+.error-page__status-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-width: 0;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.04em;
+
+  color: #c7d0e6;
+}
+
+.error-page__status-dot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: #2868ed;
+
+  box-shadow:
+    0 0 0.5rem rgba(40, 104, 237, 0.8);
+}
+
+.error-page__request {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: rgba(199, 208, 230, 0.72);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 48rem) {
+  .error-page {
+    align-items: flex-start;
+
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+
+  .error-page__content {
+    gap: 2.5rem;
+  }
+
+  .error-page__header {
+    align-items: center;
+  }
+
+  .error-page__code {
+    margin-top: 0;
+
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+
+  .error-page__message h1 {
+    max-width: 20rem;
+  }
+
+  .error-page__status {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .error-page {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .error-page__header {
+    gap: 1rem;
+  }
+
+  .error-page__label {
+    max-width: 8rem;
+  }
+
+  .error-page__code {
+    font-size: 3.5rem;
+  }
+
+  .error-page__message h1 {
+    font-size: 2rem;
+  }
+
+  .error-page__button {
+    width: 100%;
+
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .error-page__button {
+    transition: none;
+  }
+
+  .error-page__button:hover {
+    transform: none;
+  }
+}
+

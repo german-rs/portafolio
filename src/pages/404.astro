@@ -1,0 +1,70 @@
+---
+import "../styles/404.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="La página que buscas no existe." />
+    <meta name="robots" content="noindex" />
+    <title>404 — Recurso no encontrado | Germán Riveros</title>
+  </head>
+
+  <body>
+    <main class="error-page">
+      <div class="error-page__grid" aria-hidden="true"></div>
+
+      <div class="error-page__glow" aria-hidden="true"></div>
+
+      <section class="error-page__content" aria-labelledby="error-title">
+        <div class="error-page__header">
+          <span class="error-page__label">
+            SYS.ERROR // HTTP 404
+          </span>
+
+          <span class="error-page__code" aria-hidden="true">
+            404
+          </span>
+        </div>
+
+        <div class="error-page__message">
+          <h1 id="error-title">
+            Este recurso no existe.
+          </h1>
+
+          <p>
+            La dirección que buscas no está disponible
+            o ya no existe en este sitio.
+          </p>
+
+          <a class="error-page__button" href="/">
+            <span>Volver al inicio</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="error-page__status">
+          <div class="error-page__status-item">
+            <span class="error-page__status-label">STATUS</span>
+
+            <span class="error-page__status-value">
+              <span class="error-page__status-dot" aria-hidden="true"></span>
+              SYSTEM ONLINE
+            </span>
+          </div>
+
+          <div class="error-page__status-item">
+            <span class="error-page__status-label">REQUEST</span>
+
+            <span class="error-page__status-value error-page__request">
+              {Astro.url.pathname}
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
