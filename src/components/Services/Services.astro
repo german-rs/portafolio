@@ -7,29 +7,37 @@ const services = [
     title: "Administración web",
     description: "Mantener tu sitio actualizado, operativo y bajo control.",
     tags: ["Actualizaciones", "Seguridad", "Soporte"],
+    accent: "blue" as const,
+    icon: "admin" as const,
   },
   {
     title: "Optimización",
     description:
       "Mejorar el rendimiento y la experiencia de uso de forma medible.",
     tags: ["Performance", "Core Web Vitals", "Velocidad"],
+    accent: "blue" as const,
+    icon: "optimize" as const,
   },
   {
     title: "SEO técnico",
-    description:
-      "Mejorar cómo los buscadores encuentran y entienden tu sitio.",
+    description: "Mejorar cómo los buscadores encuentran y entienden tu sitio.",
     tags: ["Meta tags", "Sitemap", "Datos estructurados"],
+    accent: "blue" as const,
+    icon: "seo" as const,
   },
   {
     title: "Accesibilidad",
-    description:
-      "Reducir barreras para que más personas puedan utilizar tu sitio.",
+    description: "Reducir barreras para que más personas puedan utilizar tu sitio.",
     tags: ["WCAG", "Teclado", "Contraste", "Inclusión"],
+    accent: "teal" as const,
+    icon: "accessibility" as const,
   },
 ];
 ---
 
 <section id="services" class="services" aria-labelledby="services-title">
+  <div class="services__grid-bg" aria-hidden="true"></div>
+
   <div class="services__container">
     <header class="services__header">
       <div class="services__meta">

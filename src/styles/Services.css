@@ -6,11 +6,37 @@
   position: relative;
   width: 100%;
   padding: clamp(4rem, 7vw, 6rem) 0;
+
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .services__container {
   width: min(100% - 2rem, 1200px);
   margin-inline: auto;
+}
+
+/* =========================================================
+   AMBIENT GRID (mismo recurso que .hero-grid / .about__grid)
+   ========================================================= */
+
+.services__grid-bg {
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(112, 143, 204, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112, 143, 204, 0.06) 1px, transparent 1px);
+
+  background-size: 26px 26px;
+
+  mask-image: radial-gradient(
+    ellipse 900px 500px at 15% 15%,
+    rgba(0, 0, 0, 1),
+    transparent 70%
+  );
 }
 
 /* =========================================================
@@ -30,6 +56,12 @@
   align-items: center;
   align-self: start;
   gap: 0.5rem;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
 
   font-size: 0.7rem;
   font-weight: 600;
@@ -59,9 +91,8 @@
 
 .services__intro h2 span {
   display: inline;
-   /* color: rgb(98, 191, 212); */
-   color: #9bb5ff; 
-  /* color: #67C6C0; */
+
+  color: #9bb5ff;
 }
 
 .services__intro p {
@@ -85,6 +116,12 @@
 .services__sidebar-label {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
 
   font-size: 0.65rem;
   font-weight: 600;
@@ -131,10 +168,26 @@
     border-color 180ms ease;
 }
 
-
 .service-card:hover,
 .service-card:focus-within {
   background: rgb(255 255 255 / 0.025);
+}
+
+/*
+   Acento por servicio. El teal queda reservado para Accesibilidad
+   (mismo tono que .work-status-dot--active y .about__badge-dot en
+   el resto del sitio); el resto de los servicios usa el azul ya
+   presente en la paleta (.work-category, focus ring).
+*/
+
+.service-card--teal {
+  --card-accent-rgb: 103 198 192;
+  --card-accent-text: #8fd8d2;
+}
+
+.service-card--blue {
+  --card-accent-rgb: 159 184 255;
+  --card-accent-text: #c3d3ff;
 }
 
 /* =========================================================
@@ -142,16 +195,42 @@
    ========================================================= */
 
 .service-card__header {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .service-card__number {
-  font-size: 0.7rem;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1;
 
-  color: var(--color-text-muted, #8b93a7);
+  color: var(--card-accent-text);
+}
+
+.service-card__icon {
+  display: flex;
+
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+
+  color: var(--card-accent-text);
+
+  transition: transform 220ms ease;
+}
+
+.service-card__icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 /* =========================================================
@@ -209,20 +288,45 @@
   min-height: 28px;
   padding: 0.35rem 0.7rem;
 
-  border: 1px solid rgb(103 198 192 / 0.30);
+  border: 1px solid rgb(var(--card-accent-rgb) / 0.3);
   border-radius: 4px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
 
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.06em;
 
-  color: #8fd8d2;
-  background: rgb(103 198 192 / 0.045);
+  color: var(--card-accent-text);
+  background: rgb(var(--card-accent-rgb) / 0.045);
 
   transition:
     border-color 200ms ease,
     background 200ms ease,
     color 200ms ease;
+}
+
+/*
+   Antes esta transición estaba declarada pero nunca se activaba
+   (no existía ningún selector que la disparara). Ahora, al pasar
+   el mouse o llegar por teclado a la card, los tags "responden":
+   mismo principio de paridad hover/focus que ya se usa en Work.
+*/
+
+.service-card:hover .service-card__tags li,
+.service-card:focus-within .service-card__tags li {
+  border-color: rgb(var(--card-accent-rgb) / 0.65);
+  background: rgb(var(--card-accent-rgb) / 0.12);
+  color: #ffffff;
+}
+
+.service-card:hover .service-card__icon,
+.service-card:focus-within .service-card__icon {
+  transform: translateY(-2px);
 }
 
 /* =========================================================
@@ -370,7 +474,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .service-card,
+  .service-card__tags li,
+  .service-card__icon,
   .services__footer a {
     transition: none;
+  }
+
+  .service-card:hover .service-card__icon,
+  .service-card:focus-within .service-card__icon {
+    transform: none;
   }
 }
