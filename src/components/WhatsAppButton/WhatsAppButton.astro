@@ -1,0 +1,28 @@
+---
+import "../../styles/WhatsAppButton.css";
+
+// TODO: reemplazar por el número real, formato wa.me (código país + número,
+// sin "+", espacios ni guiones). Ej: 56 9 1234 5678 -> "56912345678"
+const WHATSAPP_NUMBER = "56982960453";
+const WHATSAPP_MESSAGE =
+  "Hola Germán, vi tu sitio y quiero conversar sobre mi sitio web.";
+
+const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+---
+
+<a
+  href={whatsappHref}
+  class="whatsapp-button"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <img
+    src="/images/whatsapp-btn.webp"
+    alt=""
+    width="56"
+    height="56"
+    loading="lazy"
+    decoding="async"
+  />
+</a>

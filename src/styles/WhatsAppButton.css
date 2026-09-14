@@ -1,0 +1,69 @@
+/* =========================================================
+   WHATSAPP BUTTON (widget flotante, global — no es una sección)
+   ========================================================= */
+
+.whatsapp-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 56px cubre de sobra el mínimo de 44px de tap target (WCAG 2.5.5) */
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.whatsapp-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus-visible {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+}
+
+.whatsapp-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .whatsapp-button {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+/* =========================================================
+   MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-button {
+    transition: none;
+  }
+
+  .whatsapp-button:hover,
+  .whatsapp-button:focus-visible {
+    transform: none;
+  }
+}
