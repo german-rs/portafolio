@@ -275,10 +275,10 @@
 
   border-radius: 50%;
 
-  background: #2868ed;
+  background: #67c6c0;
 
   box-shadow:
-    0 0 0.5rem rgba(40, 104, 237, 0.8);
+    0 0 0.375rem #67c6c0;
 }
 
 .error-page__request {
