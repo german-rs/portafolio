@@ -6,11 +6,6 @@ import "../../styles/Hero.css";
     <div class="hero-grid"></div>
 
     <div class="hero-glow"></div>
-
-    <!-- Icosaedro decorativo. Solo desktop, respeta
-         prefers-reduced-motion (ver hero-icosaedro.js).
-         aria-hidden porque es puramente ambiental, no aporta
-         información. -->
     <div class="hero-icosaedro-wrap" aria-hidden="true">
         <canvas id="hero-icosaedro"></canvas>
     </div>
@@ -47,5 +42,9 @@ import "../../styles/Hero.css";
 </section>
 
 <script>
-    import "../../scripts/hero-icosaedro.js";
+    const isDesktop = window.matchMedia("(min-width: 761px)").matches;
+
+    if (isDesktop) {
+        import("../../scripts/hero-icosaedro.js");
+    }
 </script>

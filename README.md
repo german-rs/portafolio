@@ -217,10 +217,11 @@ push to `main` triggers a new build and deploy.
 * [x] Sitemap (`@astrojs/sitemap`) and `robots.txt`
 * [x] `llms.txt`
 * [x] `docs/ARCHITECTURE.md`
+* [x] Code-splitting for the Three.js bundle (500kB build warning)
 * [ ] Custom GA4 conversion events (contact CTA click, per-platform tag clicks)
-* [ ] Code-splitting for the Three.js bundle (500kB build warning)
 * [ ] Blog
 
 ## License
+
 
 MIT
