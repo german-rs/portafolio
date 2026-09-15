@@ -6,8 +6,8 @@
   position: relative;
   isolation: isolate;
 
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: min(80vh, 640px);
+  min-height: min(80dvh, 640px);
 
   display: flex;
   align-items: center;
@@ -188,55 +188,17 @@
    BUTTON
    ========================================================= */
 
+/* El color y la forma del CTA vienen de .button.button-primary
+   (global.css) — la misma clase que usan "Solicita un diagnóstico"
+   en Hero y "Escríbeme ahora" en Contact. Acá solo se agrega el
+   espaciado propio de este layout y el estado de foco visible. */
 .error-page__button {
-  min-height: 2.75rem;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-
   margin-top: 2rem;
-  padding: 0.75rem 1.125rem;
-
-  border: 1px solid rgba(155, 181, 255, 0.28);
-  border-radius: 0.5rem;
-
-  background: rgba(40, 104, 237, 0.12);
-
-  color: #e7ecff;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.8125rem;
-  font-weight: 600;
-
-  line-height: 1;
-
-  letter-spacing: 0.02em;
-
-  text-decoration: none;
-
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
-}
-
-.error-page__button:hover {
-  background: rgba(40, 104, 237, 0.22);
-
-  border-color: rgba(155, 181, 255, 0.5);
-
-  transform: translateY(-0.125rem);
 }
 
 .error-page__button:focus-visible {
-  outline: 0.125rem solid #9bb5ff;
-  outline-offset: 0.25rem;
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 /* =========================================================
@@ -393,18 +355,3 @@
     justify-content: center;
   }
 }
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .error-page__button {
-    transition: none;
-  }
-
-  .error-page__button:hover {
-    transform: none;
-  }
-}
-

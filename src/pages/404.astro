@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import "../styles/404.css";
 import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.astro";
 ---
@@ -7,66 +8,105 @@ import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.astro";
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="La página que buscas no existe." />
     <meta name="robots" content="noindex" />
     <title>404 — Recurso no encontrado | Germán Riveros</title>
   </head>
 
   <body>
-    <main class="error-page">
-      <div class="error-page__grid" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="site-header">
+        <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
+          Germán Riveros
+        </a>
 
-      <div class="error-page__glow" aria-hidden="true"></div>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="/#work">Trabajo</a>
+          <a href="/#services">Servicios</a>
+          <a href="/#about">Acerca de</a>
+          <a href="/#contact">Contacto</a>
+        </nav>
 
-      <section class="error-page__content" aria-labelledby="error-title">
-        <div class="error-page__header">
-          <span class="error-page__label">
-            SYS.ERROR // HTTP 404
-          </span>
+        <a href="/#contact" class="header-cta"> Hablemos </a>
+      </header>
 
-          <span class="error-page__code" aria-hidden="true">
-            404
-          </span>
-        </div>
+      <main>
+        <section class="error-page" aria-labelledby="error-title">
+          <div class="error-page__grid" aria-hidden="true"></div>
 
-        <div class="error-page__message">
-          <h1 id="error-title">
-            Este recurso no existe.
-          </h1>
+          <div class="error-page__glow" aria-hidden="true"></div>
 
-          <p>
-            La dirección que buscas no está disponible
-            o ya no existe en este sitio.
-          </p>
+          <div class="error-page__content">
+            <div class="error-page__header">
+              <span class="error-page__label">
+                SYS.ERROR // HTTP 404
+              </span>
 
-          <a class="error-page__button" href="/">
-            <span>Volver al inicio</span>
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+              <span class="error-page__code" aria-hidden="true">
+                404
+              </span>
+            </div>
 
-        <div class="error-page__status">
-          <div class="error-page__status-item">
-            <span class="error-page__status-label">STATUS</span>
+            <div class="error-page__message">
+              <h1 id="error-title">
+                Este recurso no existe.
+              </h1>
 
-            <span class="error-page__status-value">
-              <span class="error-page__status-dot" aria-hidden="true"></span>
-              SYSTEM ONLINE
-            </span>
+              <p>
+                La dirección que buscas no está disponible
+                o ya no existe en este sitio.
+              </p>
+
+              <a
+                href="/"
+                class="button button-primary error-page__button"
+              >
+                Volver al inicio
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="error-page__status">
+              <div class="error-page__status-item">
+                <span class="error-page__status-label">STATUS</span>
+
+                <span class="error-page__status-value">
+                  <span
+                    class="error-page__status-dot"
+                    aria-hidden="true"
+                  ></span>
+                  SYSTEM ONLINE
+                </span>
+              </div>
+
+              <div class="error-page__status-item">
+                <span class="error-page__status-label">REQUEST</span>
+
+                <span class="error-page__status-value error-page__request">
+                  {Astro.url.pathname}
+                </span>
+              </div>
+            </div>
           </div>
+        </section>
+      </main>
 
-          <div class="error-page__status-item">
-            <span class="error-page__status-label">REQUEST</span>
+      <footer class="site-footer">
+        <p>
+          © 2026 Germán Riveros — Technical Humanist.
+        </p>
 
-            <span class="error-page__status-value error-page__request">
-              {Astro.url.pathname}
-            </span>
-          </div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/germanriveros_cl"
+            >Instagram</a
+          >
+          <a href="https://github.com/german-rs">GitHub</a>
+          <a href="mailto:german.riveross@gmail.com">Email</a>
         </div>
-      </section>
-    </main>
-    <WhatsAppButton />
+      </footer>
+
+      <WhatsAppButton />
+    </div>
   </body>
 </html>
-
