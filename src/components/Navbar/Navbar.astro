@@ -1,0 +1,73 @@
+
+<header class="site-header">
+    <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
+        Germán Riveros
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#work">Trabajo</a>
+        <a href="#services">Servicios</a>
+        <a href="#about">Acerca de</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+
+    <button
+        class="mobile-menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Abrir menú"
+    >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </button>
+
+    <a href="#contact" class="header-cta">Hablemos</a>
+
+    <nav
+        class="mobile-nav"
+        id="mobile-nav"
+        aria-label="Navegación móvil"
+        aria-hidden="true"
+    >
+        <a href="#work">Trabajo</a>
+        <a href="#services">Servicios</a>
+        <a href="#about">Acerca de</a>
+        <a href="#contact">Contacto</a>
+        <a href="#contact" class="header-cta">Hablemos</a>
+    </nav>
+</header>
+
+<script>
+    const toggle = document.querySelector<HTMLButtonElement>(
+        ".mobile-menu-toggle"
+    );
+    const mobileNav = document.getElementById("mobile-nav");
+
+    if (toggle && mobileNav) {
+        const setMenu = (open: boolean) => {
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+            mobileNav.setAttribute("aria-hidden", String(!open));
+        };
+
+        toggle.addEventListener("click", () => {
+            setMenu(toggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        // Al navegar por una ancla (#work, #contact...), el menú se cierra solo.
+        mobileNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => setMenu(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") setMenu(false);
+        });
+
+        // Si se pasa a escritorio con el menú abierto, se resetea.
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 760) setMenu(false);
+        });
+    }
+</script>

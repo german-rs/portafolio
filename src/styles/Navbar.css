@@ -1,0 +1,261 @@
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: relative;
+  z-index: 20;
+
+  height: 48px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 28px;
+
+  background: rgba(6, 15, 34, 0.96);
+  border-bottom: 1px solid rgba(142, 162, 203, 0.16);
+}
+
+.brand {
+  justify-self: start;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+
+  color: #dce5ff;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.main-nav a {
+  position: relative;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  color: #d3d9e9;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+}
+
+.header-cta {
+  justify-self: end;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 32px;
+  padding: 0 18px;
+
+  background: #2868ed;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #ffffff;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.header-cta:hover {
+  background: #3b78f5;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 760px) {
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    background: transparent;
+    border: 1px solid rgba(142, 162, 203, 0.16);
+
+    cursor: pointer;
+
+    transition: background 180ms ease;
+  }
+
+  .mobile-menu-toggle:hover {
+    background: rgba(21, 35, 66, 0.8);
+  }
+
+  .mobile-menu-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+
+    background: #d3d9e9;
+
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    padding: 0 18px;
+    background: rgba(6, 15, 34, 0.96); 
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden; 
+
+    transition:
+      max-height 180ms ease,
+      padding 180ms ease,
+      opacity 180ms ease,
+      visibility 0ms linear 180ms;
+  }
+
+  .mobile-nav[aria-hidden="false"] {
+    max-height: 400px;
+    padding: 12px 18px 16px;
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+      max-height 180ms ease,
+      padding 180ms ease,
+      opacity 180ms ease,
+      visibility 0ms;
+  }
+
+  .mobile-nav a:not(.header-cta) {
+    display: block;
+    padding: 12px 0;
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #d3d9e9;
+  }
+
+  .mobile-nav a:not(.header-cta):hover {
+    color: #ffffff;
+  }
+
+  .mobile-nav a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  /*
+   * Reutiliza .header-cta existente.
+   * Solo se adapta su distribución dentro del menú.
+   */
+  .mobile-nav .header-cta {
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-toggle,
+  .mobile-menu-toggle span,
+  .mobile-nav {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .site-header {
+    grid-template-columns: 1fr auto;
+    min-height: 56px;
+    padding: 0 18px;
+  }
+
+  .site-header > .header-cta {
+    display: none;
+  }
+
+  .header-cta {
+    min-height: 44px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+}

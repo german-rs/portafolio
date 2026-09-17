@@ -1,3 +1,4 @@
+@import "./Navbar.css";
 @import "./Hero.css";
 @import "./Work.css";
 @import "./Services.css";
@@ -61,99 +62,6 @@ a {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.04),
     0 24px 80px rgba(0, 0, 0, 0.45);
-}
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.site-header {
-  position: relative;
-  z-index: 20;
-
-  height: 48px;
-
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-
-  padding: 0 28px;
-
-  background: rgba(6, 15, 34, 0.96);
-  border-bottom: 1px solid rgba(142, 162, 203, 0.16);
-}
-
-.brand {
-  justify-self: start;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-
-  color: #dce5ff;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-}
-
-.main-nav a {
-  position: relative;
-
-  font-size: 0.75rem;
-  font-weight: 500;
-
-  color: #d3d9e9;
-
-  transition:
-    color 180ms ease,
-    opacity 180ms ease;
-}
-
-.main-nav a:hover {
-  color: #ffffff;
-}
-
-.header-cta {
-  justify-self: end;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 32px;
-  padding: 0 18px;
-
-  background: #2868ed;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-
-  color: #ffffff;
-
-  transition:
-    background 180ms ease,
-    transform 180ms ease;
-}
-
-.header-cta:hover {
-  background: #3b78f5;
-  transform: translateY(-1px);
 }
 
 /* =========================================================
@@ -286,7 +194,7 @@ a {
 }
 
 /* =========================================================
-   RESPONSIVE (chrome compartido: shell, header, footer, button)
+   RESPONSIVE (chrome compartido: shell, footer, button)
    ========================================================= */
 
 @media (max-width: 760px) {
@@ -294,21 +202,6 @@ a {
   .site-shell {
     border-width: 2px;
     border-radius: 16px;
-  }
-
-  .site-header {
-    grid-template-columns: 1fr auto;
-    height: 56px;
-    padding: 0 18px;
-  }
-
-  .header-cta {
-    min-height: 44px;
-    /* antes 22px */
-  }
-
-  .main-nav {
-    display: none;
   }
 
   .button {

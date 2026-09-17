@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar/Navbar.astro";
 import Hero from "../components/Hero/Hero.astro";
 import Work from "../components/Work/Work.astro";
 import Services from "../components/Services/Services.astro";
@@ -116,20 +117,7 @@ import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.astro";
         <!-- End Google Tag Manager (noscript) -->
 
         <div class="site-shell">
-            <header class="site-header">
-                <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
-                    Germán Riveros
-                </a>
-
-                <nav class="main-nav" aria-label="Navegación principal">
-                    <a href="#work">Trabajo</a>
-                    <a href="#services">Servicios</a>
-                    <a href="#about">Acerca de</a>
-                    <a href="#contact">Contacto</a>
-                </nav>
-
-                <a href="#contact" class="header-cta"> Hablemos </a>
-            </header>
+           <Navbar />
 
             <main>
                 <Hero />
