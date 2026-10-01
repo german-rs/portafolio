@@ -37,6 +37,42 @@
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
 }
 
+/* =========================================================
+   PULSE (llama la atención sin mover el botón)
+   ========================================================= */
+.whatsapp-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* queda detrás del ícono; position: fixed ya crea su propio stacking context */
+  border-radius: 50%;
+  background: #25d366;
+  opacity: 0;
+  pointer-events: none;
+  /* 3 pulsos de 1,6s = 4,8s, tras 3s de espera */
+  animation: whatsapp-pulse 1.6s ease-out infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.whatsapp-button:hover::before,
+.whatsapp-button:focus-visible::before {
+  animation: none;
+}
+
+
+
+
 .whatsapp-button:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 4px;
@@ -65,5 +101,8 @@
   .whatsapp-button:hover,
   .whatsapp-button:focus-visible {
     transform: none;
+  }
+    .whatsapp-button::before {
+    animation: none;
   }
 }
