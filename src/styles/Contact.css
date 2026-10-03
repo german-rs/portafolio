@@ -73,7 +73,6 @@
 
   width: fit-content;
 
-  
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -118,7 +117,7 @@
 }
 
 /* =========================================================
-   BODY: contacto directo + panel
+   BODY: formulario + panel
    ========================================================= */
 
 .contact__body {
@@ -129,7 +128,177 @@
 }
 
 /* =========================================================
-   CONTACTO DIRECTO
+   FORMULARIO
+   ========================================================= */
+
+.contact__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.contact__field--full,
+.contact__submit-row,
+.contact__privacy,
+.contact__status-msg {
+  grid-column: 1 / -1;
+}
+
+.contact__field label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  /* Más claro que "muted": es una etiqueta funcional */
+  color: #c8d0e2;
+}
+
+.contact__field label span {
+  text-transform: none;
+  letter-spacing: 0;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  width: 100%;
+  min-height: 44px; /* tap target */
+
+  padding: 0.7rem 0.9rem;
+
+  border: 1px solid rgb(155 181 255 / 0.3);
+  border-radius: 8px;
+
+  background: rgb(155 181 255 / 0.05);
+
+  font: inherit;
+  font-size: 1rem; /* 16px: evita el zoom automático en iOS */
+  color: #e7ecff;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.contact__field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact__field input::placeholder {
+  color: #7f8aa6;
+}
+
+.contact__field input:hover,
+.contact__field select:hover,
+.contact__field textarea:hover {
+  border-color: rgb(155 181 255 / 0.6);
+}
+
+.contact__field input:focus-visible,
+.contact__field select:focus-visible,
+.contact__field textarea:focus-visible {
+  outline: 2px solid #9bb5ff;
+  outline-offset: 2px;
+
+  border-color: #9bb5ff;
+}
+
+.contact__field select option {
+  background: #0b1430;
+  color: #e7ecff;
+}
+
+/* Honeypot fuera de pantalla (no usar display:none: algunos bots lo detectan) */
+.contact__hp {
+  position: absolute;
+  left: -9999px;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+}
+
+.contact__submit-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+
+  margin-top: 0.5rem;
+}
+
+.contact__submit-note {
+  margin: 0;
+
+  font-size: 0.85rem;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+.contact__privacy {
+  margin: -0.25rem 0 0;
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-muted, #8b93a7);
+}
+
+.contact__status-msg {
+  margin: 0;
+  min-height: 1.4em;
+
+  font-size: 0.9rem;
+
+  color: #c8d0e2;
+}
+
+.contact__status-msg.is-success {
+  color: #67c6c0;
+}
+
+.contact__status-msg.is-error {
+  color: #ff9b9b;
+}
+
+/* El CTA del formulario es un <button>. Se neutralizan los estilos nativos
+   con :where() (especificidad 0) para que .button / .button-primary
+   mantengan siempre la última palabra. */
+:where(.contact__form button.button) {
+  -webkit-appearance: none;
+  appearance: none;
+
+  border: 0;
+  margin: 0;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  cursor: pointer;
+}
+
+:where(.contact__form button.button):disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   ALTERNATIVA: CORREO DIRECTO
    ========================================================= */
 
 .contact__label {
@@ -154,7 +323,8 @@
     "Liberation Mono",
     monospace;
 
-  font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+  /* Más discreto que antes: ahora es la alternativa, no el protagonista */
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   word-break: break-word;
@@ -168,21 +338,6 @@
 
 .contact__email:hover {
   border-color: rgb(155 181 255 / 0.9);
-}
-
-.contact__direct-note {
-  max-width: 480px;
-
-  margin: 1rem 0 1.75rem;
-
-  font-size: 0.95rem;
-  line-height: 1.6;
-
-  color: #c8d0e2;
-}
-
-.contact__direct .button-primary {
-  margin-bottom: clamp(3rem, 5vw, 4rem);
 }
 
 /* =========================================================
@@ -260,7 +415,9 @@
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .contact__copy.is-copied {
@@ -272,87 +429,6 @@
 .contact__copy.is-copied .contact__copy-feedback {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
-}
-
-/* =========================================================
-   REDUCED MOTION (agregar dentro del bloque existente)
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .contact__copy {
-    transition: none;
-  }
-
-  .contact__copy-feedback {
-    transition: none;
-  }
-}
-
-
-
-
-
-/* =========================================================
-   PASOS ("qué pasa después")
-   ========================================================= */
-
-.contact__steps {
-  display: flex;
-  flex-direction: column;
-
-  margin: 0;
-  padding: 1.75rem 0 0;
-  list-style: none;
-
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-}
-
-.contact__steps li {
-  display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-  gap: 1.25rem;
-
-  padding: 1.25rem 0;
-}
-
-.contact__steps li + li {
-  border-top: 1px solid rgb(255 255 255 / 0.08);
-}
-
-.contact__step-number {
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  line-height: 1.4;
-
-  color: var(--color-text-muted, #8b93a7);
-}
-
-.contact__step-body h3 {
-  margin: 0;
-
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-
-  color: #e7ecff;
-}
-
-.contact__step-body p {
-  max-width: 460px;
-
-  margin: 0.4rem 0 0;
-
-  font-size: 0.9rem;
-  line-height: 1.6;
-
-  color: var(--color-text-muted, #8b93a7);
 }
 
 /* =========================================================
@@ -369,13 +445,21 @@
   border: 1px solid rgb(155 181 255 / 0.25);
   border-radius: 16px;
 
-  background: #0b1430;
+  /* Antes: #0b1430 (opaco). Mismo color, con transparencia */
+  background: rgb(11 20 48 / 0.55);
+
+  /* Desenfoque mínimo: da efecto "vidrio" sin borrar las líneas del icosaedro */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 .contact__status {
   display: flex;
   align-items: center;
   gap: 8px;
+
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
 
   font-family:
     "SFMono-Regular",
@@ -388,9 +472,6 @@
   letter-spacing: 0.06em;
 
   color: #e7ecff;
-
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
 
 .contact__status-dot {
@@ -432,55 +513,6 @@
   color: var(--color-text-muted, #8b93a7);
 }
 
-.contact__panel-block {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
-}
-
-.contact__social.contact__panel-block {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.contact__panel-label {
-  display: block;
-
-  margin-bottom: 0.85rem;
-
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: var(--color-text-muted, #8b93a7);
-}
-
-.contact__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-}
-
-.contact__tags li {
-  padding: 0.35rem 0.75rem;
-
-  border: 1px solid rgb(155 181 255 / 0.3);
-  border-radius: 4px;
-
-  background: rgb(155 181 255 / 0.05);
-
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-
-  color: #9bb5ff;
-}
-
 .contact__social {
   display: flex;
   gap: 1.5rem;
@@ -495,7 +527,9 @@
 
   border-bottom: 1px solid transparent;
 
-  transition: color 180ms ease, border-color 180ms ease;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
 }
 
 .contact__social a:hover {
@@ -529,7 +563,6 @@
    ========================================================= */
 
 .contact__email:focus-visible,
-.contact__direct .button-primary:focus-visible,
 .contact__social a:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
@@ -576,7 +609,11 @@
     display: block;
   }
 
-  .contact__direct .button-primary {
+  .contact__form {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form .button-primary {
     min-height: 44px;
   }
 
@@ -601,9 +638,14 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .contact__field input,
+  .contact__field select,
+  .contact__field textarea,
   .contact__email,
+  .contact__copy,
+  .contact__copy-feedback,
   .contact__social a,
-  .contact__direct .button-primary {
+  .contact__form .button-primary {
     transition: none;
   }
 }
