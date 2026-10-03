@@ -4,6 +4,7 @@
 @import "./Services.css";
 @import "./About.css";
 @import "./Contact.css";
+@import "./Footer.css";
 
 /* =========================================================
    RESET
@@ -149,49 +150,7 @@ a {
   color: rgba(160, 177, 214, 0.25);
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
 
-.site-footer {
-  min-height: 3.125rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 1.25rem;
-
-  padding: 0 1.75rem;
-
-  background: #050c1b;
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.75rem;
-  color: #8993aa;
-}
-
-.site-footer p {
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  gap: 1.125rem;
-}
-
-.footer-links a {
-  transition: color 180ms ease;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
-}
 
 /* =========================================================
    RESPONSIVE (chrome compartido: shell, footer, button)
@@ -206,16 +165,5 @@ a {
 
   .button {
     min-height: 44px;
-  }
-
-  .site-footer {
-    padding: 18px 20px;
-
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .footer-links {
-    flex-wrap: wrap;
   }
 }
