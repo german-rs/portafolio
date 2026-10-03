@@ -44,26 +44,23 @@
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1; /* queda detrás del ícono; position: fixed ya crea su propio stacking context */
+  z-index: -1;
   border-radius: 50%;
   background: #25d366;
   opacity: 0;
   pointer-events: none;
-  /* 3 pulsos de 1,6s = 4,8s, tras 3s de espera */
-  animation: whatsapp-pulse 1.6s ease-out infinite;
+
+  /* ciclo total 6s: pulso de ~1.6s + pausa de ~4.4s */
+  animation: whatsapp-pulse 5s ease-out 3s infinite;
 }
 
 @keyframes whatsapp-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.55;
-  }
-  70%,
-  100% {
-    transform: scale(1.7);
-    opacity: 0;
-  }
+  0%   { transform: scale(1);   opacity: 0.55; }
+  27%  { transform: scale(1.7); opacity: 0; }   /* 27% de 6s ≈ 1.6s */
+  100% { transform: scale(1.7); opacity: 0; }   /* pausa */
 }
+
+
 
 .whatsapp-button:hover::before,
 .whatsapp-button:focus-visible::before {
