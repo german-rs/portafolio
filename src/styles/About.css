@@ -3,6 +3,11 @@
    ========================================================= */
 
 .about {
+
+    --about-meta: clamp(140px, 16%, 200px);
+  --about-gap: clamp(2rem, 5vw, 5rem);
+
+
   position: relative;
   width: 100%;
   padding: clamp(5rem, 8vw, 7rem) 0;
@@ -45,7 +50,7 @@
 
 .about__header {
   display: grid;
-  grid-template-columns: minmax(140px, 0.35fr) minmax(0, 1fr);
+  grid-template-columns: var(--about-meta) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 5rem);
 
   margin-bottom: clamp(3.5rem, 6vw, 6rem);
@@ -105,70 +110,28 @@
   color: #9bb5ff;
 }
 
-.about__intro p {
-  max-width: 540px;
-
-  margin: 1.75rem 0 0;
-
-  font-size: clamp(1rem, 1.35vw, 1.15rem);
-  line-height: 1.6;
-
-  color: var(--color-text-muted, #8b93a7);
-}
-
 /* =========================================================
    BODY: narrativa + retrato
    ========================================================= */
 
 .about__body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: var(--about-meta) minmax(0, 1fr) 300px;
   gap: clamp(3rem, 6vw, 5.5rem);
   align-items: start;
 }
 
+.about__narrative      { grid-column: 2; }
+.about__portrait-wrap  { grid-column: 3; }
+
 .about__narrative p {
-  max-width: 560px;
+  max-width: 58ch;
+  margin: 0;
 
-  margin: 0 0 1.25rem;
-
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.35vw, 1.15rem); /* mismo clamp que hero y services */
+  line-height: 1.6;
 
   color: #c8d0e2;
-}
-
-/* =========================================================
-   PRINCIPIO (mantra, no un proceso: sin numeración)
-   ========================================================= */
-
-.about__principle {
-  display: flex;
-  flex-wrap: wrap;
-
-  margin: 2rem 0 2.5rem;
-  padding: 1.25rem 0;
-
-  list-style: none;
-
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
-}
-
-.about__principle li {
-  padding: 0 1.25rem;
-
-  border-left: 1px solid rgb(255 255 255 / 0.14);
-
-  font-size: 0.8rem;
-  font-weight: 600;
-
-  color: #9bb5ff;
-}
-
-.about__principle li:first-child {
-  padding-left: 0;
-  border-left: none;
 }
 
 /* =========================================================
@@ -180,7 +143,10 @@
   flex-wrap: wrap;
   gap: 2rem 2.5rem;
 
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0 0;
+  padding-top: 1.75rem;
+
+  border-top: 1px solid rgb(255 255 255 / 0.1);
 }
 
 .about__fact strong {
@@ -197,36 +163,6 @@
   text-transform: uppercase;
 
   color: var(--color-text-muted, #8b93a7);
-}
-
-/* =========================================================
-   PLATAFORMAS (tags)
-   ========================================================= */
-
-.about__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-}
-
-.about__tags li {
-  padding: 0.35rem 0.75rem;
-
-  border: 1px solid rgb(155 181 255 / 0.3);
-  border-radius: 4px;
-
-  background: rgb(155 181 255 / 0.05);
-
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-
-  color: #9bb5ff;
 }
 
 /* =========================================================
@@ -333,19 +269,6 @@
   box-shadow: 0 0 6px #67c6c0;
 }
 
-.about__badge-sub {
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    monospace;
-
-  font-size: 0.62rem;
-  letter-spacing: 0.05em;
-
-  color: var(--color-text-muted, #8b93a7);
-}
-
 /* =========================================================
    FOOTER / CTA
    ========================================================= */
@@ -400,6 +323,24 @@
   outline: 2px solid currentColor;
   outline-offset: 6px;
 }
+
+@media (max-width: 1024px) {
+  .about__body {
+    grid-template-columns: var(--about-meta) minmax(0, 1fr);
+  }
+
+  .about__portrait-wrap {
+    grid-column: 2;
+    justify-content: flex-start;
+    margin-top: 1rem;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+  } 
+
+} 
+
 
 /* =========================================================
    MOBILE

@@ -1,19 +1,11 @@
 ---
 import "../../styles/About.css";
 
-const principles = [
-  "Construir con propósito",
-  "Aprender continuamente",
-  "Compartir conocimiento",
-];
-
 const facts = [
+  { value: "15+ años", label: "De trayectoria" },
   { value: "LSCh", label: "Atención accesible" },
   { value: "WCAG AA", label: "Estándar de accesibilidad" },
-  { value: "Chile", label: "Remoto" },
 ];
-
-const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
 ---
 
 <section id="about" class="about" aria-labelledby="about-title">
@@ -23,7 +15,6 @@ const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
     <header class="about__header">
       <div class="about__meta">
         <span class="about__eyebrow">04 ABOUT</span>
-
         <span class="about__sidebar-label" aria-hidden="true">
           ABOUT // CONTINUIDAD
         </span>
@@ -32,29 +23,19 @@ const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
       <div class="about__intro">
         <h2 id="about-title">
           El lanzamiento es el comienzo.
-          <span> La continuidad es mi trabajo.</span>
+          <span> Después, me quedo a cargo.</span>
         </h2>
-
-        <p>
-          Germán Riveros — administración, optimización y accesibilidad
-          para sitios que ya están en producción.
-        </p>
       </div>
     </header>
 
     <div class="about__body">
       <div class="about__narrative">
         <p>
-          Trabajo con personas y pymes en Chile que ya tienen un sitio en
-          producción y necesitan que siga funcionando: actualizado,
-          seguro, rápido y accesible mientras el negocio sigue creciendo.
+          Soy ingeniero en informática y docente. Vengo del soporte técnico,
+          el desarrollo web y la educación superior, y hoy trabajo con pymes
+          y personas en Chile que ya tienen un sitio en producción: lo mantengo
+          actualizado, seguro, rápido y accesible mientras el negocio crece.
         </p>
-
-        <ul class="about__principle" aria-label="Principio de trabajo">
-          {principles.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
 
         <div class="about__facts">
           {facts.map((fact) => (
@@ -64,12 +45,6 @@ const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
             </div>
           ))}
         </div>
-
-        <ul class="about__tags" aria-label="Plataformas con las que trabajo">
-          {platforms.map((platform) => (
-            <li>{platform}</li>
-          ))}
-        </ul>
       </div>
 
       <div class="about__portrait-wrap">
@@ -83,7 +58,6 @@ const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
             height="680"
             loading="lazy"
           />
-          
         </div>
 
         <div class="about__badge">
@@ -91,19 +65,13 @@ const platforms = ["WordPress", "Magento", "Joomla", "PrestaShop", "Moodle"];
             <span class="about__badge-dot" aria-hidden="true"></span>
             DISPONIBLE PARA PROYECTOS
           </div>
-
-          <div class="about__badge-sub">LSCh · ATENCIÓN ACCESIBLE</div>
         </div>
       </div>
     </div>
 
     <footer class="about__footer">
       <p>¿Quieres que tu sitio tenga esta misma continuidad?</p>
-
-      <a href="#contact">
-        Conversemos
-        <span aria-hidden="true">↗</span>
-      </a>
+      <a href="#contact">Conversemos <span aria-hidden="true">↗</span></a>
     </footer>
   </div>
 </section>
