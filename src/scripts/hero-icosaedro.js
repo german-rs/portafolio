@@ -1,12 +1,3 @@
-// src/scripts/hero-icosaedro.jshero-icosaedro.js
-// Icosaedro wireframe decorativo para el hero. Vanilla Three.js — sin React,
-// sin @react-three/fiber, sin drei. Mismo resultado visual que el experimento
-// 004-icosaedro-interactivo, con una fracción del peso en JS.
-//
-// Este módulo se carga con import() dinámico desde Hero.astro, solo en
-// desktop (la comprobación de matchMedia vive ahí, no acá, para no
-// duplicar el breakpoint en dos archivos).
-
 // src/scripts/hero-icosaedro.js
 import {
   WebGLRenderer,
@@ -38,15 +29,20 @@ if (canvas) {
   const geometry = new IcosahedronGeometry(1.3, 0);
   const edges = new EdgesGeometry(geometry);
 
-  const COLOR_START = new Color(0x4fc3d9); // teal actual
-  const COLOR_END = new Color(0x7c8cff);   // azul/violeta (ajústalo a tu acento)
-  const LINE_OPACITY = 0.85;
-  const FILL_OPACITY = 0.18;
+  // Color: teal (hero) -> azul/violeta (final de la página)
+  const COLOR_START = new Color(0x4fc3d9);
+  const COLOR_END = new Color(0x7c8cff);
+
+  // Opacidad: presente en el hero, discreta mientras lees contenido
+  const LINE_OPACITY_HERO = 0.85;
+  const LINE_OPACITY_PAGE = 0.28;
+  const FILL_OPACITY_HERO = 0.18;
+  const FILL_OPACITY_PAGE = 0.05;
 
   const lineMaterial = new LineBasicMaterial({
     color: COLOR_START.clone(),
     transparent: true,
-    opacity: LINE_OPACITY,
+    opacity: LINE_OPACITY_HERO,
   });
   const wireframe = new LineSegments(edges, lineMaterial);
   scene.add(wireframe);
@@ -54,14 +50,14 @@ if (canvas) {
   const fillMaterial = new MeshBasicMaterial({
     color: 0x102734,
     transparent: true,
-    opacity: FILL_OPACITY,
+    opacity: FILL_OPACITY_HERO,
   });
   const fillMesh = new Mesh(geometry, fillMaterial);
   scene.add(fillMesh);
 
   function resize() {
     const size = canvas.clientWidth;
-    if (size === 0) return;
+    if (size === 0) return; // wrapper oculto en mobile
     renderer.setSize(size, size, false);
     camera.aspect = 1;
     camera.updateProjectionMatrix();
@@ -70,62 +66,64 @@ if (canvas) {
   window.addEventListener("resize", resize);
 
   if (prefersReducedMotion) {
+    // Un frame estático, sin animación ni reacción al scroll.
     renderer.render(scene, camera);
   } else {
-    // --- Scroll ---
-    const hero = canvas.closest(".hero") ?? canvas.parentElement;
     const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const smoothstep = (t) => t * t * (3 - 2 * t);
 
-    let targetProgress = 0; // 0 = hero arriba, 1 = hero fuera de pantalla
-    let progress = 0;       // valor suavizado
+    let targetY = window.scrollY;
+    let currentY = targetY; // scroll suavizado
 
-    function readScroll() {
-      const rect = hero.getBoundingClientRect();
-      targetProgress = clamp(-rect.top / rect.height, 0, 1);
-    }
-    readScroll();
-    window.addEventListener("scroll", readScroll, { passive: true });
-
-    // --- Pausar el render cuando el hero no se ve ---
-    let visible = true;
-    let running = false;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible && !running) loop();
-    });
-    observer.observe(canvas);
+    window.addEventListener(
+      "scroll",
+      () => {
+        targetY = window.scrollY;
+      },
+      { passive: true }
+    );
 
     let autoX = 0;
     let autoY = 0;
 
     function loop() {
-      if (!visible) {
-        running = false;
-        return;
-      }
-      running = true;
+      requestAnimationFrame(loop);
 
-      progress += (targetProgress - progress) * 0.08;
+      // Si el wrapper está oculto (mobile), no renderizar.
+      if (canvas.clientWidth === 0) return;
 
-      // Rotación automática + rotación extra ligada al scroll
+      // Suavizado: evita el movimiento "a saltos" de la rueda del mouse
+      currentY += (targetY - currentY) * 0.08;
+
+      const maxScroll = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      const page = clamp(currentY / maxScroll, 0, 1); // 0..1 en toda la página
+      const intro = smoothstep(clamp(currentY / window.innerHeight, 0, 1)); // 0..1 en el primer viewport
+
+      // Rotación automática + rotación ligada al scroll (en px, no en %,
+      // para que la sensación sea igual aunque la página crezca)
       autoX += 0.0018;
       autoY += 0.0028;
-      wireframe.rotation.x = autoX + progress * Math.PI * 1.2;
-      wireframe.rotation.y = autoY + progress * Math.PI * 2;
+      wireframe.rotation.x = autoX + currentY * 0.0025;
+      wireframe.rotation.y = autoY + currentY * 0.004;
       fillMesh.rotation.copy(wireframe.rotation);
 
-      // Escala, color y opacidad
-      const scale = 1 + progress * 0.35;
+      // Se encoge un poco al salir del hero para estorbar menos
+      const scale = lerp(1, 0.8, intro);
       wireframe.scale.setScalar(scale);
       fillMesh.scale.setScalar(scale);
 
-      lineMaterial.color.lerpColors(COLOR_START, COLOR_END, progress);
-      lineMaterial.opacity = LINE_OPACITY * (1 - progress * 0.6);
-      fillMaterial.opacity = FILL_OPACITY * (1 - progress * 0.6);
+      // Color según avance total de la página
+      lineMaterial.color.lerpColors(COLOR_START, COLOR_END, page);
+
+      // Opacidad: baja rápido en el primer viewport y se mantiene discreta
+      lineMaterial.opacity = lerp(LINE_OPACITY_HERO, LINE_OPACITY_PAGE, intro);
+      fillMaterial.opacity = lerp(FILL_OPACITY_HERO, FILL_OPACITY_PAGE, intro);
 
       renderer.render(scene, camera);
-      requestAnimationFrame(loop);
     }
     loop();
   }
