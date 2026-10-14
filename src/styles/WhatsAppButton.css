@@ -51,7 +51,7 @@
   pointer-events: none;
 
   /* ciclo total 6s: pulso de ~1.6s + pausa de ~4.4s */
-  animation: whatsapp-pulse 5s ease-out 3s infinite;
+  animation: whatsapp-pulse 3s ease-out 3s infinite;
 }
 
 @keyframes whatsapp-pulse {
