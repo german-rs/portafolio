@@ -288,7 +288,10 @@
     right: 20px;
   }
 
-  .hero-icosaedro-wrap {
-    display: none; /* el layout colapsa a una columna, no hay espacio real */
-  }
+.hero-icosaedro-wrap {
+  width: 220px;
+  height: 220px;
+  right: -28px; /* asoma parcialmente por el borde, libera espacio al texto */
+  opacity: 0.4; /* queda como fondo y no compite con el título */
+}
 }

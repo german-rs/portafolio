@@ -43,9 +43,7 @@ import "../../styles/Hero.css";
 </section>
 
 <script>
-    const isDesktop = window.matchMedia("(min-width: 761px)").matches;
-
-    if (isDesktop) {
-        import("../../scripts/hero-icosaedro.js");
-    }
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    import("../../scripts/hero-icosaedro.js");
+  }
 </script>
