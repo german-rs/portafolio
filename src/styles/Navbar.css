@@ -3,7 +3,8 @@
    ========================================================= */
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
 
   height: 48px;
@@ -14,8 +15,20 @@
 
   padding: 0 28px;
 
-  background: rgba(6, 15, 34, 0.96);
-  border-bottom: 1px solid rgba(142, 162, 203, 0.16);
+  background: rgba(6, 15, 34, 0);
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background 240ms ease,
+    border-color 240ms ease,
+    backdrop-filter 240ms ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(6, 15, 34, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: rgba(142, 162, 203, 0.16);
 }
 
 .brand {
@@ -90,6 +103,7 @@
   background: #3b78f5;
   transform: translateY(-1px);
 }
+
 
 /* =========================================================
    MOBILE NAVIGATION
@@ -179,6 +193,10 @@
       padding 180ms ease,
       opacity 180ms ease,
       visibility 0ms linear 180ms;
+
+    background: rgba(6, 15, 34, 0.94);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
   }
 
   .mobile-nav[aria-hidden="false"] {
@@ -228,10 +246,20 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .site-header,
   .mobile-menu-toggle,
   .mobile-menu-toggle span,
   .mobile-nav {
     transition: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header,
+  .site-header.is-scrolled {
+    background: rgba(6, 15, 34, 0.98);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
@@ -257,5 +285,14 @@
 
   .main-nav {
     display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header,
+  .site-header.is-scrolled {
+    background: rgba(6, 15, 34, 0.98);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
