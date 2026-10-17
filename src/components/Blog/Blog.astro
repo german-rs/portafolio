@@ -1,0 +1,43 @@
+---
+// src/components/Blog/Blog.astro
+import { getPublishedPosts } from "../../lib/blog";
+import BlogCard from "./BlogCard.astro";
+
+const posts = (await getPublishedPosts()).slice(0, 3);
+---
+
+{posts.length > 0 && (
+  <section id="blog" class="blog-section" aria-labelledby="blog-title">
+    <div class="blog-container">
+      <header class="blog-header">
+        <div class="blog-header-meta" aria-hidden="true">
+          <span class="blog-index">05</span>
+          <span class="blog-system">BLOG // NOTAS</span>
+        </div>
+
+        <div class="blog-heading">
+          <p class="blog-eyebrow">NOTAS Y GUÍAS</p>
+          <h2 id="blog-title">
+            Notas para que tu sitio <span>siga funcionando.</span>
+          </h2>
+        </div>
+
+        <p class="blog-intro">
+          Guías breves sobre mantenimiento, seguridad, rendimiento y accesibilidad
+          para quienes ya tienen un sitio y quieren cuidarlo.
+        </p>
+      </header>
+
+      <div class="blog-list">
+        {posts.map((post, i) => (
+          <BlogCard post={post} number={String(i + 1).padStart(2, "0")} />
+        ))}
+      </div>
+
+      <div class="blog-footer">
+        <span>{String(posts.length).padStart(2, "0")} ARTÍCULOS</span>
+        <a href="/blog/" class="blog-all">VER TODOS →</a>
+      </div>
+    </div>
+  </section>
+)}

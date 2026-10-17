@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/Blog/BlogCard.astro";
+import { getPublishedPosts } from "../../lib/blog";
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="Blog — Germán Riveros"
+  description="Guías breves sobre mantenimiento, seguridad, rendimiento y accesibilidad para sitios web existentes."
+>
+  <section class="blog-section" aria-labelledby="blog-title">
+    <div class="blog-container">
+      <header class="blog-header">
+        <div class="blog-header-meta" aria-hidden="true">
+          <span class="blog-index">BLOG</span>
+          <span class="blog-system">NOTAS // GUÍAS</span>
+        </div>
+
+        <div class="blog-heading">
+          <p class="blog-eyebrow">NOTAS Y GUÍAS</p>
+          <h1 id="blog-title">
+            Notas para que tu sitio <span>siga funcionando.</span>
+          </h1>
+        </div>
+
+        <p class="blog-intro">
+          Guías breves sobre mantenimiento, seguridad, rendimiento y accesibilidad
+          para quienes ya tienen un sitio y quieren cuidarlo.
+        </p>
+      </header>
+
+      {posts.length > 0 ? (
+        <div class="blog-list">
+          {posts.map((post, i) => (
+            <BlogCard post={post} number={String(i + 1).padStart(2, "0")} />
+          ))}
+        </div>
+      ) : (
+        <p class="blog-intro">Pronto habrá artículos publicados.</p>
+      )}
+
+      <div class="blog-footer">
+        <span>{String(posts.length).padStart(2, "0")} ARTÍCULOS</span>
+        <a href="/#contact" class="blog-all">SOLICITA UN DIAGNÓSTICO →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

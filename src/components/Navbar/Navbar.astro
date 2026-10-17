@@ -1,3 +1,6 @@
+---
+const isBlog = Astro.url.pathname.startsWith("/blog");
+---
 
 <header class="site-header">
     <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
@@ -5,11 +8,14 @@
     </a>
 
     <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#work">Trabajo</a>
-        <a href="#services">Servicios</a>
-        <a href="#about">Acerca de</a>
-        <a href="#contact">Contacto</a>
+    <a href="/#work">Trabajo</a>
+    <a href="/#services">Servicios</a>
+    <a href="/#about">Acerca de</a>
+    <a href="/blog/" aria-current={isBlog ? "page" : undefined}>Blog</a>
+    <a href="/#contact">Contacto</a>
     </nav>
+
+    
 
     <button
         class="mobile-menu-toggle"
@@ -24,7 +30,9 @@
         <span aria-hidden="true"></span>
     </button>
 
-    <a href="#contact" class="header-cta">Hablemos</a>
+
+    <!-- <a href="#contact" class="header-cta">Hablemos</a> -->
+    <a href="/#contact" class="header-cta">Hablemos</a>
 
     <nav
         class="mobile-nav"
@@ -32,11 +40,12 @@
         aria-label="Navegación móvil"
         aria-hidden="true"
     >
-        <a href="#work">Trabajo</a>
-        <a href="#services">Servicios</a>
-        <a href="#about">Acerca de</a>
-        <a href="#contact">Contacto</a>
-        <a href="#contact" class="header-cta">Hablemos</a>
+        <a href="/#work">Trabajo</a>
+        <a href="/#services">Servicios</a>
+        <a href="/#about">Acerca de</a>
+        <a href="/blog/" aria-current={isBlog ? "page" : undefined}>Blog</a>
+        <a href="/#contact">Contacto</a>
+        <a href="/#contact" class="header-cta">Hablemos</a>
     </nav>
 </header>
 

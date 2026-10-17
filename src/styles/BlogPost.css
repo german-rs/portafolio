@@ -1,0 +1,259 @@
+/* =========================================================
+   BLOG POST
+   Layout del artículo (.post-*) y tipografía del contenido
+   Markdown (.post-prose). Tokens alineados con Work.css.
+   ========================================================= */
+
+.post-section {
+  position: relative;
+  padding: 9rem 2rem 8rem;
+  background: #071022;
+  color: #e7ecff;
+}
+
+.post-container {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  margin-bottom: 3rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9fb8ef;
+  transition: color 300ms ease;
+}
+
+.post-back:hover {
+  color: #ffffff;
+}
+
+.post-back:focus-visible,
+.post-prose a:focus-visible {
+  outline: 3px solid #8fb4ff;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.post-header {
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(142, 162, 203, 0.35);
+}
+
+.post-eyebrow {
+  margin: 0 0 1.5rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #9fb8ef;
+}
+
+.post-header h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: #e7ecff;
+  overflow-wrap: break-word;
+}
+
+.post-lead {
+  max-width: 60ch;
+  margin: 0 0 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #c3cde2;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aeb9d2;
+}
+
+/* =========================================================
+   PROSE (contenido Markdown)
+   ========================================================= */
+
+.post-prose {
+  max-width: 68ch;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #c3cde2;
+}
+
+.post-prose > :first-child {
+  margin-top: 0;
+}
+
+.post-prose p {
+  margin: 0 0 1.5rem;
+}
+
+.post-prose h2 {
+  margin: 3.5rem 0 1.25rem;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #e7ecff;
+}
+
+.post-prose h3 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: #e7ecff;
+}
+
+.post-prose strong {
+  color: #e7ecff;
+  font-weight: 700;
+}
+
+.post-prose a {
+  color: #9fb8ef;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 300ms ease;
+}
+
+.post-prose a:hover {
+  color: #ffffff;
+}
+
+.post-prose ul,
+.post-prose ol {
+  margin: 0 0 1.5rem;
+  padding-left: 1.4rem;
+}
+
+.post-prose li {
+  margin-bottom: 0.6rem;
+  padding-left: 0.25rem;
+}
+
+.post-prose li::marker {
+  color: #9fb8ef;
+}
+
+.post-prose blockquote {
+  margin: 2rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 3px solid #8fb4ff;
+  color: #d5def2;
+}
+
+.post-prose code {
+  padding: 0.15em 0.4em;
+  background: rgba(142, 162, 203, 0.14);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.88em;
+  color: #e7ecff;
+}
+
+.post-prose pre {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border: 1px solid rgba(142, 162, 203, 0.4);
+  line-height: 1.6;
+}
+
+.post-prose pre code {
+  padding: 0;
+  background: none;
+}
+
+.post-prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.post-prose hr {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid rgba(142, 162, 203, 0.35);
+}
+
+/* =========================================================
+   CTA FINAL
+   ========================================================= */
+
+.post-cta {
+  margin-top: 5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(142, 162, 203, 0.4);
+  background: rgba(11, 21, 41, 0.6);
+}
+
+.post-cta h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #e7ecff;
+}
+
+.post-cta p:not(.post-eyebrow) {
+  max-width: 52ch;
+  margin: 0 0 1.75rem;
+  color: #c3cde2;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .post-section {
+    padding: 6rem 1.25rem 5rem;
+  }
+
+  .post-prose {
+    font-size: 1rem;
+  }
+
+  .post-cta {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .post-back {
+    min-height: 44px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .post-back,
+  .post-prose a {
+    transition: none;
+  }
+}

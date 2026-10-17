@@ -1,0 +1,184 @@
+/* =========================================================
+   BLOG
+   Las tarjetas reutilizan las clases .work-card-* de Work.css.
+   Este archivo cubre solo la sección: contenedor, encabezado,
+   lista y pie. Valores alineados con Work.css.
+   ========================================================= */
+
+.blog-section {
+  position: relative;
+  padding: 9rem 2rem 10rem;
+  background: #071022;
+  color: #e7ecff;
+  overflow: hidden;
+}
+
+.blog-container {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   BLOG HEADER
+   ========================================================= */
+
+.blog-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 3rem;
+  padding-bottom: 6rem;
+}
+
+.blog-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aeb9d2;
+}
+
+.blog-index {
+  font-size: 0.8rem;
+  color: #d0d9ee;
+}
+
+.blog-system {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  width: fit-content;
+  color: #aeb9d2;
+}
+
+.blog-heading {
+  max-width: 800px;
+}
+
+.blog-eyebrow {
+  margin: 0 0 1.5rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #9fb8ef;
+}
+
+.blog-heading h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: #e7ecff;
+}
+
+.blog-heading h2 span {
+  display: block;
+  color: #aebff0;
+}
+
+.blog-intro {
+  align-self: end;
+  max-width: 320px;
+  margin: 0;
+  color: #c3cde2;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   POST LIST
+   ========================================================= */
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(142, 162, 203, 0.35);
+}
+
+/* Tarjeta sin portada: el contenido ocupa todo el ancho en vez
+   de dejar vacía la columna del preview. */
+.blog-list .work-card-content:not(:has(.work-preview)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* =========================================================
+   BLOG FOOTER
+   ========================================================= */
+
+.blog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #8998b5;
+}
+
+.blog-all {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: #dbe5fb;
+  transition: color 300ms ease;
+}
+
+.blog-all:hover {
+  color: #ffffff;
+}
+
+/* Mismo indicador de foco que .work-card-link */
+.blog-all:focus-visible {
+  outline: 3px solid #8fb4ff;
+  outline-offset: 6px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .blog-header {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .blog-system {
+    writing-mode: initial;
+    transform: none;
+  }
+
+  .blog-intro {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-section {
+    padding: 6rem 1.25rem 7rem;
+  }
+
+  .blog-heading h2 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  /* Área táctil cómoda */
+  .blog-all {
+    min-height: 44px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-all {
+    transition: none;
+  }
+}

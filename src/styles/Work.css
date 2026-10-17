@@ -484,7 +484,7 @@
 
 @media (hover: hover) and (pointer: fine) {
 
-  .work-card-link:hover .work-card h3 {
+  .work-card-link:hover h3 {
     transform: translateX(8px);
     color: #ffffff;
   }
@@ -530,7 +530,7 @@
    información que el teclado no puede percibir.
 */
 
-.work-card-link:focus-visible .work-card h3 {
+.work-card-link:focus-visible h3 {
   color: #ffffff;
 }
 

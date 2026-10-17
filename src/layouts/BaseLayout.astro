@@ -1,0 +1,92 @@
+---
+// src/layouts/BaseLayout.astro
+import "../styles/global.css";
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  image?: string;
+  type?: "website" | "article";
+}
+
+const {
+  title,
+  description,
+  ogTitle = title,
+  ogDescription = description,
+  image = "/images/og-card.jpg",
+  type = "website",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph: cómo se ve el link al compartirlo -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="germanriveros.cl" />
+
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Datos propios de cada página (JSON-LD, article:*, etc.) -->
+    <slot name="head" />
+
+    <!-- Google Tag Manager (vía Partytown, corre en un web worker) -->
+    <script type="text/partytown">
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-M3PZ4MKW");
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-M3PZ4MKW"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="site-shell">
+      <Navbar />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  </body>
+</html>

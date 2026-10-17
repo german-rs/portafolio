@@ -1,0 +1,102 @@
+---
+// src/layouts/BlogPost.astro
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, cover } = post.data;
+
+const url = new URL(`/blog/${post.id}/`, Astro.site).href;
+const image = cover ? cover.src : undefined;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("es-CL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  inLanguage: "es-CL",
+  mainEntityOfPage: url,
+  ...(image && { image: new URL(image, Astro.site).href }),
+  author: {
+    "@type": "Person",
+    name: "Germán Riveros",
+    url: "https://germanriveros.cl/#about",
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Germán Riveros",
+    url: "https://germanriveros.cl/",
+  },
+};
+---
+
+<BaseLayout
+  title={`${title} — Germán Riveros`}
+  description={description}
+  ogTitle={title}
+  image={image}
+  type="article"
+>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={pubDate.toISOString()} />
+    {updatedDate && (
+      <meta property="article:modified_time" content={updatedDate.toISOString()} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="post-section">
+    <div class="post-container">
+      <a href="/blog/" class="post-back">← BLOG</a>
+
+      <header class="post-header">
+        <p class="post-eyebrow">BLOG / NOTAS</p>
+        <h1>{title}</h1>
+        <p class="post-lead">{description}</p>
+
+        <div class="post-meta">
+          <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
+          {updatedDate && (
+            <span>
+              Actualizado: <time datetime={updatedDate.toISOString()}>{fmt(updatedDate)}</time>
+            </span>
+          )}
+        </div>
+
+        {tags.length > 0 && (
+          <div class="work-tags post-tags" aria-label="Temas">
+            {tags.map((tag) => <span class="work-tag">{tag}</span>)}
+          </div>
+        )}
+      </header>
+
+      <div class="post-prose">
+        <slot />
+      </div>
+
+      <aside class="post-cta" aria-labelledby="post-cta-title">
+        <p class="post-eyebrow">DIAGNÓSTICO</p>
+        <h2 id="post-cta-title">¿Prefieres que me ocupe yo?</h2>
+        <p>
+          Reviso tu sitio y te respondo con un diagnóstico claro: qué está bien,
+          qué hay que corregir y qué conviene mantener mes a mes.
+        </p>
+        <a href="/#contact" class="button button-primary">SOLICITA UN DIAGNÓSTICO</a>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

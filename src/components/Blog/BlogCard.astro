@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  number: string;
+}
+
+const { post, number } = Astro.props;
+const { title, description, tags, pubDate, cover, coverAlt } = post.data;
+const href = `/blog/${post.id}/`;
+const dateLabel = pubDate.toLocaleDateString("es-CL", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<article class="work-card">
+  <a href={href} class="work-card-link" aria-label={`Leer artículo: ${title}`}>
+    <div class="work-card-top">
+      <span class="work-number">{number}</span>
+      <span class="work-status">
+        <time datetime={pubDate.toISOString()}>{dateLabel}</time>
+      </span>
+    </div>
+
+    <div class="work-card-content">
+      <div class="work-card-info">
+        <p class="work-category">BLOG / NOTAS</p>
+        <h3>{title}</h3>
+        <p class="work-description">{description}</p>
+        <div class="work-tags" aria-label="Temas">
+          {tags.map((tag) => <span class="work-tag">{tag}</span>)}
+        </div>
+      </div>
+
+      {cover && (
+        <div class="work-preview">
+          <div class="work-preview-overlay">
+            <span>LEER ARTÍCULO</span>
+            <span class="work-arrow">↗</span>
+          </div>
+          <Image src={cover} alt={coverAlt ?? ""} width={1200} height={800} loading="lazy" />
+        </div>
+      )}
+    </div>
+
+    <div class="work-card-bottom">
+      <span>POST / {number}</span>
+      <span class="work-view">LEER ARTÍCULO <span>→</span></span>
+    </div>
+  </a>
+</article>
