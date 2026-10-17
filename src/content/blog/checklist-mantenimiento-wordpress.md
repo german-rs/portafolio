@@ -4,6 +4,8 @@ description: "Qué revisar cada mes para que tu sitio siga seguro, rápido y fun
 pubDate: 2026-10-17
 tags: ["WordPress", "Mantenimiento", "Seguridad"]
 draft: false
+cover: "../../assets/blog/checklist-mantenimiento.jpg"
+coverAlt: "Lista de verificación con tres casillas marcadas, rodeada de íconos de candado, actualización, rendimiento y seguridad, sobre un icosaedro de líneas azules"
 ---
 
 Un sitio web no se termina el día que se publica. Los plugins se actualizan, los navegadores cambian, los hostings vencen y los atacantes prueban puertas que ayer estaban cerradas. La mayoría de los problemas graves no aparecen de golpe: se acumulan durante meses sin que nadie los mire.

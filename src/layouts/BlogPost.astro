@@ -2,6 +2,8 @@
 // src/layouts/BlogPost.astro
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
+
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -83,6 +85,12 @@ const jsonLd = {
           </div>
         )}
       </header>
+
+      {cover && (
+        <figure class="post-cover">
+          <Image src={cover} alt={post.data.coverAlt ?? ""} width={1200} height={640} loading="eager" />
+        </figure>
+      )}
 
       <div class="post-prose">
         <slot />
