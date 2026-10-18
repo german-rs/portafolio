@@ -159,6 +159,32 @@ docs/
     └── deploy.yml
 ```
 
+## Blog
+
+El blog usa Content Collections de Astro con archivos Markdown. No hay CMS ni base de datos: todo se genera como HTML estático en el build.
+
+### Estructura
+
+- `src/content.config.ts`: schema de la colección `blog`.
+- `src/content/blog/*.md`: un archivo por artículo.
+- `src/lib/blog.ts`: `getPublishedPosts()`, filtra borradores y ordena por fecha.
+- `src/layouts/BaseLayout.astro`: marco, `<head>`, SEO y analytics compartidos.
+- `src/layouts/BlogPost.astro`: página de artículo, con JSON-LD `BlogPosting`.
+- `src/pages/blog/index.astro` y `blog/[...slug].astro`: listado y artículos.
+- `src/components/Blog/`: sección del home (`Blog.astro`) y tarjeta (`BlogCard.astro`, reutiliza las clases `work-*`).
+- `src/styles/Blog.css` y `BlogPost.css`: estilos de la sección y del contenido.
+- `src/pages/rss.xml.js`: feed RSS.
+
+### Publicar un artículo nuevo
+
+1. Crear `src/content/blog/<slug>.md` con el frontmatter: `title` (máx. 70), `description` (máx. 160), `pubDate`, `tags`, `draft: true`.
+2. Escribir el cuerpo en Markdown, usando `##` para los títulos (el `h1` lo pone el layout).
+3. Portada opcional: guardar la imagen en `src/assets/blog/` y agregar `cover` y `coverAlt` solo después de que el archivo exista.
+4. Revisar con `npm run dev` (en desarrollo se ven los borradores).
+5. Cambiar `draft` a `false`, confirmar `pubDate` y correr `npm run build`.
+6. Subir los cambios; el deploy es automático.
+
+
 ## Development
 
 Clone the repository:
@@ -200,6 +226,12 @@ npm run preview
 Deployed automatically via **GitHub Actions** (`.github/workflows/deploy.yml`)
 to **GitHub Pages**, served through **Cloudflare** on a custom domain. Every
 push to `main` triggers a new build and deploy.
+
+### Notas
+
+- Los borradores solo se ven en desarrollo y no se publican en el build.
+- El home muestra los 3 artículos más recientes.
+- Los estilos del contenido Markdown son globales (`.post-prose`), porque el contenido entra por `<slot />`.
 
 ## Status / honest roadmap
 
