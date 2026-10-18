@@ -2,8 +2,8 @@
 // src/components/Blog/Blog.astro
 import { getPublishedPosts } from "../../lib/blog";
 import BlogCard from "./BlogCard.astro";
-
-const posts = (await getPublishedPosts()).slice(0, 3);
+const allPosts = await getPublishedPosts();
+const posts = allPosts.slice(0, 3);
 ---
 
 {posts.length > 0 && (
@@ -35,8 +35,11 @@ const posts = (await getPublishedPosts()).slice(0, 3);
       </div>
 
       <div class="blog-footer">
-        <span>{String(posts.length).padStart(2, "0")} ARTÍCULOS</span>
-        <a href="/blog/" class="blog-all">VER TODOS →</a>
+       <span>
+        {String(allPosts.length).padStart(2, "0")}
+        {allPosts.length === 1 ? "ARTÍCULO" : "ARTÍCULOS"}
+      </span>
+      <a href="/blog/" class="blog-all">VER TODOS →</a>
       </div>
     </div>
   </section>
