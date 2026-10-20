@@ -12,6 +12,7 @@ export interface Props {
   ogDescription?: string;
   image?: string;
   type?: "website" | "article";
+  noindex?: boolean;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   ogDescription = description,
   image = "/images/og-card.jpg",
   type = "website",
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -33,8 +35,13 @@ const ogImage = new URL(image, Astro.site).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+
+   <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonical} />
+    )}
 
     <!-- Open Graph: cómo se ve el link al compartirlo -->
     <meta property="og:type" content={type} />

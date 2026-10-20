@@ -26,7 +26,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-
+  padding: 12px; 
   background: #050b18;
   color: #e7ecff;
 
@@ -55,28 +55,17 @@ a {
    El contenedor ya no lleva borde: el marco es un overlay
    fijo al viewport (::after) y el contenido scrollea por debajo.
    ========================================================= */
-.site-shell {
-  min-height: 100vh;
-  background: #071022;
-  /* clip en vez de hidden: evita scroll horizontal sin romper position: sticky */
-  overflow-x: clip;
-}
 
-.site-shell::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;   /* fallback */
-  height: 100lvh;  /* no cambia al ocultarse la barra */
-  z-index: 1000;
-  pointer-events: none;
+.site-shell {
+  min-height: calc(100svh - 24px);
+  background: #071022;
   border: 4px solid rgba(210, 219, 241, 0.75);
   border-radius: 24px;
-  box-shadow: 0 0 0 100vmax #050b18;
-  will-change: transform; /* capa propia, evita repintados */
+  overflow: clip;         /* recorta en las esquinas redondeadas sin romper sticky */
 }
+
+
+
 
 /* =========================================================
    BUTTON (compartido — usado en Hero, y a futuro en Contact)
@@ -169,13 +158,36 @@ a {
    RESPONSIVE (chrome compartido: shell, footer, button)
    ========================================================= */
 
-@media (max-width: 760px) {
-  .site-shell::after {
+/* Escritorio: borde base de 4px y radio 24px (sin cambios) */
+
+/* Tablet y menor: hasta 1024px */
+@media (max-width: 1024px) {
+  body { padding: 10px; }
+  .site-shell {
+    min-height: calc(100svh - 20px);
+    border-width: 2px;
+    border-radius: 20px;
+  }
+  .button { min-height: 44px; }
+}
+
+/* Móvil: hasta 600px (debe ir después del bloque de 1024px) */
+@media (max-width: 600px) {
+  body { padding: 6px; }
+  .site-shell {
+    min-height: calc(100svh - 12px);
     border-width: 2px;
     border-radius: 16px;
   }
+}
 
-  .button {
-    min-height: 44px;
+
+@media (max-width: 760px) {
+  body { padding: 6px; }
+  .site-shell {
+    min-height: calc(100svh - 12px);
+    border-width: 2px;
+    border-radius: 16px;
   }
+  .button { min-height: 44px; }
 }

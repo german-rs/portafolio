@@ -1,101 +1,49 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/404.css";
-import Footer from "../components/Footer/Footer.astro";
-import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.astro";
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="La página que buscas no existe." />
-    <meta name="robots" content="noindex" />
-    <title>404 — Recurso no encontrado | Germán Riveros</title>
-  </head>
+<BaseLayout
+  title="404 — Recurso no encontrado | Germán Riveros"
+  description="La página que buscas no existe."
+  noindex
+>
+  <section class="error-page" aria-labelledby="error-title">
+    <div class="error-page__grid" aria-hidden="true"></div>
+    <div class="error-page__glow" aria-hidden="true"></div>
 
-  <body>
-    <div class="site-shell">
-      <header class="site-header">
-        <a href="/" class="brand" aria-label="Germán Riveros — Inicio">
-          Germán Riveros
+    <div class="error-page__content">
+      <div class="error-page__header">
+        <span class="error-page__label">SYS.ERROR // HTTP 404</span>
+        <span class="error-page__code" aria-hidden="true">404</span>
+      </div>
+
+      <div class="error-page__message">
+        <h1 id="error-title">Este recurso no existe.</h1>
+        <p>
+          La dirección que buscas no está disponible o ya no existe en este
+          sitio.
+        </p>
+        <a href="/" class="button button-primary error-page__button">
+          Volver al inicio <span aria-hidden="true">↗</span>
         </a>
+      </div>
 
-        <nav class="main-nav" aria-label="Navegación principal">
-          <a href="/#work">Trabajo</a>
-          <a href="/#services">Servicios</a>
-          <a href="/#about">Acerca de</a>
-          <a href="/#contact">Contacto</a>
-        </nav>
-
-        <a href="/#contact" class="header-cta"> Hablemos </a>
-      </header>
-
-      <main>
-        <section class="error-page" aria-labelledby="error-title">
-          <div class="error-page__grid" aria-hidden="true"></div>
-
-          <div class="error-page__glow" aria-hidden="true"></div>
-
-          <div class="error-page__content">
-            <div class="error-page__header">
-              <span class="error-page__label">
-                SYS.ERROR // HTTP 404
-              </span>
-
-              <span class="error-page__code" aria-hidden="true">
-                404
-              </span>
-            </div>
-
-            <div class="error-page__message">
-              <h1 id="error-title">
-                Este recurso no existe.
-              </h1>
-
-              <p>
-                La dirección que buscas no está disponible
-                o ya no existe en este sitio.
-              </p>
-
-              <a
-                href="/"
-                class="button button-primary error-page__button"
-              >
-                Volver al inicio
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div class="error-page__status">
-              <div class="error-page__status-item">
-                <span class="error-page__status-label">STATUS</span>
-
-                <span class="error-page__status-value">
-                  <span
-                    class="error-page__status-dot"
-                    aria-hidden="true"
-                  ></span>
-                  SYSTEM ONLINE
-                </span>
-              </div>
-
-              <div class="error-page__status-item">
-                <span class="error-page__status-label">REQUEST</span>
-
-                <span class="error-page__status-value error-page__request">
-                  {Astro.url.pathname}
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-
-      <WhatsAppButton />
+      <div class="error-page__status">
+        <div class="error-page__status-item">
+          <span class="error-page__status-label">STATUS</span>
+          <span class="error-page__status-value">
+            <span class="error-page__status-dot" aria-hidden="true"></span>
+            SYSTEM ONLINE
+          </span>
+        </div>
+        <div class="error-page__status-item">
+          <span class="error-page__status-label">REQUEST</span>
+          <span class="error-page__status-value error-page__request">
+            {Astro.url.pathname}
+          </span>
+        </div>
+      </div>
     </div>
-  </body>
-</html>
+  </section>
+</BaseLayout>
