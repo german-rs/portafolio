@@ -65,14 +65,17 @@ a {
 .site-shell::after {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;   /* fallback */
+  height: 100lvh;  /* no cambia al ocultarse la barra */
   z-index: 1000;
-  pointer-events: none; /* no bloquea clics ni scroll */
+  pointer-events: none;
   border: 4px solid rgba(210, 219, 241, 0.75);
   border-radius: 24px;
-  /* Pinta de color de fondo todo lo que queda fuera de la esquina redondeada,
-     para que el contenido no "asome" por las esquinas */
   box-shadow: 0 0 0 100vmax #050b18;
+  will-change: transform; /* capa propia, evita repintados */
 }
 
 /* =========================================================
