@@ -1,7 +1,7 @@
 ---
 title: "Mi sitio está lento: 5 causas comunes y cómo detectarlas"
 description: "Qué miden realmente LCP, INP y CLS, cómo medirlos gratis y qué corregir primero para que tu sitio cargue rápido en el celular."
-pubDate: 2026-10-24
+pubDate: 2026-10-21
 tags: ["Rendimiento", "Core Web Vitals", "SEO"]
 draft: false
 cover: "../../assets/blog/sitio-lento-core-web-vitals.jpg"
